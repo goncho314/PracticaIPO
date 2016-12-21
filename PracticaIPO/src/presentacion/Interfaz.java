@@ -1,8 +1,13 @@
 package presentacion;
 
 import java.awt.EventQueue;
+import java.awt.Window;
 
 import javax.swing.JFrame;
+import javax.swing.UIManager;
+
+import dominio.Datos;
+
 import java.awt.BorderLayout;
 
 public class Interfaz {
@@ -19,6 +24,7 @@ public class Interfaz {
 				try {
 					Interfaz window = new Interfaz();
 					window.frame.setVisible(true);
+					UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
