@@ -6,8 +6,8 @@ public class Datos {
 	public ArrayList usuarios = new ArrayList();
 	public ArrayList passwords = new ArrayList();
 	public Datos(){
-		usuarios.add("jd");
-		passwords.add("jd");
+		usuarios.add("aa");
+		passwords.add("aa");
 	}
 	public Boolean comprobarLogin(String usuario, String password){
 		boolean b = false;
