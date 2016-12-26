@@ -109,7 +109,7 @@ public class Login extends JFrame {
 						gbc_lblBienvenidoALa.gridy = 2;
 						panel.add(lblBienvenidoALa, gbc_lblBienvenidoALa);
 					}
-					lblEspana.setIcon(new ImageIcon(Interfaz.class.getResource("/presentacion/bandera_espana.png")));
+					lblEspana.setIcon(new ImageIcon(Login.class.getResource("/presentacion/bandera_espana.png")));
 					GridBagConstraints gbc_lblEspana = new GridBagConstraints();
 					gbc_lblEspana.gridheight = 7;
 					gbc_lblEspana.insets = new Insets(0, 0, 5, 5);
@@ -238,7 +238,8 @@ public class Login extends JFrame {
 			}
 			else {
 				if (datos.comprobarLogin(txtfUsuario.getText(), txtfContrasena.getText())){
-					Interfaz iu = new Interfaz();
+					datos.setUsuario(txtfUsuario.getText());
+					Ventana iu = new Ventana();
 					iu.main(null);
 					dispose();
 				}
