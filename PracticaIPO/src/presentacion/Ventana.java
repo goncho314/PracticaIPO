@@ -24,6 +24,7 @@ import dominio.Datos;
 
 import java.awt.SystemColor;
 import javax.swing.SwingConstants;
+import java.awt.CardLayout;
 
 public class Ventana extends JFrame {
 
@@ -114,21 +115,21 @@ public class Ventana extends JFrame {
 						btnAgenda = new JButton("Agenda");
 						panel_2.add(btnAgenda);
 						btnAgenda.addActionListener(new BtnAgendaActionListener());
-						btnAgenda.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/calendar-icon2.png")));
+						btnAgenda.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/calendar-icon2.png")));
 						btnAgenda.setFont(new Font("Tahoma", Font.PLAIN, 24));
 					}
 					{
 						btnPacientes = new JButton("Pacientes");
 						panel_2.add(btnPacientes);
 						btnPacientes.addActionListener(new BtnPacientesActionListener());
-						btnPacientes.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/patient-icon2.png")));
+						btnPacientes.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/patient-icon2.png")));
 						btnPacientes.setFont(new Font("Tahoma", Font.PLAIN, 24));
 					}
 					{
 						btnEspecialistas = new JButton("Especialistas");
 						panel_2.add(btnEspecialistas);
 						btnEspecialistas.addActionListener(new BtnEspecialistasActionListener());
-						btnEspecialistas.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/doctor_icon2.png")));
+						btnEspecialistas.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/doctor_icon2.png")));
 						btnEspecialistas.setFont(new Font("Tahoma", Font.PLAIN, 24));
 					}
 				}
@@ -156,6 +157,7 @@ public class Ventana extends JFrame {
 			{
 				panel_1 = new JPanel();
 				splitPane.setRightComponent(panel_1);
+				panel_1.setLayout(new CardLayout(0, 0));
 			}
 		}
 		{
@@ -167,7 +169,7 @@ public class Ventana extends JFrame {
 			{
 				btnSalir = new JButton("Salir");
 				btnSalir.addActionListener(new BtnSalirActionListener());
-				btnSalir.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/salir.png")));
+				btnSalir.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/salir.png")));
 				btnSalir.setFont(new Font("Tahoma", Font.PLAIN, 24));
 				panel_4.add(btnSalir);
 			}

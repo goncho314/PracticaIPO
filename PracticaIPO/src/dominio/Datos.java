@@ -17,17 +17,17 @@ public class Datos {
 		passwords.add("jd");
 		nombreMedicos.add("Dr. John Dorian");
 		especialidad.add("Medicina general");
-		rutaFotoMedicos.add("/presentacion/jd.jpg");
+		rutaFotoMedicos.add("/presentacion/resources/jd.jpg");
 		usuarios.add("turk");
 		passwords.add("turk");
 		nombreMedicos.add("Dr. Christopher Turk");
 		especialidad.add("Cirugía");
-		rutaFotoMedicos.add("/presentacion/turk.jpg");
+		rutaFotoMedicos.add("/presentacion/resources/turk.jpg");
 		usuarios.add("elliot");
 		passwords.add("elliot");
 		nombreMedicos.add("Dra. Elliot Reid");
 		especialidad.add("Medicina general");
-		rutaFotoMedicos.add("/presentacion/elliot.jpg");
+		rutaFotoMedicos.add("/presentacion/resources/elliot.jpg");
 		
 	}
 	public Boolean comprobarLogin(String usuario, String password){

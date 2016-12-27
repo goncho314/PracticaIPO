@@ -91,7 +91,7 @@ public class Login extends JFrame {
 					lblEspana.addMouseListener(new LblEspanaMouseListener());
 					{
 						lblLogo = new JLabel("");
-						lblLogo.setIcon(new ImageIcon(Login.class.getResource("/presentacion/logo.png")));
+						lblLogo.setIcon(new ImageIcon(Login.class.getResource("/presentacion/resources/logo.png")));
 						GridBagConstraints gbc_lblLogo = new GridBagConstraints();
 						gbc_lblLogo.gridwidth = 3;
 						gbc_lblLogo.insets = new Insets(0, 0, 5, 5);
@@ -109,7 +109,7 @@ public class Login extends JFrame {
 						gbc_lblBienvenidoALa.gridy = 2;
 						panel.add(lblBienvenidoALa, gbc_lblBienvenidoALa);
 					}
-					lblEspana.setIcon(new ImageIcon(Login.class.getResource("/presentacion/bandera_espana.png")));
+					lblEspana.setIcon(new ImageIcon(Login.class.getResource("/presentacion/resources/bandera_espana.png")));
 					GridBagConstraints gbc_lblEspana = new GridBagConstraints();
 					gbc_lblEspana.gridheight = 7;
 					gbc_lblEspana.insets = new Insets(0, 0, 5, 5);
@@ -122,7 +122,7 @@ public class Login extends JFrame {
 				lblInglaterra = new JLabel("");
 				lblInglaterra.addMouseListener(new LblInglaterraMouseListener());
 				lblInglaterra.setEnabled(false);
-				lblInglaterra.setIcon(new ImageIcon(Login.class.getResource("/presentacion/bandera_inglaterra.png")));
+				lblInglaterra.setIcon(new ImageIcon(Login.class.getResource("/presentacion/resources/bandera_inglaterra.png")));
 				GridBagConstraints gbc_lblInglaterra = new GridBagConstraints();
 				gbc_lblInglaterra.gridheight = 7;
 				gbc_lblInglaterra.insets = new Insets(0, 0, 5, 5);
