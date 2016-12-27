@@ -34,7 +34,7 @@ public class Ventana extends JFrame {
 	private JLabel lblEstado;
 	private JSplitPane splitPane;
 	private JPanel panel;
-	private JPanel panel_1;
+	private JPanel pnlContenido;
 	private JButton btnAgenda;
 	private JButton btnPacientes;
 	private JButton btnEspecialistas;
@@ -46,6 +46,8 @@ public class Ventana extends JFrame {
 	private JLabel lblInfoMedico;
 
 	private static Datos datos = new Datos();
+	private JPanel pnlFondo;
+	private JPanel pnlAgenda;
 	/**
 	 * Launch the application.
 	 */
@@ -114,6 +116,8 @@ public class Ventana extends JFrame {
 					{
 						btnAgenda = new JButton("Agenda");
 						panel_2.add(btnAgenda);
+						btnAgenda.setContentAreaFilled(false);
+						btnAgenda.setOpaque(true);
 						btnAgenda.addActionListener(new BtnAgendaActionListener());
 						btnAgenda.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/calendar-icon2.png")));
 						btnAgenda.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -121,6 +125,9 @@ public class Ventana extends JFrame {
 					{
 						btnPacientes = new JButton("Pacientes");
 						panel_2.add(btnPacientes);
+						btnPacientes.setContentAreaFilled(false);
+						btnPacientes.setOpaque(true);
+						btnPacientes.setBorderPainted(false);
 						btnPacientes.addActionListener(new BtnPacientesActionListener());
 						btnPacientes.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/patient-icon2.png")));
 						btnPacientes.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -128,6 +135,9 @@ public class Ventana extends JFrame {
 					{
 						btnEspecialistas = new JButton("Especialistas");
 						panel_2.add(btnEspecialistas);
+						btnEspecialistas.setContentAreaFilled(false);
+						btnEspecialistas.setOpaque(true);
+						btnEspecialistas.setBorderPainted(false);
 						btnEspecialistas.addActionListener(new BtnEspecialistasActionListener());
 						btnEspecialistas.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/doctor_icon2.png")));
 						btnEspecialistas.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -155,9 +165,15 @@ public class Ventana extends JFrame {
 				}
 			}
 			{
-				panel_1 = new JPanel();
-				splitPane.setRightComponent(panel_1);
-				panel_1.setLayout(new CardLayout(0, 0));
+				pnlContenido = new JPanel();
+				splitPane.setRightComponent(pnlContenido);
+				pnlContenido.setLayout(new CardLayout(0, 0));
+				{
+					pnlFondo = new Fondo();
+					pnlContenido.add(pnlFondo, "Fondo");
+					pnlAgenda = new Agenda();
+					pnlContenido.add(pnlAgenda, "Agenda");
+				}
 			}
 		}
 		{
@@ -179,6 +195,8 @@ public class Ventana extends JFrame {
 	private class BtnAgendaActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			coloresBotones(1);
+			CardLayout cl = (CardLayout)(pnlContenido.getLayout());
+			cl.show(pnlContenido, "Agenda");			
 		}
 	}
 	private class BtnPacientesActionListener implements ActionListener {
@@ -203,15 +221,21 @@ public class Ventana extends JFrame {
 		btnAgenda.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		btnEspecialistas.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		btnPacientes.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		btnAgenda.setBackground((new Color(240, 240, 240)));
+		btnEspecialistas.setBackground((new Color(240, 240, 240)));
+		btnPacientes.setBackground((new Color(240, 240, 240)));
 		switch(num){
 		case 1:
 			btnAgenda.setFont(new Font("Tahoma", Font.BOLD, 36));
+			btnAgenda.setBackground(SystemColor.activeCaption);
 			break;
 		case 2:
 			btnPacientes.setFont(new Font("Tahoma", Font.BOLD, 36));
+			btnPacientes.setBackground(SystemColor.activeCaption);
 			break;
 		case 3:
 			btnEspecialistas.setFont(new Font("Tahoma", Font.BOLD, 30));
+			btnEspecialistas.setBackground(SystemColor.activeCaption);
 			break;
 			
 		}
