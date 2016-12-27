@@ -44,7 +44,7 @@ public class Ventana extends JFrame {
 	private JLabel lblFotoMedico;
 	private JLabel lblInfoMedico;
 
-	private Datos datos = new Datos();
+	private static Datos datos = new Datos();
 	/**
 	 * Launch the application.
 	 */
@@ -52,6 +52,7 @@ public class Ventana extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					datos.setUsuario(args[0]);
 					Ventana window = new Ventana();
 					UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 					window.setExtendedState(window.getExtendedState()|JFrame.MAXIMIZED_BOTH );
@@ -216,8 +217,6 @@ public class Ventana extends JFrame {
 	
 	private void cargarDatosMedico(){
 		lblFotoMedico.setIcon(new ImageIcon(Ventana.class.getResource(datos.getFotoMedico())));
-		System.out.println(datos.getInfoMedico());
-		System.out.println(datos.getFotoMedico());
 		lblInfoMedico.setText(datos.getInfoMedico());
 	}
 }

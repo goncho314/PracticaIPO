@@ -171,6 +171,7 @@ public class Login extends JFrame {
 			}
 			{
 				lblMensaje = new JLabel("");
+				lblMensaje.setFont(new Font("Tahoma", Font.PLAIN, 16));
 				GridBagConstraints gbc_lblMensaje = new GridBagConstraints();
 				gbc_lblMensaje.gridwidth = 3;
 				gbc_lblMensaje.insets = new Insets(0, 0, 5, 5);
@@ -240,7 +241,8 @@ public class Login extends JFrame {
 				if (datos.comprobarLogin(txtfUsuario.getText(), txtfContrasena.getText())){
 					datos.setUsuario(txtfUsuario.getText());
 					Ventana iu = new Ventana();
-					iu.main(null);
+					String[]arg = {txtfUsuario.getText()};
+					iu.main(arg);
 					dispose();
 				}
 				else{
