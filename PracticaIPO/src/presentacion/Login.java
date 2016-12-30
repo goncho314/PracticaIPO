@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -238,16 +239,21 @@ public class Login extends JFrame {
 				lblMensaje.setText("Debe rellenar los dos campos");
 			}
 			else {
-				if (datos.comprobarLogin(txtfUsuario.getText(), txtfContrasena.getText())){
-					datos.setUsuario(txtfUsuario.getText());
-					Ventana iu = new Ventana();
-					String[]arg = {txtfUsuario.getText()};
-					iu.main(arg);
-					dispose();
-				}
-				else{
-					lblMensaje.setForeground(Color.RED);
-					lblMensaje.setText("Usuario o contraseña incorrectos");
+				try {
+					if (datos.comprobarLogin(txtfUsuario.getText(), txtfContrasena.getText())){
+						datos.setUsuario(txtfUsuario.getText());
+						Ventana iu = new Ventana();
+						String[]arg = {txtfUsuario.getText()};
+						iu.main(arg);
+						dispose();
+					}
+					else{
+						lblMensaje.setForeground(Color.RED);
+						lblMensaje.setText("Usuario o contraseña incorrectos");
+					}
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 			}
 		}

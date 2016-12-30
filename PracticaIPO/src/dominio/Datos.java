@@ -1,39 +1,24 @@
 package dominio;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
+
+import persistencia.BaseDatos;
 
 public class Datos {
+	BaseDatos bd = new BaseDatos();
 	private String usuario;
-	public ArrayList usuarios = new ArrayList();
-	public ArrayList passwords = new ArrayList();
-	public ArrayList nombreMedicos = new ArrayList();
-	public ArrayList especialidad = new ArrayList();
-	public ArrayList rutaFotoMedicos = new ArrayList();
 	public Datos(){
-		usuarios.add("jd");
-		passwords.add("jd");
-		nombreMedicos.add("Dr. John Dorian");
-		especialidad.add("Medicina general");
-		rutaFotoMedicos.add("/presentacion/resources/jd.jpg");
-		usuarios.add("turk");
-		passwords.add("turk");
-		nombreMedicos.add("Dr. Christopher Turk");
-		especialidad.add("Cirugía");
-		rutaFotoMedicos.add("/presentacion/resources/turk.jpg");
-		usuarios.add("elliot");
-		passwords.add("elliot");
-		nombreMedicos.add("Dra. Elliot Reid");
-		especialidad.add("Medicina general");
-		rutaFotoMedicos.add("/presentacion/resources/elliot.jpg");
-		
+		bd.conectar();		
 	}
-	public Boolean comprobarLogin(String usuario, String password){
+	public Boolean comprobarLogin(String usuario, String password) throws SQLException{
 		boolean b = false;
-		for(int i = 0;i<usuarios.size() && !b;i++)
-			b = (usuarios.get(i).equals(usuario) && passwords.get(i).equals(password));
+		ResultSet rs;
+		String sentencia = "SELECT usuario FROM login WHERE usuario='"+usuario+"' AND contrasena='"+password+"'";
+		rs = bd.consultar(sentencia);
+		if (rs.next())
+			b = true;
 		return b;
 	}
 	
@@ -44,32 +29,60 @@ public class Datos {
 	public String getUsuario(){
 		return this.usuario;
 	}
-	
-	public String getInfoMedico(){
-		boolean b = false;
+	public String getInfoMedico() throws SQLException{
+		ResultSet rs;
 		String s = "";
-		for(int i = 0;i<usuarios.size() && !b;i++)
-			if(usuarios.get(i).equals(this.usuario)){
-				b=true;
-				s="<html><body>"+nombreMedicos.get(i)+"<br>"+ especialidad.get(i)+"<br>Último acceso:<br>"+getUltimoAcceso()+"</body></html>";
-			}
+		String sentencia = "select m.nombre, m.especialidad, DATE_FORMAT(l.ultimo_acceso, '%d/%m/%Y %k:%i:%s') as ultimo from medicos m, login l where m.id=l.doctor and l.usuario='"+this.usuario+"'";
+		rs = bd.consultar(sentencia);
+		if(rs.next())		
+				s="<html><body>"+rs.getString("nombre")+"<br>"+ rs.getString("especialidad")+"<br>Último acceso:<br>"+rs.getString("ultimo")+"</body></html>";
 		return s;
 	}
 	
-	public String getFotoMedico(){
-		boolean b = false;
-		String s = "";
-		for(int i = 0;i<usuarios.size() && !b;i++)
-			if(usuarios.get(i).equals(this.usuario)){
-				b=true;
-				s=(String)rutaFotoMedicos.get(i);
-			}
-		return s;
+	public String getFotoMedico() throws SQLException{
+		ResultSet rs;
+		String sentencia = "SELECT foto FROM medicos WHERE id = (SELECT doctor FROM login WHERE usuario='"+this.usuario+"')";
+		String ruta = "";
+		rs = bd.consultar(sentencia);
+		if(rs.next())
+			ruta = rs.getString("foto");
+		return ruta;
 	}
 	
-	public String getUltimoAcceso(){
-		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		Date date = new Date();
-		return dateFormat.format(date);
+	public String getFotoPaciente(String nombre) throws SQLException{		
+		ResultSet rs;
+		String sentencia = "SELECT foto FROM pacientes WHERE nombre = '"+nombre+"'";
+		String ruta = "";
+		rs = bd.consultar(sentencia);
+		if(rs.next())
+			ruta = rs.getString("foto");
+		return ruta;
+	}
+	
+	public ArrayList<String> getDiasCitas(int mes, int year) throws SQLException{
+		ResultSet rs;
+		ArrayList<String> dias = new ArrayList<String>();
+		String sentencia = "SELECT day(c.fecha) dia FROM citas c, medicos m, login l WHERE c.doctor=m.id AND m.id=l.doctor AND month(c.fecha)="+mes+" AND year(c.fecha)="+year+" AND l.usuario='"+this.usuario+"' GROUP BY c.fecha order by c.fecha";
+		rs = bd.consultar(sentencia);
+		while(rs.next())
+			dias.add(rs.getString("dia"));
+		return dias;
+	}
+	
+	public ArrayList<String> getCitasDia(int dia, int mes, int year) throws SQLException{
+		ResultSet rs;
+		ArrayList<String> citas = new ArrayList<String>();
+		String sentencia = "SELECT TIME_FORMAT(c.hora, '%H:%i') hora, p.nombre FROM citas c, medicos m, login l, pacientes p WHERE c.doctor=m.id AND m.id=l.doctor AND c.paciente=p.id AND  day(c.fecha)="+dia+" AND month(c.fecha)="+mes+" AND year(c.fecha)="+year+" AND l.usuario='"+this.usuario+"' order by c.hora";
+		rs = bd.consultar(sentencia);
+		while(rs.next()){
+			citas.add(rs.getString("hora"));
+			citas.add(rs.getString("nombre"));
+		}
+		return citas;
+	}
+	
+	public void salirAplicacion(){
+		String sentencia = "update login set ultimo_acceso=CURRENT_TIMESTAMP() where usuario='"+this.usuario+"'";
+		bd.executeUpdate(sentencia);
 	}
 }

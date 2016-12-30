@@ -8,6 +8,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,8 +19,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.UIManager;
-import javax.swing.border.EmptyBorder;
-
 import dominio.Datos;
 
 import java.awt.SystemColor;
@@ -70,15 +69,17 @@ public class Ventana extends JFrame {
 
 	/**
 	 * Create the application.
+	 * @throws SQLException 
 	 */
-	public Ventana() {
+	public Ventana() throws SQLException {
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws SQLException 
 	 */
-	private void initialize() {
+	private void initialize() throws SQLException {
 		frame = new JFrame();
 		frame.setBounds(0, 0, 1900, 1050);
 		frame.setExtendedState(frame.getExtendedState()|JFrame.MAXIMIZED_BOTH );
@@ -171,7 +172,7 @@ public class Ventana extends JFrame {
 				{
 					pnlFondo = new Fondo();
 					pnlContenido.add(pnlFondo, "Fondo");
-					pnlAgenda = new Agenda();
+					pnlAgenda = new Agenda(this);
 					pnlContenido.add(pnlAgenda, "Agenda");
 				}
 			}
@@ -211,10 +212,15 @@ public class Ventana extends JFrame {
 	}
 	private class BtnSalirActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			datos.salirAplicacion();
 			Login log = new Login();
 			log.main(null);
 			frame.dispose();
 		}
+	}
+	
+	public Datos getDatos(){
+		return datos;
 	}
 	
 	private void coloresBotones(int num){
@@ -241,8 +247,13 @@ public class Ventana extends JFrame {
 		}
 	}
 	
-	private void cargarDatosMedico(){
+	private void cargarDatosMedico() throws SQLException{
 		lblFotoMedico.setIcon(new ImageIcon(Ventana.class.getResource(datos.getFotoMedico())));
 		lblInfoMedico.setText(datos.getInfoMedico());
+	}
+	
+	public void pulsarSalir(){
+		CardLayout cl = (CardLayout)(pnlContenido.getLayout());
+		cl.show(pnlContenido, "Fondo");		
 	}
 }

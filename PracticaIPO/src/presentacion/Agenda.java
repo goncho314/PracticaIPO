@@ -8,22 +8,31 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Locale;
-
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.border.MatteBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.ImageIcon;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.border.TitledBorder;
+
+import dominio.Datos;
+
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 public class Agenda extends JPanel {
 	private JSplitPane splitPane;
@@ -83,7 +92,7 @@ public class Agenda extends JPanel {
 	private JLabel lblDomingo;
 	private Calendar calendar = Calendar.getInstance();
 	
-	private ArrayList<JButton> botones = new ArrayList();
+	private ArrayList<JButton> botones = new ArrayList<JButton>();
 	private String[] meses = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
 	
 	private int mesActual = calendar.get(calendar.MONTH);
@@ -95,11 +104,28 @@ public class Agenda extends JPanel {
 	private int year = calendar.get(calendar.YEAR);
 	private int dia = calendar.get(calendar.DAY_OF_MONTH);
 	
+	private Color rojo = Color.RED;
+	private Color amarillo = new Color(255,255,153);
+	private Color negro = new Color(0,0,0);
+	
+	public Ventana v;
+	private JSplitPane splitPane_1;
+	private JScrollPane scrollPane_1;
+	private JPanel panel_2;
+	private JTable table_2;
+	private JLabel lblFotoPaciente;
+	
+	private static Datos datos;
+	private JLabel lblNombre;
+	
 
 	/**
 	 * Create the panel.
+	 * @throws SQLException 
 	 */
-	public Agenda() {
+	public Agenda(Ventana ventana) throws SQLException {
+		v= ventana;
+		datos = v.getDatos();
 		setLayout(new BorderLayout(0, 0));
 		{
 			splitPane = new JSplitPane();
@@ -216,6 +242,7 @@ public class Agenda extends JPanel {
 					btnS1.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnS1.setContentAreaFilled(false);
 					btnS1.setOpaque(true);
+					btnS1.setForeground(rojo);
 					panel.add(btnS1, "cell 6 2,grow");
 				}
 				{
@@ -224,6 +251,7 @@ public class Agenda extends JPanel {
 					btnD1.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnD1.setContentAreaFilled(false);
 					btnD1.setOpaque(true);
+					btnD1.setForeground(rojo);
 					panel.add(btnD1, "cell 7 2,grow");
 				}
 				{
@@ -272,6 +300,7 @@ public class Agenda extends JPanel {
 					btnS2.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnS2.setContentAreaFilled(false);
 					btnS2.setOpaque(true);
+					btnS2.setForeground(rojo);
 					panel.add(btnS2, "cell 6 3,grow");
 				}
 				{
@@ -280,6 +309,7 @@ public class Agenda extends JPanel {
 					btnD2.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnD2.setContentAreaFilled(false);
 					btnD2.setOpaque(true);
+					btnD2.setForeground(rojo);
 					panel.add(btnD2, "cell 7 3,grow");
 				}
 				{
@@ -328,6 +358,7 @@ public class Agenda extends JPanel {
 					btnS3.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnS3.setContentAreaFilled(false);
 					btnS3.setOpaque(true);
+					btnS3.setForeground(rojo);
 					panel.add(btnS3, "cell 6 4,grow");
 				}
 				{
@@ -336,6 +367,7 @@ public class Agenda extends JPanel {
 					btnD3.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnD3.setContentAreaFilled(false);
 					btnD3.setOpaque(true);
+					btnD3.setForeground(rojo);
 					panel.add(btnD3, "cell 7 4,grow");
 				}
 				{
@@ -384,6 +416,7 @@ public class Agenda extends JPanel {
 					btnS4.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnS4.setContentAreaFilled(false);
 					btnS4.setOpaque(true);
+					btnS4.setForeground(rojo);
 					panel.add(btnS4, "cell 6 5,grow");
 				}
 				{
@@ -392,6 +425,7 @@ public class Agenda extends JPanel {
 					btnD4.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnD4.setContentAreaFilled(false);
 					btnD4.setOpaque(true);
+					btnD4.setForeground(rojo);
 					panel.add(btnD4, "cell 7 5,grow");
 				}
 				{
@@ -440,6 +474,7 @@ public class Agenda extends JPanel {
 					btnS5.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnS5.setContentAreaFilled(false);
 					btnS5.setOpaque(true);
+					btnS5.setForeground(rojo);
 					panel.add(btnS5, "cell 6 6,grow");
 				}
 				{
@@ -448,6 +483,7 @@ public class Agenda extends JPanel {
 					btnD5.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnD5.setContentAreaFilled(false);
 					btnD5.setOpaque(true);
+					btnD5.setForeground(rojo);
 					panel.add(btnD5, "cell 7 6,grow");
 				}
 				{
@@ -496,6 +532,7 @@ public class Agenda extends JPanel {
 					btnS6.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnS6.setContentAreaFilled(false);
 					btnS6.setOpaque(true);
+					btnS6.setForeground(rojo);
 					panel.add(btnS6, "cell 6 7,grow");
 				}
 				{
@@ -504,34 +541,93 @@ public class Agenda extends JPanel {
 					btnD6.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnD6.setContentAreaFilled(false);
 					btnD6.setOpaque(true);
+					btnD6.setForeground(rojo);
 					panel.add(btnD6, "cell 7 7,grow");
 				}	
 			}
 			{
 				panel_1 = new JPanel();
+				panel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
+				panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), diaActual+" "+meses[mesActual]+" "+yearActual, TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+				((TitledBorder) panel_1.getBorder()).setTitleFont(new Font("Tahoma", Font.PLAIN, 24));
 				splitPane.setRightComponent(panel_1);
+				panel_1.setLayout(new BorderLayout(0, 0));
+				{
+					splitPane_1 = new JSplitPane();
+					panel_1.add(splitPane_1, BorderLayout.CENTER);
+					{
+						scrollPane_1 = new JScrollPane();
+						scrollPane_1.setMinimumSize(new Dimension(900, 27));
+						splitPane_1.setLeftComponent(scrollPane_1);
+						{
+							table_2 = new JTable();
+							table_2.addKeyListener(new Table_2KeyListener());
+							scrollPane_1.setViewportView(table_2);
+						}
+						{
+							table_2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+							table_2.addMouseListener(new TableMouseListener());
+							table_2.setFont(new Font("Tahoma", Font.PLAIN, 22));
+							ModeloTablaAgenda modeloTabla = new ModeloTablaAgenda();
+							table_2.setModel(modeloTabla);
+							table_2.getColumnModel().getColumn(0).setMinWidth(100);
+							table_2.getColumnModel().getColumn(1).setMinWidth(790);
+							table_2.getColumnModel().getColumn(1).setWidth(790);
+						}
+						table_2.setRowHeight(40);
+						}
+					{
+						panel_2 = new JPanel();
+						panel_2.setMinimumSize(new Dimension(400, 10));
+						splitPane_1.setRightComponent(panel_2);
+						GridBagLayout gbl_panel_2 = new GridBagLayout();
+						gbl_panel_2.columnWidths = new int[]{416, 0};
+						gbl_panel_2.rowHeights = new int[]{130, 69, 0};
+						gbl_panel_2.columnWeights = new double[]{0.0, Double.MIN_VALUE};
+						gbl_panel_2.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+						panel_2.setLayout(gbl_panel_2);
+						{
+							lblFotoPaciente = new JLabel("");
+							GridBagConstraints gbc_lblFotoPaciente = new GridBagConstraints();
+							gbc_lblFotoPaciente.fill = GridBagConstraints.BOTH;
+							gbc_lblFotoPaciente.insets = new Insets(0, 0, 5, 0);
+							gbc_lblFotoPaciente.gridx = 0;
+							gbc_lblFotoPaciente.gridy = 0;
+							panel_2.add(lblFotoPaciente, gbc_lblFotoPaciente);
+						}
+						{
+							lblNombre = new JLabel("");
+							lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 24));
+							GridBagConstraints gbc_lblNombre = new GridBagConstraints();
+							gbc_lblNombre.fill = GridBagConstraints.BOTH;
+							gbc_lblNombre.gridx = 0;
+							gbc_lblNombre.gridy = 1;
+							panel_2.add(lblNombre, gbc_lblNombre);
+						}
+					}
+				}
+				
 			}
 			addBotones();
 			colocarNumeros();
+			mostrarCitasMes();
+			setOyentesDias();
 		}
-
 	}
+	
 	public void colocarNumeros(){
-		vaciarBotones();		
-		System.out.println(calendar.getTime());
-		System.out.println(calendar.get(calendar.DAY_OF_WEEK));
+		vaciarBotones();
 		Calendar tmp = new GregorianCalendar(year, mes, 1);
-		System.out.println("tmp "+tmp.getTime());
 		int inicio = tmp.get(tmp.DAY_OF_WEEK)-2;
 		if(inicio<0)
 			inicio += 7;
-		System.out.println(inicio);
 		int diasMes = tmp.getActualMaximum(tmp.DAY_OF_MONTH);
-		System.out.println("Inicio: "+inicio);
 		for(int i = inicio;i<inicio+diasMes;i++){
 			botones.get(i).setText(String.valueOf((i-inicio+1)));
 		}
 		marcarHoy();
+		marcarFiestas();
+		lblMes.setText(meses[mes]+" "+year);
 	}
 	
 	public void addBotones(){
@@ -579,10 +675,21 @@ public class Agenda extends JPanel {
 		botones.add(btnD6);
 	}
 	
+	public void setOyentesDias(){
+		for(int i = 0;i<botones.size();i++){
+			botones.get(i).addActionListener(new BtnDiaActionListener());
+		}
+	}
+	
 	public void vaciarBotones(){
 		for(int i = 0;i<botones.size();i++){
 			botones.get(i).setText("");
 			botones.get(i).setBackground(new Color(240,240,240));
+			int n = i%7;
+			if(n != 5 && n != 6)
+				botones.get(i).setForeground(negro);
+				botones.get(i).setFont(new Font("Tahoma", Font.PLAIN, 30));
+			
 		}
 	}
 	
@@ -590,12 +697,101 @@ public class Agenda extends JPanel {
 		boolean seguir = true;
 		if(mes==mesActual && year==yearActual){
 			for(int i = 0;i<botones.size() && seguir;i++){
-				if(botones.get(i).getText().equals(String.valueOf(dia))){
-					botones.get(i).setBackground(new Color(255,255,153));
+				if(botones.get(i).getText().equals(String.valueOf(diaActual))){
+					botones.get(i).setFont(new Font("Tahoma", Font.BOLD, 50));
 					seguir = false;
 				}
 			}
 		}
+	}
+	
+	public void marcarFiestas(){
+		switch(mes){
+		case 0:
+			for(int i = 0;i<botones.size();i++){
+				String n = botones.get(i).getText();
+				if(n.equals(String.valueOf(1)) || n.equals(String.valueOf(6))){
+					botones.get(i).setForeground(rojo);
+				}
+			}
+			break;
+		case 2:
+			for(int i = 17;i<22;i++)
+				botones.get(i).setForeground(rojo);
+			break;
+		case 4:
+			for(int i = 0;i<botones.size();i++){
+				String n = botones.get(i).getText();
+				if(n.equals(String.valueOf(1)) || n.equals(String.valueOf(31))){
+					botones.get(i).setForeground(rojo);
+				}
+			}
+			break;
+		case 7:
+			for(int i = 0;i<botones.size();i++){
+				String n = botones.get(i).getText();
+				if(n.equals(String.valueOf(15))){
+					botones.get(i).setForeground(rojo);
+				}
+			}
+			break;
+		case 9:
+			for(int i = 0;i<botones.size();i++){
+				String n = botones.get(i).getText();
+				if(n.equals(String.valueOf(12))){
+					botones.get(i).setForeground(rojo);
+				}
+			}
+			break;
+		case 10:
+			for(int i = 0;i<botones.size();i++){
+				String n = botones.get(i).getText();
+				if(n.equals(String.valueOf(1))){
+					botones.get(i).setForeground(rojo);
+				}
+			}
+			break;
+		case 11:
+			for(int i = 0;i<botones.size();i++){
+				String n = botones.get(i).getText();
+				if(n.equals(String.valueOf(6)) || n.equals(String.valueOf(8))|| n.equals(String.valueOf(25))){
+					botones.get(i).setForeground(rojo);
+				}
+			}
+			break;				
+		}
+	}
+	
+	public void mostrarCitasMes() throws SQLException{
+		ArrayList<String> dias = datos.getDiasCitas(mes+1, year);
+		int size = dias.size();
+		int j = 0;
+		if(size>0){
+			for(int i = 0;i<botones.size() && size>0;i++){
+				String n = botones.get(i).getText();
+				if(size>0){
+					if(n.equals(dias.get(j))){
+						botones.get(i).setBackground(amarillo);
+						j++;
+						size--;
+					}	
+				}
+			}
+		}
+	}
+	
+	public void mostrarCitasDia() throws SQLException{
+		ArrayList<String> citas = datos.getCitasDia(dia, mes+1, year);
+		int n = citas.size();
+		ModeloTablaAgenda modelo = (ModeloTablaAgenda) table_2.getModel();
+		modelo.eliminaTodo();
+		if (n>0){
+			for(int i = 0;i<n;i+=2){
+				Object[] fila1= {citas.get(i), citas.get(i+1)};
+				modelo.aniadeFila(fila1);
+			}
+		}
+		modelo.fireTableDataChanged();		
 	}
 
 	private class BtnAnteriorActionListener implements ActionListener {
@@ -606,7 +802,12 @@ public class Agenda extends JPanel {
 				year -= 1;
 			}
 			colocarNumeros();
-			lblMes.setText(meses[mes]+" "+year);
+			try {
+				mostrarCitasMes();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 	private class BtnSiguienteActionListener implements ActionListener {
@@ -617,7 +818,57 @@ public class Agenda extends JPanel {
 				year += 1;
 			}	
 			colocarNumeros();
-			lblMes.setText(meses[mes]+" "+year);
+			try {
+				mostrarCitasMes();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	}
+	private class BtnDiaActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if(!e.getActionCommand().equals("")){
+				dia = Integer.parseInt(e.getActionCommand());
+				panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), dia+" "+meses[mes]+" "+year, TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+				((TitledBorder) panel_1.getBorder()).setTitleFont(new Font("Tahoma", Font.PLAIN, 24));
+				lblFotoPaciente.setIcon(null);
+				lblNombre.setText("");
+				try {
+					mostrarCitasDia();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}			
+			}
+		}
+	}
+	private class TableMouseListener extends MouseAdapter {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			if (e.getClickCount() == 2) {
+			}
+			else
+				try {
+					lblFotoPaciente.setIcon(new ImageIcon(Agenda.class.getResource(datos.getFotoPaciente((String)table_2.getModel().getValueAt(table_2.getSelectedRow(), 1)))));
+					lblNombre.setText(" "+(String)table_2.getModel().getValueAt(table_2.getSelectedRow(), 1));
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					System.out.println("mal");
+				}
+		}
+	}
+	private class Table_2KeyListener extends KeyAdapter {
+		@Override
+		public void keyReleased(KeyEvent e) {
+			if(e.getKeyCode()==40 || e.getKeyCode()==38)
+				try {
+					lblFotoPaciente.setIcon(new ImageIcon(Agenda.class.getResource(datos.getFotoPaciente((String)table_2.getModel().getValueAt(table_2.getSelectedRow(), 1)))));
+					lblNombre.setText(" "+(String)table_2.getModel().getValueAt(table_2.getSelectedRow(), 1));
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 		}
 	}
 }
