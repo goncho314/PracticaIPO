@@ -37,7 +37,7 @@ public class Correo extends JPanel {
 	 */
 	public Correo() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{95, 0, 789, 0, 109, 0};
+		gridBagLayout.columnWidths = new int[]{79, 0, 789, 21, 109, 0};
 		gridBagLayout.rowHeights = new int[]{74, 42, 18, 243, 43, 70, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
@@ -101,7 +101,6 @@ public class Correo extends JPanel {
 			btnEnviar.setIcon(new ImageIcon(Correo.class.getResource("/presentacion/resources/enviar-2.png")));
 			btnEnviar.setFont(new Font("Tahoma", Font.PLAIN, 18));
 			GridBagConstraints gbc_btnEnviar = new GridBagConstraints();
-			gbc_btnEnviar.fill = GridBagConstraints.HORIZONTAL;
 			gbc_btnEnviar.insets = new Insets(0, 0, 5, 0);
 			gbc_btnEnviar.gridx = 4;
 			gbc_btnEnviar.gridy = 3;
@@ -148,7 +147,9 @@ public class Correo extends JPanel {
 			JFileChooser fcAbrir = new JFileChooser();
 			int valorDevuelto = fcAbrir.showOpenDialog(getParent());
 			if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
-				JOptionPane.showMessageDialog(getParent(), fcAbrir.getSelectedFile().getName()+" cargado correctamente.", "Adjuntar archivo", JOptionPane.PLAIN_MESSAGE);
+				ImageIcon icon;
+				icon = new ImageIcon(Correo.class.getResource("/presentacion/resources/tick-2.png"));
+				JOptionPane.showMessageDialog(null, fcAbrir.getSelectedFile().getName()+" cargado correctamente.", "Adjuntar archivo", JOptionPane.PLAIN_MESSAGE, icon);
 				adjuntos++;
 				lblAdjuntos.setText(archivosAdjuntos());
 			}
@@ -158,10 +159,15 @@ public class Correo extends JPanel {
 	}
 	private class BtnEnviarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if(txtAsunto.getText().equals("") || txtaMensaje.getText().equals(""))
-				JOptionPane.showMessageDialog(getParent(), "No se puedo enviar. Debe rellenar todos los campos.", "Mensaje", JOptionPane.PLAIN_MESSAGE);
-			else
-				JOptionPane.showMessageDialog(getParent(), "Mensaje enviado.", "Mensaje", JOptionPane.PLAIN_MESSAGE);
+			ImageIcon icon;
+			if(txtAsunto.getText().equals("") || txtaMensaje.getText().equals("")){
+				icon = new ImageIcon(Correo.class.getResource("/presentacion/resources/error-2.png"));
+				JOptionPane.showMessageDialog(null, "No se puedo enviar. Debe rellenar todos los campos.", "Mensaje", JOptionPane.PLAIN_MESSAGE, icon);
+			}
+			else{
+				icon = new ImageIcon(Correo.class.getResource("/presentacion/resources/tick-2.png"));
+				JOptionPane.showMessageDialog(null, "Mensaje enviado.", "Mensaje", JOptionPane.PLAIN_MESSAGE, icon);
+			}
 		}
 	}
 }

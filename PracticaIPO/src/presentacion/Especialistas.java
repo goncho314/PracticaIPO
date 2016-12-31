@@ -184,6 +184,7 @@ public class Especialistas extends JPanel {
 	public void ponerTarjeta(){
 		pnlTarjeta = new Tarjeta(this);
 		splitPane_1.setRightComponent(pnlTarjeta);
+		splitPane.setRightComponent(panel_1);
 	}
 	
 	public void mostrarCorreo(){
