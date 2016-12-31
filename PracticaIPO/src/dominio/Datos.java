@@ -49,6 +49,16 @@ public class Datos {
 		return ruta;
 	}
 	
+	public String getFotoEspecialista(String s) throws SQLException{
+		ResultSet rs;
+		String sentencia = "SELECT foto FROM medicos WHERE nombre = '"+s+"'";
+		String ruta = "";
+		rs = bd.consultar(sentencia);
+		if(rs.next())
+			ruta = rs.getString("foto");
+		return ruta;
+	}
+	
 	public String getFotoPaciente(String nombre) throws SQLException{		
 		ResultSet rs;
 		String sentencia = "SELECT foto FROM pacientes WHERE nombre = '"+nombre+"'";
@@ -79,6 +89,33 @@ public class Datos {
 			citas.add(rs.getString("nombre"));
 		}
 		return citas;
+	}
+	
+	public ArrayList<String> getListaEspecialistas(String s) throws SQLException{
+		ResultSet rs;
+		ArrayList<String> lista = new ArrayList<String>();
+		String sentencia = "SELECT nombre, especialidad FROM medicos WHERE id>2 AND (nombre LIKE '%"+s+"%' OR especialidad LIKE '%"+s+"%')";
+		rs = bd.consultar(sentencia);
+		while(rs.next()){
+			lista.add(rs.getString("nombre"));
+			lista.add(rs.getString("especialidad"));
+		}
+		return lista;
+	}
+	
+	public ArrayList<String> getInfoEspecialistas(String s) throws SQLException{
+		ResultSet rs;
+		ArrayList<String> info = new ArrayList<String>();
+		String sentencia = "SELECT nombre, especialidad, horario, direccion, foto FROM medicos WHERE nombre = '"+s+"'";
+		rs = bd.consultar(sentencia);
+		if(rs.next()){
+			info.add(rs.getString("nombre"));
+			info.add(rs.getString("especialidad"));
+			info.add(rs.getString("horario"));
+			info.add(rs.getString("direccion"));
+			info.add(rs.getString("foto"));
+		}
+		return info;
 	}
 	
 	public void salirAplicacion(){

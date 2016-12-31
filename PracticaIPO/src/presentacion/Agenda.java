@@ -854,7 +854,6 @@ public class Agenda extends JPanel {
 					lblNombre.setText(" "+(String)table_2.getModel().getValueAt(table_2.getSelectedRow(), 1));
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
-					System.out.println("mal");
 				}
 		}
 	}

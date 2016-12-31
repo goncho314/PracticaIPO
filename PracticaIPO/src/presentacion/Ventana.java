@@ -8,6 +8,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
@@ -16,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.UIManager;
@@ -47,6 +50,7 @@ public class Ventana extends JFrame {
 	private static Datos datos = new Datos();
 	private JPanel pnlFondo;
 	private JPanel pnlAgenda;
+	private JPanel pnlEspecialistas;
 	/**
 	 * Launch the application.
 	 */
@@ -81,6 +85,7 @@ public class Ventana extends JFrame {
 	 */
 	private void initialize() throws SQLException {
 		frame = new JFrame();
+		frame.addWindowListener(new FrameWindowListener());
 		frame.setBounds(0, 0, 1900, 1050);
 		frame.setExtendedState(frame.getExtendedState()|JFrame.MAXIMIZED_BOTH );
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -174,6 +179,8 @@ public class Ventana extends JFrame {
 					pnlContenido.add(pnlFondo, "Fondo");
 					pnlAgenda = new Agenda(this);
 					pnlContenido.add(pnlAgenda, "Agenda");
+					pnlEspecialistas = new Especialistas(this);
+					pnlContenido.add(pnlEspecialistas, "Especialistas");
 				}
 			}
 		}
@@ -208,14 +215,13 @@ public class Ventana extends JFrame {
 	private class BtnEspecialistasActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			coloresBotones(3);
+			CardLayout cl = (CardLayout)(pnlContenido.getLayout());
+			cl.show(pnlContenido, "Especialistas");
 		}
 	}
 	private class BtnSalirActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			datos.salirAplicacion();
-			Login log = new Login();
-			log.main(null);
-			frame.dispose();
+			pulsarSalir();
 		}
 	}
 	
@@ -253,7 +259,17 @@ public class Ventana extends JFrame {
 	}
 	
 	public void pulsarSalir(){
-		CardLayout cl = (CardLayout)(pnlContenido.getLayout());
-		cl.show(pnlContenido, "Fondo");		
+		datos.salirAplicacion();
+		Login log = new Login();
+		log.main(null);
+		frame.dispose();	
+	}
+	
+	private class FrameWindowListener extends WindowAdapter {
+		@Override
+		public void windowClosing(WindowEvent e) {
+			pulsarSalir();
+
+		}
 	}
 }
