@@ -847,6 +847,12 @@ public class Agenda extends JPanel {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			if (e.getClickCount() == 2) {
+				try {
+					v.verPaciente((String)table_2.getModel().getValueAt(table_2.getSelectedRow(), 1));
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 			else
 				try {

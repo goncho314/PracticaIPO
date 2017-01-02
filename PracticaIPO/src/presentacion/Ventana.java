@@ -51,6 +51,7 @@ public class Ventana extends JFrame {
 	private JPanel pnlFondo;
 	private JPanel pnlAgenda;
 	private JPanel pnlEspecialistas;
+	private JPanel pnlPacientes;
 	/**
 	 * Launch the application.
 	 */
@@ -181,6 +182,8 @@ public class Ventana extends JFrame {
 					pnlContenido.add(pnlAgenda, "Agenda");
 					pnlEspecialistas = new Especialistas(this);
 					pnlContenido.add(pnlEspecialistas, "Especialistas");
+					pnlPacientes = new Pacientes(this, "");
+					pnlContenido.add(pnlPacientes, "Pacientes");
 				}
 			}
 		}
@@ -210,6 +213,8 @@ public class Ventana extends JFrame {
 	private class BtnPacientesActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			coloresBotones(2);
+			CardLayout cl = (CardLayout)(pnlContenido.getLayout());
+			cl.show(pnlContenido, "Pacientes");
 		}
 	}
 	private class BtnEspecialistasActionListener implements ActionListener {
@@ -263,6 +268,15 @@ public class Ventana extends JFrame {
 		Login log = new Login();
 		log.main(null);
 		frame.dispose();	
+	}
+	
+	public void verPaciente(String s) throws SQLException{
+		coloresBotones(2);
+		Pacientes pacientes = (Pacientes)pnlContenido.getComponent(3);
+		pacientes.actualizarListaPacientes(s);
+		pacientes.marcarPaciente();
+		CardLayout cl = (CardLayout)(pnlContenido.getLayout());		
+		cl.show(pnlContenido, "Pacientes");
 	}
 	
 	private class FrameWindowListener extends WindowAdapter {
