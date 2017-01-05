@@ -147,7 +147,7 @@ public class Agenda extends JPanel {
 				{
 					lblMes = new JLabel("DICIEMBRE 2016");
 					lblMes.setHorizontalAlignment(SwingConstants.CENTER);
-					lblMes.setFont(new Font("Tahoma", Font.PLAIN, 28));
+					lblMes.setFont(new Font("Tahoma", Font.PLAIN, 36));
 					panel.add(lblMes, "cell 2 0 5 1,grow");
 				}
 				{
@@ -576,6 +576,7 @@ public class Agenda extends JPanel {
 							table_2.getColumnModel().getColumn(0).setMinWidth(100);
 							table_2.getColumnModel().getColumn(1).setMinWidth(790);
 							table_2.getColumnModel().getColumn(1).setWidth(790);
+							table_2.getTableHeader().setFont(new Font("Tahoma", Font.PLAIN, 20));
 						}
 						table_2.setRowHeight(40);
 						}

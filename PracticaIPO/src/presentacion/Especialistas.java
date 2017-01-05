@@ -126,6 +126,7 @@ public class Especialistas extends JPanel {
 								table.setFont(new Font("Tahoma", Font.PLAIN, 22));
 								ModeloTablaEspecialistas modeloTabla = new ModeloTablaEspecialistas();
 								table.setModel(modeloTabla);
+								table.getTableHeader().setFont(new Font("Tahoma", Font.PLAIN, 20));
 								{
 									panel_3 = new JPanel();
 									panel_3.setMinimumSize(new Dimension(500, 10));

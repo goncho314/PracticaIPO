@@ -202,10 +202,7 @@ public class Pacientes extends JPanel {
 					gbc_scrollPane.gridx = 0;
 					gbc_scrollPane.gridy = 1;
 					panel.add(scrollPane, gbc_scrollPane);
-					{
-						table = new JTable();
-						scrollPane.setViewportView(table);
-						
+					{					
 						table = new JTable();
 						table.addMouseListener(new TableMouseListener());
 						table.addKeyListener(new TableKeyListener());
@@ -213,6 +210,7 @@ public class Pacientes extends JPanel {
 						table.setFont(new Font("Tahoma", Font.PLAIN, 22));
 						ModeloTablaPacientes modeloTabla = new ModeloTablaPacientes();
 						table.setModel(modeloTabla);
+						table.getTableHeader().setFont(new Font("Tahoma", Font.PLAIN, 20));
 						table.setRowHeight(30);
 					}
 				}
@@ -228,6 +226,7 @@ public class Pacientes extends JPanel {
 					panel_2.setLayout(new GridLayout(0, 3, 0, 0));
 					{
 						btnAniadir = new JButton("Añadir");
+						btnAniadir.setFont(new Font("Tahoma", Font.PLAIN, 16));
 						btnAniadir.setToolTipText("Pulse para añadir un paciente");
 						btnAniadir.addActionListener(new BtnAniadirActionListener());
 						btnAniadir.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/aniadir-2.png")));
@@ -235,6 +234,7 @@ public class Pacientes extends JPanel {
 					}
 					{
 						btnEditar = new JButton("Editar\r\n");
+						btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 						btnEditar.setToolTipText("Pulse para editar un paciente seleccionado");
 						btnEditar.addActionListener(new BtnEditarActionListener());
 						btnEditar.setEnabled(false);
@@ -243,6 +243,7 @@ public class Pacientes extends JPanel {
 					}
 					{
 						btnBorrar = new JButton("Borrar");
+						btnBorrar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 						btnBorrar.setToolTipText("Pulse para borrar un paciente seleccionado");
 						btnBorrar.addActionListener(new BtnBorrarActionListener());
 						btnBorrar.setEnabled(false);
@@ -253,6 +254,7 @@ public class Pacientes extends JPanel {
 			}
 			{
 				tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+				tabbedPane.setFont(new Font("Tahoma", Font.PLAIN, 20));
 				tabbedPane.addChangeListener(new TabbedPaneChangeListener());
 				splitPane.setRightComponent(tabbedPane);
 				//splitPane.setRightComponent(pnlVacio);
@@ -262,6 +264,7 @@ public class Pacientes extends JPanel {
 					pnlDatos.setLayout(new MigLayout("", "[46.00px][196px][37.00][16.00][89.00px][198.00px][35.00][303.00][99.00]", "[17.00px][39px][22px][22.00px][22px][22px][22px][22px][22px][22px][22px][][22][110][22][22][110][22][22][143.00]"));
 					{
 						btnGuardar = new JButton("Guardar");
+						btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 						btnGuardar.setToolTipText("Pulse para confirmar los cambios");
 						btnGuardar.addActionListener(new BtnGuardarActionListener());
 						btnGuardar.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/guardar-2.png")));
@@ -438,10 +441,10 @@ public class Pacientes extends JPanel {
 				{
 					panel_3 = new JPanel();
 					tabbedPane.addTab("Informes", null, panel_3, null);
-					panel_3.setLayout(new MigLayout("", "[63.00][298.00][245.00][28.00][47.00][16.00][185.00][28.00]", "[][48.00][6.00][][19.00][][][13.00][][198.00][32.00][][24][17.00][156][][][198.00]"));
+					panel_3.setLayout(new MigLayout("", "[63.00][298.00][245.00][28.00][47.00][10.00][483.00][9.00]", "[][48.00][6.00][][19.00][][][13.00][][198.00][32.00][][24][17.00][156][][][198.00]"));
 					{
 						panel_4 = new JPanel();
-						panel_3.add(panel_4, "cell 5 1 2 1,grow");
+						panel_3.add(panel_4, "cell 5 1 3 1,grow");
 						panel_4.setLayout(new GridLayout(0, 5, 0, 0));
 						{
 							btnTexto = new JButton("");
@@ -472,6 +475,7 @@ public class Pacientes extends JPanel {
 						}
 						{
 							btnColor = new JButton("Color");
+							btnColor.setFont(new Font("Tahoma", Font.PLAIN, 20));
 							btnColor.setToolTipText("Pulse para seleccionar el color");
 							btnColor.setForeground(colorGraficos);
 							btnColor.addActionListener(new BtnColorActionListener());
@@ -479,6 +483,7 @@ public class Pacientes extends JPanel {
 						}
 						{
 							cbGrosor = new JComboBox();
+							cbGrosor.setFont(new Font("Tahoma", Font.PLAIN, 18));
 							cbGrosor.setToolTipText("Pulse para seleccionar el tamaño del elemento");
 							cbGrosor.setVisible(false);
 							cbGrosor.addActionListener(new CbGrosorActionListener());
@@ -604,6 +609,43 @@ public class Pacientes extends JPanel {
 			actualizarListaPacientes(txtBusqueda.getText());		
 		}
 
+	}
+	
+	public void cambiarFuente(int n){
+		Font fuente1 = new Font("Tahoma", Font.PLAIN, n);
+		Font fuente2 = new Font("Monospaced", Font.PLAIN, n);
+		lblNombre.setFont(fuente1);
+		lblFechaNacimiento.setFont(fuente1);
+		lblSexo.setFont(fuente1);
+		lblPais.setFont(fuente1);
+		lblTelfono.setFont(fuente1);
+		lblAntecedentesFamiliares.setFont(fuente1);
+		lblVacunaciones.setFont(fuente1);
+		lblOperaciones.setFont(fuente1);
+		lblAlergias.setFont(fuente1);
+		lblEnfermedades.setFont(fuente1);
+		lblTratamiento.setFont(fuente1);
+		lblFecha.setFont(fuente1);
+		lblMedico.setFont(fuente1);
+		lblMotivo.setFont(fuente1);
+		lblDiagnostico.setFont(fuente1);
+		lblTratamiento_1.setFont(fuente1);
+		txtNombre.setFont(fuente1);
+		ftxtFecha.setFont(fuente1);
+		cbSexo.setFont(fuente1);
+		txtPais.setFont(fuente1);
+		txtTelefono.setFont(fuente1);
+		txtAntecedentes.setFont(fuente2);
+		txtVacunaciones.setFont(fuente2);
+		txtOperaciones.setFont(fuente2);
+		txtAlergias.setFont(fuente2);
+		txtEnfermedades.setFont(fuente2);
+		txtTratamiento.setFont(fuente2);
+		txtFechaI.setFont(fuente2);
+		txtMedicoI.setFont(fuente2);
+		txtMotivo.setFont(fuente2);
+		txtDiagnostico.setFont(fuente2);
+		txtTratamientoI.setFont(fuente2);
 	}
 	
 	public void actualizarListaPacientes(String s) throws SQLException{

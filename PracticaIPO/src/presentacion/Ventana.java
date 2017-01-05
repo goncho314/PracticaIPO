@@ -70,6 +70,12 @@ public class Ventana extends JFrame {
 	private JRadioButtonMenuItem rdbtnmntmIngls;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JMenuItem mntmAcerca;
+	private JMenu mnTamano;
+	private JRadioButtonMenuItem rdbtnmntmPequena;
+	private JRadioButtonMenuItem rdbtnmntmMediana;
+	private int fuente = 13;
+	private JRadioButtonMenuItem rdbtnmntmGrande;
+	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 	/**
 	 * Launch the application.
 	 */
@@ -111,24 +117,29 @@ public class Ventana extends JFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		{
 			menuBar = new JMenuBar();
+			menuBar.setFont(new Font("Segoe UI", Font.PLAIN, 19));
 			frame.setJMenuBar(menuBar);
 			{
 				mnArchivo = new JMenu("Archivo");
+				mnArchivo.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 				menuBar.add(mnArchivo);
 				{
 					mntmAgenda = new JMenuItem("Agenda");
+					mntmAgenda.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 					mntmAgenda.addActionListener(new MntmAgendaActionListener());
 					mntmAgenda.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/calendar-icon3.png")));
 					mnArchivo.add(mntmAgenda);
 				}
 				{
 					mntmEspecialistas = new JMenuItem("Especialistas");
+					mntmEspecialistas.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 					mntmEspecialistas.addActionListener(new MntmEspecialistasActionListener());
 					mntmEspecialistas.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/doctor_icon3.png")));
 					mnArchivo.add(mntmEspecialistas);
 				}
 				{
 					mntmPacientes = new JMenuItem("Pacientes");
+					mntmPacientes.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 					mntmPacientes.addActionListener(new MntmPacientesActionListener());
 					mntmPacientes.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/patient-icon3.png")));
 					mnArchivo.add(mntmPacientes);
@@ -139,12 +150,14 @@ public class Ventana extends JFrame {
 				}
 				{
 					mntmCerrarSesin = new JMenuItem("Cerrar sesión");
+					mntmCerrarSesin.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 					mntmCerrarSesin.addActionListener(new MntmCerrarSesinActionListener());
 					mntmCerrarSesin.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/cerrar-sesion-3.png")));
 					mnArchivo.add(mntmCerrarSesin);
 				}
 				{
 					mntmSalir = new JMenuItem("Salir");
+					mntmSalir.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 					mntmSalir.addActionListener(new MntmSalirActionListener());
 					mntmSalir.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/salir.png")));
 					mnArchivo.add(mntmSalir);
@@ -152,29 +165,62 @@ public class Ventana extends JFrame {
 			}
 			{
 				mnEdicion = new JMenu("Edición");
+				mnEdicion.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 				menuBar.add(mnEdicion);
 				{
 					mnIdioma = new JMenu("Idioma");
+					mnIdioma.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 					mnEdicion.add(mnIdioma);
 					{
 						rdbtnmntmEspaol = new JRadioButtonMenuItem("Español");
+						rdbtnmntmEspaol.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 						buttonGroup.add(rdbtnmntmEspaol);
 						rdbtnmntmEspaol.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/bandera_espana-2.png")));
 						mnIdioma.add(rdbtnmntmEspaol);
 					}
 					{
 						rdbtnmntmIngls = new JRadioButtonMenuItem("Inglés");
+						rdbtnmntmIngls.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 						buttonGroup.add(rdbtnmntmIngls);
 						rdbtnmntmIngls.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/bandera_inglaterra-2.png")));
 						mnIdioma.add(rdbtnmntmIngls);
 					}
 				}
+				{
+					mnTamano = new JMenu("Fuente");
+					mnTamano.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+					mnEdicion.add(mnTamano);
+					{
+						rdbtnmntmPequena = new JRadioButtonMenuItem("Pequeña");
+						buttonGroup_1.add(rdbtnmntmPequena);
+						rdbtnmntmPequena.addActionListener(new RdbtnmntmPequenaActionListener());
+						rdbtnmntmPequena.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+						mnTamano.add(rdbtnmntmPequena);
+					}
+					{
+						rdbtnmntmMediana = new JRadioButtonMenuItem("Mediana");
+						buttonGroup_1.add(rdbtnmntmMediana);
+						rdbtnmntmMediana.addActionListener(new RdbtnmntmMedianaActionListener());
+						rdbtnmntmMediana.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+						mnTamano.add(rdbtnmntmMediana);
+					}
+					{
+						rdbtnmntmGrande = new JRadioButtonMenuItem("Grande");
+						rdbtnmntmGrande.addActionListener(new RdbtnmntmGrandeActionListener());
+						buttonGroup_1.add(rdbtnmntmGrande);
+						rdbtnmntmGrande.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+						mnTamano.add(rdbtnmntmGrande);
+					}
+					rdbtnmntmPequena.setSelected(true);
+				}
 			}
 			{
 				mnAyuda = new JMenu("Ayuda");
+				mnAyuda.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 				menuBar.add(mnAyuda);
 				{
 					mntmAcerca = new JMenuItem("Acerca de...");
+					mntmAcerca.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 					mntmAcerca.addActionListener(new MntmSobreElAutorActionListener());
 					mnAyuda.add(mntmAcerca);
 				}
@@ -287,6 +333,7 @@ public class Ventana extends JFrame {
 				panel_4.add(btnCerrarSesion);
 			}
 		}
+		cambiarFuente();
 		/*if(idioma =="ingles")
 			rdbtnmntmIngls.setSelected(true);
 		else
@@ -327,7 +374,12 @@ public class Ventana extends JFrame {
 	        }
 		}
 	}
-	
+	public void cambiarFuente(){
+		Pacientes pacientes = (Pacientes)pnlContenido.getComponent(3);
+		pacientes.cambiarFuente(fuente);
+		
+		
+	}
 	public Datos getDatos(){
 		return datos;
 	}
@@ -430,6 +482,24 @@ public class Ventana extends JFrame {
 	private class MntmSobreElAutorActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			JOptionPane.showMessageDialog(frame,"Autor: Gonzalo García Moreno\nFecha: 07/01/2017\nVersión: 1.0", null, JOptionPane.PLAIN_MESSAGE);
+		}
+	}
+	private class RdbtnmntmPequenaActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			fuente = 13;
+			cambiarFuente();
+		}
+	}
+	private class RdbtnmntmMedianaActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			fuente = 16;
+			cambiarFuente();
+		}
+	}
+	private class RdbtnmntmGrandeActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			fuente = 19;
+			cambiarFuente();
 		}
 	}
 }
