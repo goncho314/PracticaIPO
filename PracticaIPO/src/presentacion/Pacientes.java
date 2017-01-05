@@ -13,6 +13,8 @@ import dominio.Datos;
 
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.SystemColor;
@@ -933,13 +935,16 @@ public class Pacientes extends JPanel {
 			if(editando && !aniadiendo){
 				if(comprobarFecha() && !txtNombre.getText().equals("") && comprobarTelefono() && !txtPais.getText().equals("")){
 					try {
-						if(datos.editarPaciente(paciente, txtNombre.getText(), ftxtFecha.getText(), (String)cbSexo.getSelectedItem(), txtPais.getText(), txtTelefono.getText())){
-							String s = txtNombre.getText();
-							actualizarListaPacientes(txtNombre.getText());
-							table.getSelectionModel().setSelectionInterval(0, 0);
-							rellenarInfo(s);
-							actualizarListaPacientes(textoBusqueda);
-						}
+						int dialogo = JOptionPane.showConfirmDialog (null, "¿Seguro que desea modificar al paciente seleccionado?","Confirmación", JOptionPane.YES_NO_OPTION);
+				        if(dialogo == JOptionPane.YES_OPTION){
+							if(datos.editarPaciente(paciente, txtNombre.getText(), ftxtFecha.getText(), (String)cbSexo.getSelectedItem(), txtPais.getText(), txtTelefono.getText())){
+								String s = txtNombre.getText();
+								actualizarListaPacientes(txtNombre.getText());
+								table.getSelectionModel().setSelectionInterval(0, 0);
+								rellenarInfo(s);
+								actualizarListaPacientes(textoBusqueda);
+							}
+				        }
 					} catch (SQLException e1) {
 						e1.printStackTrace();
 					} catch (ParseException e1) {
@@ -985,14 +990,17 @@ public class Pacientes extends JPanel {
 	}
 	private class BtnBorrarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			try {
-				splitPane.setRightComponent(pnlVacio);
-				editando = false;
-				aniadiendo = false;
-				btnBorrar.setEnabled(false);
-				btnEditar.setEnabled(false);
-				datos.borrarPaciente((String)table.getModel().getValueAt(table.getSelectedRow(), 0));
-				actualizarListaPacientes("");
+			try {				
+				int dialogo = JOptionPane.showConfirmDialog (null, "¿Seguro que desea borrar al paciente seleccionado?","Confirmación", JOptionPane.YES_NO_OPTION);
+		        if(dialogo == JOptionPane.YES_OPTION){
+		        	splitPane.setRightComponent(pnlVacio);
+					editando = false;
+					aniadiendo = false;
+					btnBorrar.setEnabled(false);
+					btnEditar.setEnabled(false);
+					datos.borrarPaciente((String)table.getModel().getValueAt(table.getSelectedRow(), 0));
+					actualizarListaPacientes("");
+		        }
 			} catch (NumberFormatException | SQLException e1) {
 				e1.printStackTrace();
 			}
