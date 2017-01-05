@@ -119,7 +119,6 @@ public class Datos {
 	}
 	
 	public ArrayList<String> getInfoPaciente(String s) throws SQLException{
-		ResultSet rs;
 		ArrayList<String> info = new ArrayList<String>();
 		info.add(getDatoPaciente("SELECT DATE_FORMAT(fechaN, '%d/%m/%Y') fecha FROM pacientes WHERE nombre='"+s+"'"));
 		info.add(getDatoPaciente("SELECT sexo FROM pacientes WHERE nombre='"+s+"'"));
@@ -193,6 +192,70 @@ public class Datos {
 			lista.add(rs.getString("nombre"));
 		}
 		return lista;
+	}
+	
+	public boolean aniadirPaciente(String nombre, String fecha, String sexo, String pais, String telefono){
+		boolean b = false;
+		String f = String.valueOf(fecha.charAt(6))+String.valueOf(fecha.charAt(7))+String.valueOf(fecha.charAt(8))+String.valueOf(fecha.charAt(9))+"-"+String.valueOf(fecha.charAt(3))+String.valueOf(fecha.charAt(4))+'-'+String.valueOf(fecha.charAt(0))+String.valueOf(fecha.charAt(1));
+		String sentencia = "INSERT INTO `pacientes` (`nombre`, `fechaN`, `pais`, `telefono`, `sexo`, `medico`, `foto`, `country`) VALUES('"+nombre+"', '"+f+"', '"+pais+"', '"+telefono.replace(" ", "")+"', '"+sexo+"', (SELECT doctor FROM login WHERE usuario='"+this.usuario+"'), '/presentacion/resources/p0.png', '"+pais+"')";
+		b = bd.executeUpdate(sentencia);
+		return b;
+	}
+	
+	public boolean editarPaciente(String nombreAnterior, String nombre, String fecha, String sexo, String pais, String telefono) throws NumberFormatException, SQLException{
+		ResultSet rs;
+		boolean b = false;
+		String f = String.valueOf(fecha.charAt(6))+String.valueOf(fecha.charAt(7))+String.valueOf(fecha.charAt(8))+String.valueOf(fecha.charAt(9))+"-"+String.valueOf(fecha.charAt(3))+String.valueOf(fecha.charAt(4))+'-'+String.valueOf(fecha.charAt(0))+String.valueOf(fecha.charAt(1));
+		int n = 0;
+		String sentencia1 = "SELECT id FROM pacientes WHERE nombre='"+nombreAnterior+"'";
+		rs=bd.consultar(sentencia1);
+		if(rs.next())
+			n = Integer.parseInt(rs.getString(1));
+		String sentencia2 = "UPDATE pacientes SET nombre='"+nombre+"', fechaN='"+f+"', pais='"+pais+"', telefono='"+telefono.replace(" ", "")+"', sexo='"+sexo+"' WHERE id="+n;
+		b = bd.executeUpdate(sentencia2);
+		return b;
+	}
+	
+	public boolean borrarPaciente(String nombre) throws NumberFormatException, SQLException{
+		ResultSet rs;
+		boolean b = false;
+		int n = 0;
+		String sentencia1 = "SELECT id FROM pacientes WHERE nombre='"+nombre+"'";
+		rs=bd.consultar(sentencia1);
+		if(rs.next())
+			n = Integer.parseInt(rs.getString(1));
+		String sentencia2 = "DELETE FROM pacientes WHERE id="+n;
+		b = bd.executeUpdate(sentencia2);
+		return b;
+	}
+	
+	public ArrayList<String> getListaInformes(String paciente, String s) throws SQLException{
+		ResultSet rs;
+		ArrayList<String> lista = new ArrayList<String>();
+		String sentencia = "SELECT DATE_FORMAT(i.fecha, '%d/%m/%Y') fecha, m.nombre FROM informes i, medicos m, pacientes p WHERE m.id=i.doctor AND p.id=i.paciente AND i.paciente=(SELECT id FROM pacientes WHERE nombre='"+paciente+"') AND (i.fecha like '%"+s+"%' OR i.doctor IN (SELECT id FROM medicos WHERE nombre like'%"+s+"%'))";
+		rs = bd.consultar(sentencia);
+		while(rs.next()){
+			lista.add(rs.getString("fecha"));
+			lista.add(rs.getString("nombre"));
+		}
+		return lista;
+	}
+	
+	public ArrayList<String> getInforme(String fecha, String nombre) throws SQLException{
+		ArrayList<String> informe = new ArrayList<String>();
+		String f = String.valueOf(fecha.charAt(6))+String.valueOf(fecha.charAt(7))+String.valueOf(fecha.charAt(8))+String.valueOf(fecha.charAt(9))+"-"+String.valueOf(fecha.charAt(3))+String.valueOf(fecha.charAt(4))+'-'+String.valueOf(fecha.charAt(0))+String.valueOf(fecha.charAt(1));
+		String sentencia = "SELECT DATE_FORMAT(i.fecha, '%d/%m/%Y') fecha, m.nombre, i.motivo, i.diagnostico, i.tratamiento, i.foto1, i.foto2 FROM informes i, medicos m WHERE i.doctor=m.id AND i.fecha LIKE '"+f+"' AND m.nombre='"+nombre+"'";
+		ResultSet rs = bd.consultar(sentencia);
+		if(rs.next()){
+			informe.add(rs.getString(1));
+			informe.add(rs.getString(2));
+			informe.add(rs.getString(3));
+			informe.add(rs.getString(4));
+			informe.add(rs.getString(5));
+			informe.add(rs.getString(6));
+			informe.add(rs.getString(7));
+		}
+		return informe;
 	}
 	
 	public void salirAplicacion(){

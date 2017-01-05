@@ -96,6 +96,7 @@ public class Correo extends JPanel {
 		}
 		{
 			btnEnviar = new JButton("Enviar");
+			btnEnviar.setToolTipText("Pulse para enviar el mensaje");
 			btnEnviar.addActionListener(new BtnEnviarActionListener());
 			btnEnviar.setHorizontalAlignment(SwingConstants.LEADING);
 			btnEnviar.setIcon(new ImageIcon(Correo.class.getResource("/presentacion/resources/enviar-2.png")));
@@ -108,6 +109,7 @@ public class Correo extends JPanel {
 		}
 		{
 			btnAdjuntar = new JButton(" Adjuntar");
+			btnAdjuntar.setToolTipText("Pulse para adjuntar un archivo");
 			btnAdjuntar.addActionListener(new BtnAdjuntarActionListener());
 			btnAdjuntar.setFont(new Font("Tahoma", Font.PLAIN, 18));
 			btnAdjuntar.setIcon(new ImageIcon(Correo.class.getResource("/presentacion/resources/adjuntar-2.png")));
@@ -162,7 +164,7 @@ public class Correo extends JPanel {
 			ImageIcon icon;
 			if(txtAsunto.getText().equals("") || txtaMensaje.getText().equals("")){
 				icon = new ImageIcon(Correo.class.getResource("/presentacion/resources/error-2.png"));
-				JOptionPane.showMessageDialog(null, "No se puedo enviar. Debe rellenar todos los campos.", "Mensaje", JOptionPane.PLAIN_MESSAGE, icon);
+				JOptionPane.showMessageDialog(null, "No se pudo enviar. Debe rellenar todos los campos.", "Mensaje", JOptionPane.PLAIN_MESSAGE, icon);
 			}
 			else{
 				icon = new ImageIcon(Correo.class.getResource("/presentacion/resources/tick-2.png"));

@@ -49,6 +49,7 @@ public class Tarjeta extends JPanel {
 		}
 		{
 			btnContactar = new JButton("Contactar");
+			btnContactar.setToolTipText("Pulse para escribir un mensaje");
 			btnContactar.addActionListener(new BtnContactarActionListener());
 			btnContactar.setIcon(new ImageIcon(Tarjeta.class.getResource("/presentacion/resources/mail.png")));
 			btnContactar.setBounds(491, 41, 186, 120);

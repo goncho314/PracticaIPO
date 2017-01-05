@@ -28,6 +28,7 @@ import dominio.Datos;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.GridBagLayout;
@@ -138,6 +139,7 @@ public class Agenda extends JPanel {
 				panel.setLayout(new MigLayout("", "[227.00][170px,grow,center][170px,grow,center][170px,grow,center][170px,grow,center][170px,grow,center][170px,grow,center][170px,grow,center][227]", "[45][][grow][grow][grow][grow][grow][grow]"));
 				{
 					btnAnterior = new JButton("");
+					btnAnterior.setToolTipText("Ver el mes anterior");
 					btnAnterior.setIcon(new ImageIcon(Agenda.class.getResource("/presentacion/resources/anterior.png")));
 					btnAnterior.addActionListener(new BtnAnteriorActionListener());
 					panel.add(btnAnterior, "cell 1 0,grow");
@@ -150,6 +152,7 @@ public class Agenda extends JPanel {
 				}
 				{
 					btnSiguiente = new JButton("");
+					btnSiguiente.setToolTipText("Ver el mes siguiente");
 					btnSiguiente.setIcon(new ImageIcon(Agenda.class.getResource("/presentacion/resources/siguiente.png")));
 					btnSiguiente.addActionListener(new BtnSiguienteActionListener());
 					panel.add(btnSiguiente, "cell 7 0,grow");
@@ -850,6 +853,9 @@ public class Agenda extends JPanel {
 				try {
 					v.verPaciente((String)table_2.getModel().getValueAt(table_2.getSelectedRow(), 1));
 				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParseException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}

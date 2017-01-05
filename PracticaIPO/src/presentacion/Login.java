@@ -31,7 +31,7 @@ public class Login extends JFrame {
 
 	private JPanel contentPane;
 	private JPanel panel;
-	private JLabel lblEspana;
+	private JLabel lblEspana;     
 	private JLabel lblInglaterra;
 	private JRadioButton rdbtnEspaol;
 	private JRadioButton rdbtnIngls;
@@ -89,6 +89,7 @@ public class Login extends JFrame {
 				panel.setLayout(gbl_panel);
 				{
 					lblEspana = new JLabel("");
+					lblEspana.setToolTipText("Pulse para cambiar el idioma a español");
 					lblEspana.addMouseListener(new LblEspanaMouseListener());
 					{
 						lblLogo = new JLabel("");
@@ -121,6 +122,7 @@ public class Login extends JFrame {
 			}
 			{
 				lblInglaterra = new JLabel("");
+				lblInglaterra.setToolTipText("Pulse para cambiar el idioma a inglés");
 				lblInglaterra.addMouseListener(new LblInglaterraMouseListener());
 				lblInglaterra.setEnabled(false);
 				lblInglaterra.setIcon(new ImageIcon(Login.class.getResource("/presentacion/resources/bandera_inglaterra.png")));

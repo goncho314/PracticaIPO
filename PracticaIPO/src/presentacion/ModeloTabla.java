@@ -1,8 +1,8 @@
 package presentacion;
 import java.util.*;
 import javax.swing.table.*;
-class ModeloTablaEspecialistas extends ModeloTabla {
-	private String[] nombreColumnas = {"Nombre", "Especialidad"};
+class ModeloTabla extends AbstractTableModel {
+	private String[] nombreColumnas;
 	private Vector datos = new Vector();
 	public int getColumnCount() {
 		return nombreColumnas.length;
@@ -40,3 +40,4 @@ class ModeloTablaEspecialistas extends ModeloTabla {
 		datos.add (row);
 	}
 }
+
