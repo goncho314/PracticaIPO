@@ -94,7 +94,7 @@ public class Agenda extends JPanel {
 	private Calendar calendar = Calendar.getInstance();
 	
 	private ArrayList<JButton> botones = new ArrayList<JButton>();
-	private String[] meses = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
+	private String[] meses = {Messages.getString("Agenda.0"),Messages.getString("Agenda.1"),Messages.getString("Agenda.2"),Messages.getString("Agenda.3"),Messages.getString("Agenda.4"),Messages.getString("Agenda.5"),Messages.getString("Agenda.6"),Messages.getString("Agenda.7"),Messages.getString("Agenda.8"),Messages.getString("Agenda.9"),Messages.getString("Agenda.10"),Messages.getString("Agenda.11")}; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$ //$NON-NLS-7$ //$NON-NLS-8$ //$NON-NLS-9$ //$NON-NLS-10$ //$NON-NLS-11$ //$NON-NLS-12$
 	
 	private int mesActual = calendar.get(calendar.MONTH);
 	private int yearActual = calendar.get(calendar.YEAR);
@@ -136,423 +136,423 @@ public class Agenda extends JPanel {
 				panel = new JPanel();
 				panel.setMinimumSize(new Dimension(10, 550));
 				splitPane.setLeftComponent(panel);
-				panel.setLayout(new MigLayout("", "[227.00][170px,grow,center][170px,grow,center][170px,grow,center][170px,grow,center][170px,grow,center][170px,grow,center][170px,grow,center][227]", "[45][][grow][grow][grow][grow][grow][grow]"));
+				panel.setLayout(new MigLayout("", "[227.00][170px,grow,center][170px,grow,center][170px,grow,center][170px,grow,center][170px,grow,center][170px,grow,center][170px,grow,center][227]", "[45][][grow][grow][grow][grow][grow][grow]")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 				{
-					btnAnterior = new JButton("");
-					btnAnterior.setToolTipText("Ver el mes anterior");
-					btnAnterior.setIcon(new ImageIcon(Agenda.class.getResource("/presentacion/resources/anterior.png")));
+					btnAnterior = new JButton(""); //$NON-NLS-1$
+					btnAnterior.setToolTipText(Messages.getString("Agenda.btnAnterior.toolTipText")); //$NON-NLS-1$
+					btnAnterior.setIcon(new ImageIcon(Agenda.class.getResource("/presentacion/resources/anterior.png"))); //$NON-NLS-1$
 					btnAnterior.addActionListener(new BtnAnteriorActionListener());
-					panel.add(btnAnterior, "cell 1 0,grow");
+					panel.add(btnAnterior, "cell 1 0,grow"); //$NON-NLS-1$
 				}
 				{
-					lblMes = new JLabel("DICIEMBRE 2016");
+					lblMes = new JLabel("DICIEMBRE 2016"); //$NON-NLS-1$
 					lblMes.setHorizontalAlignment(SwingConstants.CENTER);
-					lblMes.setFont(new Font("Tahoma", Font.PLAIN, 36));
-					panel.add(lblMes, "cell 2 0 5 1,grow");
+					lblMes.setFont(new Font("Tahoma", Font.PLAIN, 36)); //$NON-NLS-1$
+					panel.add(lblMes, "cell 2 0 5 1,grow"); //$NON-NLS-1$
 				}
 				{
-					btnSiguiente = new JButton("");
-					btnSiguiente.setToolTipText("Ver el mes siguiente");
-					btnSiguiente.setIcon(new ImageIcon(Agenda.class.getResource("/presentacion/resources/siguiente.png")));
+					btnSiguiente = new JButton(""); //$NON-NLS-1$
+					btnSiguiente.setToolTipText(Messages.getString("Agenda.btnSiguiente.toolTipText")); //$NON-NLS-1$
+					btnSiguiente.setIcon(new ImageIcon(Agenda.class.getResource("/presentacion/resources/siguiente.png"))); //$NON-NLS-1$
 					btnSiguiente.addActionListener(new BtnSiguienteActionListener());
-					panel.add(btnSiguiente, "cell 7 0,grow");
+					panel.add(btnSiguiente, "cell 7 0,grow"); //$NON-NLS-1$
 				}
 				{
-					lblLunes = new JLabel("Lunes");
+					lblLunes = new JLabel(Messages.getString("Agenda.lblLunes.text")); //$NON-NLS-1$
 					lblLunes.setHorizontalAlignment(SwingConstants.CENTER);
-					lblLunes.setFont(new Font("Tahoma", Font.PLAIN, 20));
-					panel.add(lblLunes, "cell 1 1");
+					lblLunes.setFont(new Font("Tahoma", Font.PLAIN, 20)); //$NON-NLS-1$
+					panel.add(lblLunes, "cell 1 1"); //$NON-NLS-1$
 				}
 				{
-					lblMartes = new JLabel("Martes");
+					lblMartes = new JLabel(Messages.getString("Agenda.lblMartes.text")); //$NON-NLS-1$
 					lblMartes.setHorizontalAlignment(SwingConstants.CENTER);
-					lblMartes.setFont(new Font("Tahoma", Font.PLAIN, 20));
-					panel.add(lblMartes, "cell 2 1");
+					lblMartes.setFont(new Font("Tahoma", Font.PLAIN, 20)); //$NON-NLS-1$
+					panel.add(lblMartes, "cell 2 1"); //$NON-NLS-1$
 				}
 				{
-					lblMiercoles = new JLabel("Miercoles");
+					lblMiercoles = new JLabel(Messages.getString("Agenda.lblMiercoles.text")); //$NON-NLS-1$
 					lblMiercoles.setHorizontalAlignment(SwingConstants.CENTER);
-					lblMiercoles.setFont(new Font("Tahoma", Font.PLAIN, 20));
-					panel.add(lblMiercoles, "cell 3 1");
+					lblMiercoles.setFont(new Font("Tahoma", Font.PLAIN, 20)); //$NON-NLS-1$
+					panel.add(lblMiercoles, "cell 3 1"); //$NON-NLS-1$
 				}
 				{
-					lblJueves = new JLabel("Jueves");
+					lblJueves = new JLabel(Messages.getString("Agenda.lblJueves.text")); //$NON-NLS-1$
 					lblJueves.setHorizontalAlignment(SwingConstants.CENTER);
-					lblJueves.setFont(new Font("Tahoma", Font.PLAIN, 20));
-					panel.add(lblJueves, "cell 4 1");
+					lblJueves.setFont(new Font("Tahoma", Font.PLAIN, 20)); //$NON-NLS-1$
+					panel.add(lblJueves, "cell 4 1"); //$NON-NLS-1$
 				}
 				{
-					lblViernes = new JLabel("Viernes");
+					lblViernes = new JLabel(Messages.getString("Agenda.lblViernes.text")); //$NON-NLS-1$
 					lblViernes.setHorizontalAlignment(SwingConstants.CENTER);
-					lblViernes.setFont(new Font("Tahoma", Font.PLAIN, 20));
-					panel.add(lblViernes, "cell 5 1");
+					lblViernes.setFont(new Font("Tahoma", Font.PLAIN, 20)); //$NON-NLS-1$
+					panel.add(lblViernes, "cell 5 1"); //$NON-NLS-1$
 				}
 				{
-					lblSabado = new JLabel("Sabado");
+					lblSabado = new JLabel(Messages.getString("Agenda.lblSabado.text")); //$NON-NLS-1$
 					lblSabado.setHorizontalAlignment(SwingConstants.CENTER);
-					lblSabado.setFont(new Font("Tahoma", Font.PLAIN, 20));
-					panel.add(lblSabado, "cell 6 1");
+					lblSabado.setFont(new Font("Tahoma", Font.PLAIN, 20)); //$NON-NLS-1$
+					panel.add(lblSabado, "cell 6 1"); //$NON-NLS-1$
 				}
 				{
-					lblDomingo = new JLabel("Domingo");
+					lblDomingo = new JLabel(Messages.getString("Agenda.lblDomingo.text")); //$NON-NLS-1$
 					lblDomingo.setHorizontalAlignment(SwingConstants.CENTER);
-					lblDomingo.setFont(new Font("Tahoma", Font.PLAIN, 20));
-					panel.add(lblDomingo, "cell 7 1");
+					lblDomingo.setFont(new Font("Tahoma", Font.PLAIN, 20)); //$NON-NLS-1$
+					panel.add(lblDomingo, "cell 7 1"); //$NON-NLS-1$
 				}
 				{
-					btnL1 = new JButton("");
-					btnL1.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnL1 = new JButton(""); //$NON-NLS-1$
+					btnL1.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnL1.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnL1.setContentAreaFilled(false);
 					btnL1.setOpaque(false);
-					panel.add(btnL1, "cell 1 2,grow");
+					panel.add(btnL1, "cell 1 2,grow"); //$NON-NLS-1$
 				}
 				{
-					btnM1 = new JButton("");
-					btnM1.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnM1 = new JButton(""); //$NON-NLS-1$
+					btnM1.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnM1.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnM1.setContentAreaFilled(false);
 					btnM1.setOpaque(true);
-					panel.add(btnM1, "cell 2 2,grow");
+					panel.add(btnM1, "cell 2 2,grow"); //$NON-NLS-1$
 				}
 				{
-					btnX1 = new JButton("");
-					btnX1.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnX1 = new JButton(""); //$NON-NLS-1$
+					btnX1.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnX1.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnX1.setContentAreaFilled(false);
 					btnX1.setOpaque(true);
-					panel.add(btnX1, "cell 3 2,grow");
+					panel.add(btnX1, "cell 3 2,grow"); //$NON-NLS-1$
 				}
 				{
-					btnJ1 = new JButton("");
-					btnJ1.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnJ1 = new JButton(""); //$NON-NLS-1$
+					btnJ1.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnJ1.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnJ1.setContentAreaFilled(false);
 					btnJ1.setOpaque(true);
-					panel.add(btnJ1, "cell 4 2,grow");
+					panel.add(btnJ1, "cell 4 2,grow"); //$NON-NLS-1$
 				}
 				{
-					btnV1 = new JButton("");
-					btnV1.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnV1 = new JButton(""); //$NON-NLS-1$
+					btnV1.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnV1.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnV1.setContentAreaFilled(false);
 					btnV1.setOpaque(true);
-					panel.add(btnV1, "cell 5 2,grow");
+					panel.add(btnV1, "cell 5 2,grow"); //$NON-NLS-1$
 				}
 				{
-					btnS1 = new JButton("");
-					btnS1.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnS1 = new JButton(""); //$NON-NLS-1$
+					btnS1.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnS1.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnS1.setContentAreaFilled(false);
 					btnS1.setOpaque(true);
 					btnS1.setForeground(rojo);
-					panel.add(btnS1, "cell 6 2,grow");
+					panel.add(btnS1, "cell 6 2,grow"); //$NON-NLS-1$
 				}
 				{
-					btnD1 = new JButton("");
-					btnD1.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnD1 = new JButton(""); //$NON-NLS-1$
+					btnD1.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnD1.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnD1.setContentAreaFilled(false);
 					btnD1.setOpaque(true);
 					btnD1.setForeground(rojo);
-					panel.add(btnD1, "cell 7 2,grow");
+					panel.add(btnD1, "cell 7 2,grow"); //$NON-NLS-1$
 				}
 				{
-					btnL2 = new JButton("");
-					btnL2.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnL2 = new JButton(""); //$NON-NLS-1$
+					btnL2.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnL2.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnL2.setContentAreaFilled(false);
 					btnL2.setOpaque(true);
-					panel.add(btnL2, "cell 1 3,grow");
+					panel.add(btnL2, "cell 1 3,grow"); //$NON-NLS-1$
 				}
 				{
-					btnM2 = new JButton("");
-					btnM2.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnM2 = new JButton(""); //$NON-NLS-1$
+					btnM2.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnM2.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnM2.setContentAreaFilled(false);
 					btnM2.setOpaque(true);
-					panel.add(btnM2, "cell 2 3,grow");
+					panel.add(btnM2, "cell 2 3,grow"); //$NON-NLS-1$
 				}
 				{
-					btnX2 = new JButton("");
-					btnX2.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnX2 = new JButton(""); //$NON-NLS-1$
+					btnX2.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnX2.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnX2.setContentAreaFilled(false);
 					btnX2.setOpaque(true);
-					panel.add(btnX2, "cell 3 3,grow");
+					panel.add(btnX2, "cell 3 3,grow"); //$NON-NLS-1$
 				}
 				{
-					btnJ2 = new JButton("");
-					btnJ2.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnJ2 = new JButton(""); //$NON-NLS-1$
+					btnJ2.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnJ2.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnJ2.setContentAreaFilled(false);
 					btnJ2.setOpaque(true);
-					panel.add(btnJ2, "cell 4 3,grow");
+					panel.add(btnJ2, "cell 4 3,grow"); //$NON-NLS-1$
 				}
 				{
-					btnV2 = new JButton("");
-					btnV2.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnV2 = new JButton(""); //$NON-NLS-1$
+					btnV2.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnV2.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnV2.setContentAreaFilled(false);
 					btnV2.setOpaque(true);
-					panel.add(btnV2, "cell 5 3,grow");
+					panel.add(btnV2, "cell 5 3,grow"); //$NON-NLS-1$
 				}
 				{
-					btnS2 = new JButton("");
-					btnS2.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnS2 = new JButton(""); //$NON-NLS-1$
+					btnS2.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnS2.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnS2.setContentAreaFilled(false);
 					btnS2.setOpaque(true);
 					btnS2.setForeground(rojo);
-					panel.add(btnS2, "cell 6 3,grow");
+					panel.add(btnS2, "cell 6 3,grow"); //$NON-NLS-1$
 				}
 				{
-					btnD2 = new JButton("");
-					btnD2.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnD2 = new JButton(""); //$NON-NLS-1$
+					btnD2.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnD2.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnD2.setContentAreaFilled(false);
 					btnD2.setOpaque(true);
 					btnD2.setForeground(rojo);
-					panel.add(btnD2, "cell 7 3,grow");
+					panel.add(btnD2, "cell 7 3,grow"); //$NON-NLS-1$
 				}
 				{
-					btnL3 = new JButton("");
-					btnL3.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnL3 = new JButton(""); //$NON-NLS-1$
+					btnL3.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnL3.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnL3.setContentAreaFilled(false);
 					btnL3.setOpaque(true);
-					panel.add(btnL3, "cell 1 4,grow");
+					panel.add(btnL3, "cell 1 4,grow"); //$NON-NLS-1$
 				}
 				{
-					btnM3 = new JButton("");
-					btnM3.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnM3 = new JButton(""); //$NON-NLS-1$
+					btnM3.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnM3.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnM3.setContentAreaFilled(false);
 					btnM3.setOpaque(true);
-					panel.add(btnM3, "cell 2 4,grow");
+					panel.add(btnM3, "cell 2 4,grow"); //$NON-NLS-1$
 				}
 				{
-					btnX3 = new JButton("");
-					btnX3.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnX3 = new JButton(""); //$NON-NLS-1$
+					btnX3.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnX3.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnX3.setContentAreaFilled(false);
 					btnX3.setOpaque(true);
-					panel.add(btnX3, "cell 3 4,grow");
+					panel.add(btnX3, "cell 3 4,grow"); //$NON-NLS-1$
 				}
 				{
-					btnJ3 = new JButton("");
-					btnJ3.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnJ3 = new JButton(""); //$NON-NLS-1$
+					btnJ3.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnJ3.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnJ3.setContentAreaFilled(false);
 					btnJ3.setOpaque(true);
-					panel.add(btnJ3, "cell 4 4,grow");
+					panel.add(btnJ3, "cell 4 4,grow"); //$NON-NLS-1$
 				}
 				{
-					btnV3 = new JButton("");
-					btnV3.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnV3 = new JButton(""); //$NON-NLS-1$
+					btnV3.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnV3.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnV3.setContentAreaFilled(false);
 					btnV3.setOpaque(true);
-					panel.add(btnV3, "cell 5 4,grow");
+					panel.add(btnV3, "cell 5 4,grow"); //$NON-NLS-1$
 				}
 				{
-					btnS3 = new JButton("");
-					btnS3.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnS3 = new JButton(""); //$NON-NLS-1$
+					btnS3.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnS3.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnS3.setContentAreaFilled(false);
 					btnS3.setOpaque(true);
 					btnS3.setForeground(rojo);
-					panel.add(btnS3, "cell 6 4,grow");
+					panel.add(btnS3, "cell 6 4,grow"); //$NON-NLS-1$
 				}
 				{
-					btnD3 = new JButton("");
-					btnD3.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnD3 = new JButton(""); //$NON-NLS-1$
+					btnD3.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnD3.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnD3.setContentAreaFilled(false);
 					btnD3.setOpaque(true);
 					btnD3.setForeground(rojo);
-					panel.add(btnD3, "cell 7 4,grow");
+					panel.add(btnD3, "cell 7 4,grow"); //$NON-NLS-1$
 				}
 				{
-					btnL4 = new JButton("");
-					btnL4.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnL4 = new JButton(""); //$NON-NLS-1$
+					btnL4.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnL4.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnL4.setContentAreaFilled(false);
 					btnL4.setOpaque(true);
-					panel.add(btnL4, "cell 1 5,grow");
+					panel.add(btnL4, "cell 1 5,grow"); //$NON-NLS-1$
 				}
 				{
-					btnM4 = new JButton("");
-					btnM4.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnM4 = new JButton(""); //$NON-NLS-1$
+					btnM4.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnM4.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnM4.setContentAreaFilled(false);
 					btnM4.setOpaque(true);
-					panel.add(btnM4, "cell 2 5,grow");
+					panel.add(btnM4, "cell 2 5,grow"); //$NON-NLS-1$
 				}
 				{
-					btnX4 = new JButton("");
-					btnX4.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnX4 = new JButton(""); //$NON-NLS-1$
+					btnX4.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnX4.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnX4.setContentAreaFilled(false);
 					btnX4.setOpaque(true);
-					panel.add(btnX4, "cell 3 5,grow");
+					panel.add(btnX4, "cell 3 5,grow"); //$NON-NLS-1$
 				}
 				{
-					btnJ4 = new JButton("");
-					btnJ4.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnJ4 = new JButton(""); //$NON-NLS-1$
+					btnJ4.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnJ4.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnJ4.setContentAreaFilled(false);
 					btnJ4.setOpaque(true);
-					panel.add(btnJ4, "cell 4 5,grow");
+					panel.add(btnJ4, "cell 4 5,grow"); //$NON-NLS-1$
 				}
 				{
-					btnV4 = new JButton("");
-					btnV4.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnV4 = new JButton(""); //$NON-NLS-1$
+					btnV4.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnV4.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnV4.setContentAreaFilled(false);
 					btnV4.setOpaque(true);
-					panel.add(btnV4, "cell 5 5,grow");
+					panel.add(btnV4, "cell 5 5,grow"); //$NON-NLS-1$
 				}
 				{
-					btnS4 = new JButton("");
-					btnS4.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnS4 = new JButton(""); //$NON-NLS-1$
+					btnS4.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnS4.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnS4.setContentAreaFilled(false);
 					btnS4.setOpaque(true);
 					btnS4.setForeground(rojo);
-					panel.add(btnS4, "cell 6 5,grow");
+					panel.add(btnS4, "cell 6 5,grow"); //$NON-NLS-1$
 				}
 				{
-					btnD4 = new JButton("");
-					btnD4.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnD4 = new JButton(""); //$NON-NLS-1$
+					btnD4.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnD4.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnD4.setContentAreaFilled(false);
 					btnD4.setOpaque(true);
 					btnD4.setForeground(rojo);
-					panel.add(btnD4, "cell 7 5,grow");
+					panel.add(btnD4, "cell 7 5,grow"); //$NON-NLS-1$
 				}
 				{
-					btnL5 = new JButton("");
-					btnL5.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnL5 = new JButton(""); //$NON-NLS-1$
+					btnL5.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnL5.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnL5.setContentAreaFilled(false);
 					btnL5.setOpaque(true);
-					panel.add(btnL5, "cell 1 6,grow");
+					panel.add(btnL5, "cell 1 6,grow"); //$NON-NLS-1$
 				}
 				{
-					btnM5 = new JButton("");
-					btnM5.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnM5 = new JButton(""); //$NON-NLS-1$
+					btnM5.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnM5.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnM5.setContentAreaFilled(false);
 					btnM5.setOpaque(true);
-					panel.add(btnM5, "cell 2 6,grow");
+					panel.add(btnM5, "cell 2 6,grow"); //$NON-NLS-1$
 				}
 				{
-					btnX5 = new JButton("");
-					btnX5.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnX5 = new JButton(""); //$NON-NLS-1$
+					btnX5.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnX5.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnX5.setContentAreaFilled(false);
 					btnX5.setOpaque(true);
-					panel.add(btnX5, "cell 3 6,grow");
+					panel.add(btnX5, "cell 3 6,grow"); //$NON-NLS-1$
 				}
 				{
-					btnJ5 = new JButton("");
-					btnJ5.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnJ5 = new JButton(""); //$NON-NLS-1$
+					btnJ5.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnJ5.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnJ5.setContentAreaFilled(false);
 					btnJ5.setOpaque(true);
-					panel.add(btnJ5, "cell 4 6,grow");
+					panel.add(btnJ5, "cell 4 6,grow"); //$NON-NLS-1$
 				}
 				{
-					btnV5 = new JButton("");
-					btnV5.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnV5 = new JButton(""); //$NON-NLS-1$
+					btnV5.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnV5.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnV5.setContentAreaFilled(false);
 					btnV5.setOpaque(true);
-					panel.add(btnV5, "cell 5 6,grow");
+					panel.add(btnV5, "cell 5 6,grow"); //$NON-NLS-1$
 				}
 				{
-					btnS5 = new JButton("");
-					btnS5.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnS5 = new JButton(""); //$NON-NLS-1$
+					btnS5.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnS5.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnS5.setContentAreaFilled(false);
 					btnS5.setOpaque(true);
 					btnS5.setForeground(rojo);
-					panel.add(btnS5, "cell 6 6,grow");
+					panel.add(btnS5, "cell 6 6,grow"); //$NON-NLS-1$
 				}
 				{
-					btnD5 = new JButton("");
+					btnD5 = new JButton(Messages.getString("Agenda.140")); //$NON-NLS-1$
 					btnD5.setFont(new Font("Tahoma", Font.PLAIN, 30));
 					btnD5.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnD5.setContentAreaFilled(false);
 					btnD5.setOpaque(true);
 					btnD5.setForeground(rojo);
-					panel.add(btnD5, "cell 7 6,grow");
+					panel.add(btnD5, "cell 7 6,grow"); //$NON-NLS-1$
 				}
 				{
-					btnL6 = new JButton("");
-					btnL6.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnL6 = new JButton(""); //$NON-NLS-1$
+					btnL6.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnL6.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnL6.setContentAreaFilled(false);
 					btnL6.setOpaque(true);
-					panel.add(btnL6, "cell 1 7,grow");
+					panel.add(btnL6, "cell 1 7,grow"); //$NON-NLS-1$
 				}
 				{
-					btnM6 = new JButton("");
-					btnM6.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnM6 = new JButton(""); //$NON-NLS-1$
+					btnM6.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnM6.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnM6.setContentAreaFilled(false);
 					btnM6.setOpaque(true);
-					panel.add(btnM6, "cell 2 7,grow");
+					panel.add(btnM6, "cell 2 7,grow"); //$NON-NLS-1$
 				}
 				{
-					btnX6 = new JButton("");
-					btnX6.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnX6 = new JButton(""); //$NON-NLS-1$
+					btnX6.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnX6.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnX6.setContentAreaFilled(false);
 					btnX6.setOpaque(true);
-					panel.add(btnX6, "cell 3 7,grow");
+					panel.add(btnX6, "cell 3 7,grow"); //$NON-NLS-1$
 				}
 				{
-					btnJ6 = new JButton("");
-					btnJ6.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnJ6 = new JButton(""); //$NON-NLS-1$
+					btnJ6.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnJ6.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnJ6.setContentAreaFilled(false);
 					btnJ6.setOpaque(true);
-					panel.add(btnJ6, "cell 4 7,grow");
+					panel.add(btnJ6, "cell 4 7,grow"); //$NON-NLS-1$
 				}
 				{
-					btnV6 = new JButton("");
-					btnV6.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnV6 = new JButton(""); //$NON-NLS-1$
+					btnV6.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnV6.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnV6.setContentAreaFilled(false);
 					btnV6.setOpaque(true);
-					panel.add(btnV6, "cell 5 7,grow");
+					panel.add(btnV6, "cell 5 7,grow"); //$NON-NLS-1$
 				}
 				{
-					btnS6 = new JButton("");
-					btnS6.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnS6 = new JButton(""); //$NON-NLS-1$
+					btnS6.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnS6.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnS6.setContentAreaFilled(false);
 					btnS6.setOpaque(true);
 					btnS6.setForeground(rojo);
-					panel.add(btnS6, "cell 6 7,grow");
+					panel.add(btnS6, "cell 6 7,grow"); //$NON-NLS-1$
 				}
 				{
-					btnD6 = new JButton("");
-					btnD6.setFont(new Font("Tahoma", Font.PLAIN, 30));
+					btnD6 = new JButton(""); //$NON-NLS-1$
+					btnD6.setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 					btnD6.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 					btnD6.setContentAreaFilled(false);
 					btnD6.setOpaque(true);
 					btnD6.setForeground(rojo);
-					panel.add(btnD6, "cell 7 7,grow");
+					panel.add(btnD6, "cell 7 7,grow"); //$NON-NLS-1$
 				}	
 			}
 			{
 				panel_1 = new JPanel();
-				panel_1.setFont(new Font("Tahoma", Font.PLAIN, 13));
-				panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), diaActual+" "+meses[mesActual]+" "+yearActual, TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-				((TitledBorder) panel_1.getBorder()).setTitleFont(new Font("Tahoma", Font.PLAIN, 24));
+				panel_1.setFont(new Font("Tahoma", Font.PLAIN, 13)); //$NON-NLS-1$
+				panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), diaActual+" "+meses[mesActual]+" "+yearActual, TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0))); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				((TitledBorder) panel_1.getBorder()).setTitleFont(new Font("Tahoma", Font.PLAIN, 24)); //$NON-NLS-1$
 				splitPane.setRightComponent(panel_1);
 				panel_1.setLayout(new BorderLayout(0, 0));
 				{
@@ -570,13 +570,13 @@ public class Agenda extends JPanel {
 						{
 							table_2.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 							table_2.addMouseListener(new TableMouseListener());
-							table_2.setFont(new Font("Tahoma", Font.PLAIN, 22));
+							table_2.setFont(new Font("Tahoma", Font.PLAIN, 22)); //$NON-NLS-1$
 							ModeloTablaAgenda modeloTabla = new ModeloTablaAgenda();
 							table_2.setModel(modeloTabla);
 							table_2.getColumnModel().getColumn(0).setMinWidth(100);
 							table_2.getColumnModel().getColumn(1).setMinWidth(790);
 							table_2.getColumnModel().getColumn(1).setWidth(790);
-							table_2.getTableHeader().setFont(new Font("Tahoma", Font.PLAIN, 20));
+							table_2.getTableHeader().setFont(new Font("Tahoma", Font.PLAIN, 20)); //$NON-NLS-1$
 						}
 						table_2.setRowHeight(40);
 						}
@@ -591,7 +591,7 @@ public class Agenda extends JPanel {
 						gbl_panel_2.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
 						panel_2.setLayout(gbl_panel_2);
 						{
-							lblFotoPaciente = new JLabel("");
+							lblFotoPaciente = new JLabel(""); //$NON-NLS-1$
 							GridBagConstraints gbc_lblFotoPaciente = new GridBagConstraints();
 							gbc_lblFotoPaciente.fill = GridBagConstraints.BOTH;
 							gbc_lblFotoPaciente.insets = new Insets(0, 0, 5, 0);
@@ -600,8 +600,8 @@ public class Agenda extends JPanel {
 							panel_2.add(lblFotoPaciente, gbc_lblFotoPaciente);
 						}
 						{
-							lblNombre = new JLabel("");
-							lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 24));
+							lblNombre = new JLabel(""); //$NON-NLS-1$
+							lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 24)); //$NON-NLS-1$
 							GridBagConstraints gbc_lblNombre = new GridBagConstraints();
 							gbc_lblNombre.fill = GridBagConstraints.BOTH;
 							gbc_lblNombre.gridx = 0;
@@ -631,7 +631,7 @@ public class Agenda extends JPanel {
 		}
 		marcarHoy();
 		marcarFiestas();
-		lblMes.setText(meses[mes]+" "+year);
+		lblMes.setText(meses[mes]+" "+year); //$NON-NLS-1$
 	}
 	
 	public void addBotones(){
@@ -687,12 +687,12 @@ public class Agenda extends JPanel {
 	
 	public void vaciarBotones(){
 		for(int i = 0;i<botones.size();i++){
-			botones.get(i).setText("");
+			botones.get(i).setText(""); //$NON-NLS-1$
 			botones.get(i).setBackground(new Color(240,240,240));
 			int n = i%7;
 			if(n != 5 && n != 6)
 				botones.get(i).setForeground(negro);
-				botones.get(i).setFont(new Font("Tahoma", Font.PLAIN, 30));
+				botones.get(i).setFont(new Font("Tahoma", Font.PLAIN, 30)); //$NON-NLS-1$
 			
 		}
 	}
@@ -702,7 +702,7 @@ public class Agenda extends JPanel {
 		if(mes==mesActual && year==yearActual){
 			for(int i = 0;i<botones.size() && seguir;i++){
 				if(botones.get(i).getText().equals(String.valueOf(diaActual))){
-					botones.get(i).setFont(new Font("Tahoma", Font.BOLD, 50));
+					botones.get(i).setFont(new Font(Messages.getString("Agenda.12"), Font.BOLD, 50)); //$NON-NLS-1$
 					seguir = false;
 				}
 			}
@@ -832,12 +832,12 @@ public class Agenda extends JPanel {
 	}
 	private class BtnDiaActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if(!e.getActionCommand().equals("")){
+			if(!e.getActionCommand().equals("")){ //$NON-NLS-1$
 				dia = Integer.parseInt(e.getActionCommand());
-				panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), dia+" "+meses[mes]+" "+year, TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-				((TitledBorder) panel_1.getBorder()).setTitleFont(new Font("Tahoma", Font.PLAIN, 24));
+				panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), dia+" "+meses[mes]+" "+year, TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0))); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				((TitledBorder) panel_1.getBorder()).setTitleFont(new Font("Tahoma", Font.PLAIN, 24)); //$NON-NLS-1$
 				lblFotoPaciente.setIcon(null);
-				lblNombre.setText("");
+				lblNombre.setText(""); //$NON-NLS-1$
 				try {
 					mostrarCitasDia();
 				} catch (SQLException e1) {
@@ -864,7 +864,7 @@ public class Agenda extends JPanel {
 			else
 				try {
 					lblFotoPaciente.setIcon(new ImageIcon(Agenda.class.getResource(datos.getFotoPaciente((String)table_2.getModel().getValueAt(table_2.getSelectedRow(), 1)))));
-					lblNombre.setText(" "+(String)table_2.getModel().getValueAt(table_2.getSelectedRow(), 1));
+					lblNombre.setText(" "+(String)table_2.getModel().getValueAt(table_2.getSelectedRow(), 1)); //$NON-NLS-1$
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 				}
@@ -876,7 +876,7 @@ public class Agenda extends JPanel {
 			if(e.getKeyCode()==40 || e.getKeyCode()==38)
 				try {
 					lblFotoPaciente.setIcon(new ImageIcon(Agenda.class.getResource(datos.getFotoPaciente((String)table_2.getModel().getValueAt(table_2.getSelectedRow(), 1)))));
-					lblNombre.setText(" "+(String)table_2.getModel().getValueAt(table_2.getSelectedRow(), 1));
+					lblNombre.setText(" "+(String)table_2.getModel().getValueAt(table_2.getSelectedRow(), 1)); //$NON-NLS-1$
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

@@ -18,25 +18,25 @@ public class Tarjeta extends JPanel {
 		especialistas = esp;
 		setLayout(null);
 		{
-			lblNombre = new JLabel("Nombre");
+			lblNombre = new JLabel(Messages.getString("Tarjeta.lblNombre.text")); //$NON-NLS-1$
 			lblNombre.setFont(new Font("Comic Sans MS", Font.PLAIN, 22));
 			lblNombre.setBounds(174, 93, 305, 35);
 			add(lblNombre);
 		}
 		{
-			lblEspecialidad = new JLabel("Especialidad");
+			lblEspecialidad = new JLabel(Messages.getString("Tarjeta.lblEspecialidad.text")); //$NON-NLS-1$
 			lblEspecialidad.setFont(new Font("Comic Sans MS", Font.PLAIN, 22));
 			lblEspecialidad.setBounds(174, 175, 305, 37);
 			add(lblEspecialidad);
 		}
 		{
-			lblHorario = new JLabel("Horario");
+			lblHorario = new JLabel(Messages.getString("Tarjeta.lblHorario.text")); //$NON-NLS-1$
 			lblHorario.setFont(new Font("Comic Sans MS", Font.PLAIN, 22));
 			lblHorario.setBounds(174, 257, 305, 32);
 			add(lblHorario);
 		}
 		{
-			lblDespacho = new JLabel("Despacho");
+			lblDespacho = new JLabel(Messages.getString("Tarjeta.lblDespacho.text")); //$NON-NLS-1$
 			lblDespacho.setFont(new Font("Comic Sans MS", Font.PLAIN, 22));
 			lblDespacho.setBounds(174, 339, 305, 35);
 			add(lblDespacho);
@@ -48,8 +48,8 @@ public class Tarjeta extends JPanel {
 			add(lblFoto);
 		}
 		{
-			btnContactar = new JButton("Contactar");
-			btnContactar.setToolTipText("Pulse para escribir un mensaje");
+			btnContactar = new JButton(Messages.getString("Tarjeta.btnContactar.text")); //$NON-NLS-1$
+			btnContactar.setToolTipText(Messages.getString("Tarjeta.btnContactar.toolTipText")); //$NON-NLS-1$
 			btnContactar.addActionListener(new BtnContactarActionListener());
 			btnContactar.setIcon(new ImageIcon(Tarjeta.class.getResource("/presentacion/resources/mail.png")));
 			btnContactar.setBounds(491, 41, 186, 120);

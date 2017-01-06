@@ -89,7 +89,7 @@ public class Login extends JFrame {
 				panel.setLayout(gbl_panel);
 				{
 					lblEspana = new JLabel("");
-					lblEspana.setToolTipText("Pulse para cambiar el idioma a español");
+					lblEspana.setToolTipText(Messages.getString("Login.lblEspana.toolTipText")); //$NON-NLS-1$
 					lblEspana.addMouseListener(new LblEspanaMouseListener());
 					{
 						lblLogo = new JLabel("");
@@ -102,7 +102,7 @@ public class Login extends JFrame {
 						panel.add(lblLogo, gbc_lblLogo);
 					}
 					{
-						lblBienvenidoALa = new JLabel("<html>Bienvenido a la aplicación del<br>    hospital Sagrado Corazón</html>");
+						lblBienvenidoALa = new JLabel(Messages.getString("Login.lblBienvenidoALa.text")); //$NON-NLS-1$
 						lblBienvenidoALa.setFont(new Font("Tahoma", Font.PLAIN, 20));
 						GridBagConstraints gbc_lblBienvenidoALa = new GridBagConstraints();
 						gbc_lblBienvenidoALa.gridwidth = 3;
@@ -122,7 +122,7 @@ public class Login extends JFrame {
 			}
 			{
 				lblInglaterra = new JLabel("");
-				lblInglaterra.setToolTipText("Pulse para cambiar el idioma a inglés");
+				lblInglaterra.setToolTipText(Messages.getString("Login.lblInglaterra.toolTipText")); //$NON-NLS-1$
 				lblInglaterra.addMouseListener(new LblInglaterraMouseListener());
 				lblInglaterra.setEnabled(false);
 				lblInglaterra.setIcon(new ImageIcon(Login.class.getResource("/presentacion/resources/bandera_inglaterra.png")));
@@ -134,7 +134,7 @@ public class Login extends JFrame {
 				panel.add(lblInglaterra, gbc_lblInglaterra);
 			}
 			{
-				lblUsuario = new JLabel("Usuario");
+				lblUsuario = new JLabel(Messages.getString("Login.lblUsuario.text")); //$NON-NLS-1$
 				lblUsuario.setFont(new Font("Tahoma", Font.PLAIN, 20));
 				GridBagConstraints gbc_lblUsuario = new GridBagConstraints();
 				gbc_lblUsuario.insets = new Insets(0, 0, 5, 5);
@@ -154,7 +154,7 @@ public class Login extends JFrame {
 				txtfUsuario.setColumns(10);
 			}
 			{
-				lblContrasea = new JLabel("Contraseña");
+				lblContrasea = new JLabel(Messages.getString("Login.lblContrasea.text")); //$NON-NLS-1$
 				lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 20));
 				GridBagConstraints gbc_lblContrasea = new GridBagConstraints();
 				gbc_lblContrasea.insets = new Insets(0, 0, 5, 5);
@@ -183,7 +183,7 @@ public class Login extends JFrame {
 				panel.add(lblMensaje, gbc_lblMensaje);
 			}
 			{
-				btnEntrar = new JButton("Entrar");
+				btnEntrar = new JButton(Messages.getString("Login.btnEntrar.text")); //$NON-NLS-1$
 				btnEntrar.addActionListener(new BtnEntrarActionListener());
 				btnEntrar.setFont(new Font("Tahoma", Font.PLAIN, 20));
 				GridBagConstraints gbc_btnEntrar = new GridBagConstraints();
@@ -194,7 +194,7 @@ public class Login extends JFrame {
 				panel.add(btnEntrar, gbc_btnEntrar);
 			}
 			{
-				rdbtnEspaol = new JRadioButton("Español");
+				rdbtnEspaol = new JRadioButton(Messages.getString("Login.rdbtnEspaol.text")); //$NON-NLS-1$
 				rdbtnEspaol.setEnabled(false);
 				rdbtnEspaol.setFont(new Font("Tahoma", Font.PLAIN, 22));
 				rdbtnEspaol.setSelected(true);
@@ -206,7 +206,7 @@ public class Login extends JFrame {
 				panel.add(rdbtnEspaol, gbc_rdbtnEspaol);
 			}
 			{
-				rdbtnIngls = new JRadioButton("Inglés");
+				rdbtnIngls = new JRadioButton(Messages.getString("Login.rdbtnIngls.text")); //$NON-NLS-1$
 				rdbtnIngls.setEnabled(false);
 				rdbtnIngls.setFont(new Font("Tahoma", Font.PLAIN, 22));
 				buttonGroup.add(rdbtnIngls);

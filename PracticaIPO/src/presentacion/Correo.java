@@ -51,7 +51,7 @@ public class Correo extends JPanel {
 			add(label, gbc_label);
 		}
 		{
-			lblAsunto = new JLabel("Asunto:");
+			lblAsunto = new JLabel(Messages.getString("Correo.lblAsunto.text")); //$NON-NLS-1$
 			lblAsunto.setFont(new Font("Tahoma", Font.PLAIN, 18));
 			GridBagConstraints gbc_lblAsunto = new GridBagConstraints();
 			gbc_lblAsunto.insets = new Insets(0, 0, 5, 5);
@@ -72,7 +72,7 @@ public class Correo extends JPanel {
 			txtAsunto.setColumns(10);
 		}
 		{
-			lblMensaje = new JLabel("Mensaje:");
+			lblMensaje = new JLabel(Messages.getString("Correo.lblMensaje.text")); //$NON-NLS-1$
 			lblMensaje.setVerticalAlignment(SwingConstants.TOP);
 			lblMensaje.setFont(new Font("Tahoma", Font.PLAIN, 18));
 			GridBagConstraints gbc_lblMensaje = new GridBagConstraints();
@@ -95,8 +95,8 @@ public class Correo extends JPanel {
 			add(txtaMensaje, gbc_txtaMensaje);
 		}
 		{
-			btnEnviar = new JButton("Enviar");
-			btnEnviar.setToolTipText("Pulse para enviar el mensaje");
+			btnEnviar = new JButton(Messages.getString("Correo.btnEnviar.text")); //$NON-NLS-1$
+			btnEnviar.setToolTipText(Messages.getString("Correo.btnEnviar.toolTipText")); //$NON-NLS-1$
 			btnEnviar.addActionListener(new BtnEnviarActionListener());
 			btnEnviar.setHorizontalAlignment(SwingConstants.LEADING);
 			btnEnviar.setIcon(new ImageIcon(Correo.class.getResource("/presentacion/resources/enviar-2.png")));
@@ -108,8 +108,8 @@ public class Correo extends JPanel {
 			add(btnEnviar, gbc_btnEnviar);
 		}
 		{
-			btnAdjuntar = new JButton(" Adjuntar");
-			btnAdjuntar.setToolTipText("Pulse para adjuntar un archivo");
+			btnAdjuntar = new JButton(Messages.getString("Correo.btnAdjuntar.text")); //$NON-NLS-1$
+			btnAdjuntar.setToolTipText(Messages.getString("Correo.btnAdjuntar.toolTipText")); //$NON-NLS-1$
 			btnAdjuntar.addActionListener(new BtnAdjuntarActionListener());
 			btnAdjuntar.setFont(new Font("Tahoma", Font.PLAIN, 18));
 			btnAdjuntar.setIcon(new ImageIcon(Correo.class.getResource("/presentacion/resources/adjuntar-2.png")));

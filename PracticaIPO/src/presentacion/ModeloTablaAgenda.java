@@ -2,7 +2,7 @@ package presentacion;
 import java.util.*;
 import javax.swing.table.*;
 class ModeloTablaAgenda extends ModeloTabla {
-	private String[] nombreColumnas = { "Hora", "Nombre"};
+	private String[] nombreColumnas = { Messages.getString("ModeloTablaAgenda.0"), Messages.getString("ModeloTablaAgenda.1")}; //$NON-NLS-1$ //$NON-NLS-2$
 	private Vector datos = new Vector();
 	public int getColumnCount() {
 		return nombreColumnas.length;

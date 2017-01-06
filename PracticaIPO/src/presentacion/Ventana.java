@@ -85,7 +85,7 @@ public class Ventana extends JFrame {
 				try {
 					datos.setUsuario(args[0]);
 					Ventana window = new Ventana();
-					UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+					UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel"); //$NON-NLS-1$
 					window.setExtendedState(window.getExtendedState()|JFrame.MAXIMIZED_BOTH );
 					window.frame.setVisible(true);
 					
@@ -117,31 +117,31 @@ public class Ventana extends JFrame {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		{
 			menuBar = new JMenuBar();
-			menuBar.setFont(new Font("Segoe UI", Font.PLAIN, 19));
+			menuBar.setFont(new Font("Segoe UI", Font.PLAIN, 19)); //$NON-NLS-1$
 			frame.setJMenuBar(menuBar);
 			{
-				mnArchivo = new JMenu("Archivo");
-				mnArchivo.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+				mnArchivo = new JMenu(Messages.getString("Ventana.mnArchivo.text")); //$NON-NLS-1$
+				mnArchivo.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 				menuBar.add(mnArchivo);
 				{
-					mntmAgenda = new JMenuItem("Agenda");
-					mntmAgenda.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+					mntmAgenda = new JMenuItem(Messages.getString("Ventana.mntmAgenda.text")); //$NON-NLS-1$
+					mntmAgenda.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 					mntmAgenda.addActionListener(new MntmAgendaActionListener());
-					mntmAgenda.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/calendar-icon3.png")));
+					mntmAgenda.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/calendar-icon3.png"))); //$NON-NLS-1$
 					mnArchivo.add(mntmAgenda);
 				}
 				{
-					mntmEspecialistas = new JMenuItem("Especialistas");
-					mntmEspecialistas.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+					mntmEspecialistas = new JMenuItem(Messages.getString("Ventana.mntmEspecialistas.text")); //$NON-NLS-1$
+					mntmEspecialistas.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 					mntmEspecialistas.addActionListener(new MntmEspecialistasActionListener());
-					mntmEspecialistas.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/doctor_icon3.png")));
+					mntmEspecialistas.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/doctor_icon3.png"))); //$NON-NLS-1$
 					mnArchivo.add(mntmEspecialistas);
 				}
 				{
-					mntmPacientes = new JMenuItem("Pacientes");
-					mntmPacientes.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+					mntmPacientes = new JMenuItem(Messages.getString("Ventana.mntmPacientes.text")); //$NON-NLS-1$
+					mntmPacientes.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 					mntmPacientes.addActionListener(new MntmPacientesActionListener());
-					mntmPacientes.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/patient-icon3.png")));
+					mntmPacientes.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/patient-icon3.png"))); //$NON-NLS-1$
 					mnArchivo.add(mntmPacientes);
 				}
 				{
@@ -149,85 +149,85 @@ public class Ventana extends JFrame {
 					mnArchivo.add(separator);
 				}
 				{
-					mntmCerrarSesin = new JMenuItem("Cerrar sesión");
-					mntmCerrarSesin.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+					mntmCerrarSesin = new JMenuItem(Messages.getString("Ventana.mntmCerrarSesin.text")); //$NON-NLS-1$
+					mntmCerrarSesin.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 					mntmCerrarSesin.addActionListener(new MntmCerrarSesinActionListener());
-					mntmCerrarSesin.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/cerrar-sesion-3.png")));
+					mntmCerrarSesin.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/cerrar-sesion-3.png"))); //$NON-NLS-1$
 					mnArchivo.add(mntmCerrarSesin);
 				}
 				{
-					mntmSalir = new JMenuItem("Salir");
-					mntmSalir.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+					mntmSalir = new JMenuItem(Messages.getString("Ventana.mntmSalir.text")); //$NON-NLS-1$
+					mntmSalir.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 					mntmSalir.addActionListener(new MntmSalirActionListener());
-					mntmSalir.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/salir.png")));
+					mntmSalir.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/salir.png"))); //$NON-NLS-1$
 					mnArchivo.add(mntmSalir);
 				}
 			}
 			{
-				mnEdicion = new JMenu("Edición");
-				mnEdicion.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+				mnEdicion = new JMenu(Messages.getString("Ventana.mnEdicion.text")); //$NON-NLS-1$
+				mnEdicion.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 				menuBar.add(mnEdicion);
 				{
-					mnIdioma = new JMenu("Idioma");
-					mnIdioma.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+					mnIdioma = new JMenu(Messages.getString("Ventana.mnIdioma.text")); //$NON-NLS-1$
+					mnIdioma.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 					mnEdicion.add(mnIdioma);
 					{
-						rdbtnmntmEspaol = new JRadioButtonMenuItem("Español");
-						rdbtnmntmEspaol.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+						rdbtnmntmEspaol = new JRadioButtonMenuItem(Messages.getString("Ventana.rdbtnmntmEspaol.text")); //$NON-NLS-1$
+						rdbtnmntmEspaol.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 						buttonGroup.add(rdbtnmntmEspaol);
-						rdbtnmntmEspaol.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/bandera_espana-2.png")));
+						rdbtnmntmEspaol.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/bandera_espana-2.png"))); //$NON-NLS-1$
 						mnIdioma.add(rdbtnmntmEspaol);
 					}
 					{
-						rdbtnmntmIngls = new JRadioButtonMenuItem("Inglés");
-						rdbtnmntmIngls.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+						rdbtnmntmIngls = new JRadioButtonMenuItem(Messages.getString("Ventana.rdbtnmntmIngls.text")); //$NON-NLS-1$
+						rdbtnmntmIngls.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 						buttonGroup.add(rdbtnmntmIngls);
-						rdbtnmntmIngls.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/bandera_inglaterra-2.png")));
+						rdbtnmntmIngls.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/bandera_inglaterra-2.png"))); //$NON-NLS-1$
 						mnIdioma.add(rdbtnmntmIngls);
 					}
 				}
 				{
-					mnTamano = new JMenu("Fuente");
-					mnTamano.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+					mnTamano = new JMenu(Messages.getString("Ventana.mnTamano.text")); //$NON-NLS-1$
+					mnTamano.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 					mnEdicion.add(mnTamano);
 					{
-						rdbtnmntmPequena = new JRadioButtonMenuItem("Pequeña");
+						rdbtnmntmPequena = new JRadioButtonMenuItem(Messages.getString("Ventana.rdbtnmntmPequena.text")); //$NON-NLS-1$
 						buttonGroup_1.add(rdbtnmntmPequena);
 						rdbtnmntmPequena.addActionListener(new RdbtnmntmPequenaActionListener());
-						rdbtnmntmPequena.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+						rdbtnmntmPequena.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 						mnTamano.add(rdbtnmntmPequena);
 					}
 					{
-						rdbtnmntmMediana = new JRadioButtonMenuItem("Mediana");
+						rdbtnmntmMediana = new JRadioButtonMenuItem(Messages.getString("Ventana.rdbtnmntmMediana.text")); //$NON-NLS-1$
 						buttonGroup_1.add(rdbtnmntmMediana);
 						rdbtnmntmMediana.addActionListener(new RdbtnmntmMedianaActionListener());
-						rdbtnmntmMediana.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+						rdbtnmntmMediana.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 						mnTamano.add(rdbtnmntmMediana);
 					}
 					{
-						rdbtnmntmGrande = new JRadioButtonMenuItem("Grande");
+						rdbtnmntmGrande = new JRadioButtonMenuItem(Messages.getString("Ventana.rdbtnmntmGrande.text")); //$NON-NLS-1$
 						rdbtnmntmGrande.addActionListener(new RdbtnmntmGrandeActionListener());
 						buttonGroup_1.add(rdbtnmntmGrande);
-						rdbtnmntmGrande.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+						rdbtnmntmGrande.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 						mnTamano.add(rdbtnmntmGrande);
 					}
 					rdbtnmntmPequena.setSelected(true);
 				}
 			}
 			{
-				mnAyuda = new JMenu("Ayuda");
-				mnAyuda.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+				mnAyuda = new JMenu(Messages.getString("Ventana.mnAyuda.text")); //$NON-NLS-1$
+				mnAyuda.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 				menuBar.add(mnAyuda);
 				{
-					mntmAcerca = new JMenuItem("Acerca de...");
-					mntmAcerca.setFont(new Font("Segoe UI", Font.PLAIN, 18));
+					mntmAcerca = new JMenuItem(Messages.getString("Ventana.mntmAcerca.text")); //$NON-NLS-1$
+					mntmAcerca.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 					mntmAcerca.addActionListener(new MntmSobreElAutorActionListener());
 					mnAyuda.add(mntmAcerca);
 				}
 			}
 		}
 		{
-			lblEstado = new JLabel("");
+			lblEstado = new JLabel(""); //$NON-NLS-1$
 			frame.getContentPane().add(lblEstado, BorderLayout.SOUTH);
 		}
 		{
@@ -249,36 +249,36 @@ public class Ventana extends JFrame {
 					panel.add(panel_2);
 					panel_2.setLayout(new GridLayout(3, 0, 0, 0));
 					{
-						btnAgenda = new JButton("Agenda");
-						btnAgenda.setToolTipText("Pulse para ver el calendario con las citas");
+						btnAgenda = new JButton(Messages.getString("Ventana.btnAgenda.text")); //$NON-NLS-1$
+						btnAgenda.setToolTipText(Messages.getString("Ventana.btnAgenda.toolTipText")); //$NON-NLS-1$
 						panel_2.add(btnAgenda);
 						btnAgenda.setContentAreaFilled(false);
 						btnAgenda.setOpaque(true);
 						btnAgenda.addActionListener(new BtnAgendaActionListener());
-						btnAgenda.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/calendar-icon2.png")));
-						btnAgenda.setFont(new Font("Tahoma", Font.PLAIN, 24));
+						btnAgenda.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/calendar-icon2.png"))); //$NON-NLS-1$
+						btnAgenda.setFont(new Font("Tahoma", Font.PLAIN, 24)); //$NON-NLS-1$
 					}
 					{
-						btnEspecialistas = new JButton("Especialistas");
-						btnEspecialistas.setToolTipText("Pulse para ver el listado de especialistas");
+						btnEspecialistas = new JButton(Messages.getString("Ventana.btnEspecialistas.text")); //$NON-NLS-1$
+						btnEspecialistas.setToolTipText(Messages.getString("Ventana.btnEspecialistas.toolTipText")); //$NON-NLS-1$
 						panel_2.add(btnEspecialistas);
 						btnEspecialistas.setContentAreaFilled(false);
 						btnEspecialistas.setOpaque(true);
 						btnEspecialistas.setBorderPainted(false);
 						btnEspecialistas.addActionListener(new BtnEspecialistasActionListener());
-						btnEspecialistas.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/doctor_icon2.png")));
-						btnEspecialistas.setFont(new Font("Tahoma", Font.PLAIN, 24));
+						btnEspecialistas.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/doctor_icon2.png"))); //$NON-NLS-1$
+						btnEspecialistas.setFont(new Font("Tahoma", Font.PLAIN, 24)); //$NON-NLS-1$
 					}
 					{
-						btnPacientes = new JButton("Pacientes");
-						btnPacientes.setToolTipText("Pulse para ver el directorio de pacientes");
+						btnPacientes = new JButton(Messages.getString("Ventana.btnPacientes.text")); //$NON-NLS-1$
+						btnPacientes.setToolTipText(Messages.getString("Ventana.btnPacientes.toolTipText")); //$NON-NLS-1$
 						panel_2.add(btnPacientes);
 						btnPacientes.setContentAreaFilled(false);
 						btnPacientes.setOpaque(true);
 						btnPacientes.setBorderPainted(false);
 						btnPacientes.addActionListener(new BtnPacientesActionListener());
-						btnPacientes.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/patient-icon2.png")));
-						btnPacientes.setFont(new Font("Tahoma", Font.PLAIN, 24));
+						btnPacientes.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/patient-icon2.png"))); //$NON-NLS-1$
+						btnPacientes.setFont(new Font("Tahoma", Font.PLAIN, 24)); //$NON-NLS-1$
 					}
 				}
 				{
@@ -287,16 +287,16 @@ public class Ventana extends JFrame {
 					panel.add(panel_3);
 					panel_3.setLayout(new GridLayout(2, 0, 0, 0));
 					{
-						lblFotoMedico = new JLabel("");
+						lblFotoMedico = new JLabel(""); //$NON-NLS-1$
 						lblFotoMedico.setVerticalAlignment(SwingConstants.BOTTOM);
 						lblFotoMedico.setHorizontalAlignment(SwingConstants.CENTER);
 						lblFotoMedico.setIcon(null);
 						panel_3.add(lblFotoMedico);
 					}
 					{
-						lblInfoMedico = new JLabel("");
+						lblInfoMedico = new JLabel(""); //$NON-NLS-1$
 						lblInfoMedico.setHorizontalAlignment(SwingConstants.CENTER);
-						lblInfoMedico.setFont(new Font("Tahoma", Font.PLAIN, 26));
+						lblInfoMedico.setFont(new Font("Tahoma", Font.PLAIN, 26)); //$NON-NLS-1$
 						panel_3.add(lblInfoMedico);
 						cargarDatosMedico();
 					}
@@ -308,13 +308,13 @@ public class Ventana extends JFrame {
 				pnlContenido.setLayout(new CardLayout(0, 0));
 				{
 					pnlFondo = new Fondo();
-					pnlContenido.add(pnlFondo, "Fondo");
+					pnlContenido.add(pnlFondo, "Fondo"); //$NON-NLS-1$
 					pnlAgenda = new Agenda(this);
-					pnlContenido.add(pnlAgenda, "Agenda");
+					pnlContenido.add(pnlAgenda, "Agenda"); //$NON-NLS-1$
 					pnlEspecialistas = new Especialistas(this);
-					pnlContenido.add(pnlEspecialistas, "Especialistas");
-					pnlPacientes = new Pacientes(this, "");
-					pnlContenido.add(pnlPacientes, "Pacientes");
+					pnlContenido.add(pnlEspecialistas, "Especialistas"); //$NON-NLS-1$
+					pnlPacientes = new Pacientes(this, ""); //$NON-NLS-1$
+					pnlContenido.add(pnlPacientes, "Pacientes"); //$NON-NLS-1$
 				}
 			}
 		}
@@ -325,11 +325,11 @@ public class Ventana extends JFrame {
 			frame.getContentPane().add(panel_4, BorderLayout.SOUTH);
 			panel_4.setLayout(new GridLayout(0, 6, 0, 0));
 			{
-				btnCerrarSesion = new JButton("Cerrar sesión");
-				btnCerrarSesion.setToolTipText("Pulse para cerrar la sesión actual");
+				btnCerrarSesion = new JButton(Messages.getString("Ventana.btnCerrarSesion.text")); //$NON-NLS-1$
+				btnCerrarSesion.setToolTipText(Messages.getString("Ventana.btnCerrarSesion.toolTipText")); //$NON-NLS-1$
 				btnCerrarSesion.addActionListener(new BtnSalirActionListener());
-				btnCerrarSesion.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/cerrar-sesion-2.png")));
-				btnCerrarSesion.setFont(new Font("Tahoma", Font.PLAIN, 24));
+				btnCerrarSesion.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/cerrar-sesion-2.png"))); //$NON-NLS-1$
+				btnCerrarSesion.setFont(new Font("Tahoma", Font.PLAIN, 24)); //$NON-NLS-1$
 				panel_4.add(btnCerrarSesion);
 			}
 		}
@@ -345,26 +345,26 @@ public class Ventana extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			coloresBotones(1);
 			CardLayout cl = (CardLayout)(pnlContenido.getLayout());
-			cl.show(pnlContenido, "Agenda");			
+			cl.show(pnlContenido, "Agenda");			 //$NON-NLS-1$
 		}
 	}
 	private class BtnPacientesActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			coloresBotones(2);
 			CardLayout cl = (CardLayout)(pnlContenido.getLayout());
-			cl.show(pnlContenido, "Pacientes");
+			cl.show(pnlContenido, "Pacientes"); //$NON-NLS-1$
 		}
 	}
 	private class BtnEspecialistasActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			coloresBotones(3);
 			CardLayout cl = (CardLayout)(pnlContenido.getLayout());
-			cl.show(pnlContenido, "Especialistas");
+			cl.show(pnlContenido, "Especialistas"); //$NON-NLS-1$
 		}
 	}
 	private class BtnSalirActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			int dialogo = JOptionPane.showConfirmDialog (null, "¿Seguro que desea cerrar la sesión?","Confirmación", JOptionPane.YES_NO_OPTION);
+			int dialogo = JOptionPane.showConfirmDialog (null, Messages.getString("Ventana.45"),Messages.getString("Ventana.46"), JOptionPane.YES_NO_OPTION); //$NON-NLS-1$ //$NON-NLS-2$
 	        System.out.println(dialogo);
 	        if(dialogo == JOptionPane.YES_OPTION){
 				datos.salirAplicacion();
@@ -385,23 +385,23 @@ public class Ventana extends JFrame {
 	}
 	
 	private void coloresBotones(int num){
-		btnAgenda.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		btnEspecialistas.setFont(new Font("Tahoma", Font.PLAIN, 24));
-		btnPacientes.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		btnAgenda.setFont(new Font("Tahoma", Font.PLAIN, 24)); //$NON-NLS-1$
+		btnEspecialistas.setFont(new Font("Tahoma", Font.PLAIN, 24)); //$NON-NLS-1$
+		btnPacientes.setFont(new Font("Tahoma", Font.PLAIN, 24)); //$NON-NLS-1$
 		btnAgenda.setBackground((new Color(240, 240, 240)));
 		btnEspecialistas.setBackground((new Color(240, 240, 240)));
 		btnPacientes.setBackground((new Color(240, 240, 240)));
 		switch(num){
 		case 1:
-			btnAgenda.setFont(new Font("Tahoma", Font.BOLD, 36));
+			btnAgenda.setFont(new Font("Tahoma", Font.BOLD, 36)); //$NON-NLS-1$
 			btnAgenda.setBackground(SystemColor.activeCaption);
 			break;
 		case 2:
-			btnPacientes.setFont(new Font("Tahoma", Font.BOLD, 36));
+			btnPacientes.setFont(new Font("Tahoma", Font.BOLD, 36)); //$NON-NLS-1$
 			btnPacientes.setBackground(SystemColor.activeCaption);
 			break;
 		case 3:
-			btnEspecialistas.setFont(new Font("Tahoma", Font.BOLD, 30));
+			btnEspecialistas.setFont(new Font("Tahoma", Font.BOLD, 30)); //$NON-NLS-1$
 			btnEspecialistas.setBackground(SystemColor.activeCaption);
 			break;
 			
@@ -420,13 +420,13 @@ public class Ventana extends JFrame {
 		pacientes.actualizarListaPacientes(s);
 		pacientes.marcarPaciente();
 		CardLayout cl = (CardLayout)(pnlContenido.getLayout());		
-		cl.show(pnlContenido, "Pacientes");
+		cl.show(pnlContenido, "Pacientes"); //$NON-NLS-1$
 	}
 	
 	private class FrameWindowListener extends WindowAdapter {
 		@Override
 		public void windowClosing(WindowEvent e) {
-			int dialogo = JOptionPane.showConfirmDialog (null, "¿Seguro que desea salir de la aplicación?","Confirmación", JOptionPane.YES_NO_OPTION);
+			int dialogo = JOptionPane.showConfirmDialog (null, Messages.getString("Ventana.54"),Messages.getString("Ventana.55"), JOptionPane.YES_NO_OPTION); //$NON-NLS-1$ //$NON-NLS-2$
 	        if(dialogo == JOptionPane.YES_OPTION){
 	        	datos.salirAplicacion();
 	        	frame.dispose();
@@ -439,26 +439,26 @@ public class Ventana extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			coloresBotones(1);
 			CardLayout cl = (CardLayout)(pnlContenido.getLayout());
-			cl.show(pnlContenido, "Agenda");
+			cl.show(pnlContenido, "Agenda"); //$NON-NLS-1$
 		}
 	}
 	private class MntmEspecialistasActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			coloresBotones(3);
 			CardLayout cl = (CardLayout)(pnlContenido.getLayout());
-			cl.show(pnlContenido, "Especialistas");
+			cl.show(pnlContenido, "Especialistas"); //$NON-NLS-1$
 		}
 	}
 	private class MntmPacientesActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			coloresBotones(2);
 			CardLayout cl = (CardLayout)(pnlContenido.getLayout());
-			cl.show(pnlContenido, "Pacientes");
+			cl.show(pnlContenido, "Pacientes"); //$NON-NLS-1$
 		}
 	}
 	private class MntmCerrarSesinActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			int dialogo = JOptionPane.showConfirmDialog (null, "¿Seguro que desea cerrar la sesión?","Confirmación", JOptionPane.YES_NO_OPTION);
+			int dialogo = JOptionPane.showConfirmDialog (null, Messages.getString("Ventana.59"),Messages.getString("Ventana.60"), JOptionPane.YES_NO_OPTION); //$NON-NLS-1$ //$NON-NLS-2$
 	        System.out.println(dialogo);
 	        if(dialogo == JOptionPane.YES_OPTION){
 				datos.salirAplicacion();
@@ -470,7 +470,7 @@ public class Ventana extends JFrame {
 	}
 	private class MntmSalirActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			int dialogo = JOptionPane.showConfirmDialog (null, "¿Seguro que desea salir de la aplicación?","Confirmación", JOptionPane.YES_NO_OPTION);
+			int dialogo = JOptionPane.showConfirmDialog (null, Messages.getString("Ventana.61"),Messages.getString("Ventana.62"), JOptionPane.YES_NO_OPTION); //$NON-NLS-1$ //$NON-NLS-2$
 	        if(dialogo == JOptionPane.YES_OPTION){
 	        	datos.salirAplicacion();
 	        	frame.dispose();
@@ -481,7 +481,7 @@ public class Ventana extends JFrame {
 	}
 	private class MntmSobreElAutorActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			JOptionPane.showMessageDialog(frame,"Autor: Gonzalo García Moreno\nFecha: 07/01/2017\nVersión: 1.0", null, JOptionPane.PLAIN_MESSAGE);
+			JOptionPane.showMessageDialog(frame,Messages.getString("Ventana.63"), null, JOptionPane.PLAIN_MESSAGE); //$NON-NLS-1$
 		}
 	}
 	private class RdbtnmntmPequenaActionListener implements ActionListener {

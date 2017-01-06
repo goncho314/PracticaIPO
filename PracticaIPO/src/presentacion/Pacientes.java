@@ -125,8 +125,8 @@ public class Pacientes extends JPanel {
 	private MiAreaDibujo imagen2;
 	private JPanel pnlVacio = new JPanel();
 	
-	private String paciente = "";
-	private String textoBusqueda = "";
+	private String paciente = ""; //$NON-NLS-1$
+	private String textoBusqueda = ""; //$NON-NLS-1$
 	private int lugarTabla = 0;
 	
 	private int x, y;
@@ -153,7 +153,7 @@ public class Pacientes extends JPanel {
 	 * @throws SQLException 
 	 */
 	public Pacientes(Ventana v, String paciente) throws SQLException {
-		UIManager.put("TextField.inactiveBackground", new ColorUIResource(new Color(255, 255, 255)));
+		UIManager.put("TextField.inactiveBackground", new ColorUIResource(new Color(255, 255, 255))); //$NON-NLS-1$
 		ventana = v;
 		datos = ventana.getDatos();
 		setLayout(new BorderLayout(0, 0));
@@ -173,8 +173,8 @@ public class Pacientes extends JPanel {
 				gbl_panel.rowWeights = new double[]{0.0, 1.0, 0.0, Double.MIN_VALUE};
 				panel.setLayout(gbl_panel);
 				{
-					lblBusqueda = new JLabel("");
-					lblBusqueda.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/busqueda-2.png")));
+					lblBusqueda = new JLabel(""); //$NON-NLS-1$
+					lblBusqueda.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/busqueda-2.png"))); //$NON-NLS-1$
 					GridBagConstraints gbc_lblBusqueda = new GridBagConstraints();
 					gbc_lblBusqueda.insets = new Insets(0, 0, 5, 5);
 					gbc_lblBusqueda.gridx = 0;
@@ -183,7 +183,7 @@ public class Pacientes extends JPanel {
 				}
 				{
 					txtBusqueda = new JTextField();
-					txtBusqueda.setToolTipText("Escriba el término que desea buscar");
+					txtBusqueda.setToolTipText(Messages.getString("Pacientes.txtBusqueda.toolTipText")); //$NON-NLS-1$
 					txtBusqueda.addKeyListener(new TxtBusquedaKeyListener());
 					GridBagConstraints gbc_txtBusqueda = new GridBagConstraints();
 					gbc_txtBusqueda.insets = new Insets(0, 0, 5, 0);
@@ -207,10 +207,10 @@ public class Pacientes extends JPanel {
 						table.addMouseListener(new TableMouseListener());
 						table.addKeyListener(new TableKeyListener());
 						scrollPane.setViewportView(table);
-						table.setFont(new Font("Tahoma", Font.PLAIN, 22));
+						table.setFont(new Font("Tahoma", Font.PLAIN, 22)); //$NON-NLS-1$
 						ModeloTablaPacientes modeloTabla = new ModeloTablaPacientes();
 						table.setModel(modeloTabla);
-						table.getTableHeader().setFont(new Font("Tahoma", Font.PLAIN, 20));
+						table.getTableHeader().setFont(new Font("Tahoma", Font.PLAIN, 20)); //$NON-NLS-1$
 						table.setRowHeight(30);
 					}
 				}
@@ -225,78 +225,78 @@ public class Pacientes extends JPanel {
 					panel.add(panel_2, gbc_panel_2);
 					panel_2.setLayout(new GridLayout(0, 3, 0, 0));
 					{
-						btnAniadir = new JButton("Añadir");
-						btnAniadir.setFont(new Font("Tahoma", Font.PLAIN, 16));
-						btnAniadir.setToolTipText("Pulse para añadir un paciente");
+						btnAniadir = new JButton(Messages.getString("Pacientes.btnAniadir.text")); //$NON-NLS-1$
+						btnAniadir.setFont(new Font("Tahoma", Font.PLAIN, 16)); //$NON-NLS-1$
+						btnAniadir.setToolTipText(Messages.getString("Pacientes.btnAniadir.toolTipText")); //$NON-NLS-1$
 						btnAniadir.addActionListener(new BtnAniadirActionListener());
-						btnAniadir.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/aniadir-2.png")));
+						btnAniadir.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/aniadir-2.png"))); //$NON-NLS-1$
 						panel_2.add(btnAniadir);
 					}
 					{
-						btnEditar = new JButton("Editar\r\n");
-						btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 16));
-						btnEditar.setToolTipText("Pulse para editar un paciente seleccionado");
+						btnEditar = new JButton(Messages.getString("Pacientes.btnEditar.text")); //$NON-NLS-1$
+						btnEditar.setFont(new Font("Tahoma", Font.PLAIN, 16)); //$NON-NLS-1$
+						btnEditar.setToolTipText(Messages.getString("Pacientes.btnEditar.toolTipText")); //$NON-NLS-1$
 						btnEditar.addActionListener(new BtnEditarActionListener());
 						btnEditar.setEnabled(false);
-						btnEditar.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/editar-2.png")));
+						btnEditar.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/editar-2.png"))); //$NON-NLS-1$
 						panel_2.add(btnEditar);
 					}
 					{
-						btnBorrar = new JButton("Borrar");
-						btnBorrar.setFont(new Font("Tahoma", Font.PLAIN, 16));
-						btnBorrar.setToolTipText("Pulse para borrar un paciente seleccionado");
+						btnBorrar = new JButton(Messages.getString("Pacientes.btnBorrar.text")); //$NON-NLS-1$
+						btnBorrar.setFont(new Font("Tahoma", Font.PLAIN, 16)); //$NON-NLS-1$
+						btnBorrar.setToolTipText(Messages.getString("Pacientes.btnBorrar.toolTipText")); //$NON-NLS-1$
 						btnBorrar.addActionListener(new BtnBorrarActionListener());
 						btnBorrar.setEnabled(false);
-						btnBorrar.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/eliminar-2.png")));
+						btnBorrar.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/eliminar-2.png"))); //$NON-NLS-1$
 						panel_2.add(btnBorrar);
 					}
 				}
 			}
 			{
 				tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-				tabbedPane.setFont(new Font("Tahoma", Font.PLAIN, 20));
+				tabbedPane.setFont(new Font("Tahoma", Font.PLAIN, 20)); //$NON-NLS-1$
 				tabbedPane.addChangeListener(new TabbedPaneChangeListener());
 				splitPane.setRightComponent(tabbedPane);
 				//splitPane.setRightComponent(pnlVacio);
 				{
 					pnlDatos = new JPanel();
-					tabbedPane.addTab("Datos", null, pnlDatos, null);
-					pnlDatos.setLayout(new MigLayout("", "[46.00px][196px][37.00][16.00][89.00px][198.00px][35.00][303.00][99.00]", "[17.00px][39px][22px][22.00px][22px][22px][22px][22px][22px][22px][22px][][22][110][22][22][110][22][22][143.00]"));
+					tabbedPane.addTab(Messages.getString("Pacientes.14"), null, pnlDatos, null); //$NON-NLS-1$
+					pnlDatos.setLayout(new MigLayout("", "[46.00px][196px][37.00][16.00][89.00px][198.00px][35.00][303.00][99.00]", "[17.00px][39px][22px][22.00px][22px][22px][22px][22px][22px][22px][22px][][22][110][22][22][110][22][22][143.00]")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 					{
-						btnGuardar = new JButton("Guardar");
-						btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 20));
-						btnGuardar.setToolTipText("Pulse para confirmar los cambios");
+						btnGuardar = new JButton(Messages.getString("Pacientes.btnGuardar.text")); //$NON-NLS-1$
+						btnGuardar.setFont(new Font("Tahoma", Font.PLAIN, 20)); //$NON-NLS-1$
+						btnGuardar.setToolTipText(Messages.getString("Pacientes.btnGuardar.toolTipText")); //$NON-NLS-1$
 						btnGuardar.addActionListener(new BtnGuardarActionListener());
-						btnGuardar.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/guardar-2.png")));
-						pnlDatos.add(btnGuardar, "cell 1 1,growx,aligny center");
+						btnGuardar.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/guardar-2.png"))); //$NON-NLS-1$
+						pnlDatos.add(btnGuardar, "cell 1 1,growx,aligny center"); //$NON-NLS-1$
 						btnGuardar.setVisible(false);
 					}
 					{
 						panel_1 = new JPanel();
-						pnlDatos.add(panel_1, "cell 1 2 1 9,grow");
+						pnlDatos.add(panel_1, "cell 1 2 1 9,grow"); //$NON-NLS-1$
 						{
-							lblFoto = new JLabel("");
-							lblFoto.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/p0.png")));
+							lblFoto = new JLabel(""); //$NON-NLS-1$
+							lblFoto.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/p0.png"))); //$NON-NLS-1$
 							panel_1.add(lblFoto);
 						}
 					}
 					{
-						lblNombre = new JLabel("Nombre:");
-						pnlDatos.add(lblNombre, "cell 2 2 3 1,alignx right,aligny top");
+						lblNombre = new JLabel(Messages.getString("Pacientes.lblNombre.text")); //$NON-NLS-1$
+						pnlDatos.add(lblNombre, "cell 2 2 3 1,alignx right,aligny top"); //$NON-NLS-1$
 					}
 					{
 						txtNombre = new JTextField();
 						txtNombre.setEditable(false);
-						pnlDatos.add(txtNombre, "cell 5 2,growx,aligny center");
+						pnlDatos.add(txtNombre, "cell 5 2,growx,aligny center"); //$NON-NLS-1$
 						txtNombre.setColumns(10);
 					}
 					{
-						lblAlergias = new JLabel("Alergias:");
-						pnlDatos.add(lblAlergias, "cell 7 2,aligny bottom");
+						lblAlergias = new JLabel(Messages.getString("Pacientes.lblAlergias.text")); //$NON-NLS-1$
+						pnlDatos.add(lblAlergias, "cell 7 2,aligny bottom"); //$NON-NLS-1$
 					}
 					{
 						scrollPane_2 = new JScrollPane();
-						pnlDatos.add(scrollPane_2, "cell 7 3 2 8,grow");
+						pnlDatos.add(scrollPane_2, "cell 7 3 2 8,grow"); //$NON-NLS-1$
 						{
 							txtAlergias = new JTextArea();
 							txtAlergias.setEditable(false);
@@ -306,73 +306,73 @@ public class Pacientes extends JPanel {
 						}
 					}
 					{
-						lblFechaNacimiento = new JLabel("Fecha Nacimiento:");
-						pnlDatos.add(lblFechaNacimiento, "cell 2 4 3 1,alignx right,aligny center");
+						lblFechaNacimiento = new JLabel(Messages.getString("Pacientes.lblFechaNacimiento.text")); //$NON-NLS-1$
+						pnlDatos.add(lblFechaNacimiento, "cell 2 4 3 1,alignx right,aligny center"); //$NON-NLS-1$
 					}
 					{
 						MaskFormatter formatoFecha;
 						try {
-							formatoFecha = new MaskFormatter("##/##/####");
+							formatoFecha = new MaskFormatter("##/##/####"); //$NON-NLS-1$
 							formatoFecha.setPlaceholderCharacter('X');
 							ftxtFecha = new JFormattedTextField(formatoFecha);
 							ftxtFecha.setEditable(false);
 						} catch (ParseException e) {
 							e.printStackTrace();
 						}
-						pnlDatos.add(ftxtFecha, "cell 5 4,growx");
+						pnlDatos.add(ftxtFecha, "cell 5 4,growx"); //$NON-NLS-1$
 					}
 					{
-						lblSexo = new JLabel("Sexo:");
-						pnlDatos.add(lblSexo, "cell 2 6 3 1,alignx right,aligny center");
+						lblSexo = new JLabel(Messages.getString("Pacientes.lblSexo.text")); //$NON-NLS-1$
+						pnlDatos.add(lblSexo, "cell 2 6 3 1,alignx right,aligny center"); //$NON-NLS-1$
 					}
 					{
 						cbSexo = new JComboBox();
 						cbSexo.setEnabled(false);
-						cbSexo.setModel(new DefaultComboBoxModel(new String[] {"F", "M"}));
-						pnlDatos.add(cbSexo, "cell 5 6");
+						cbSexo.setModel(new DefaultComboBoxModel(new String[] {"F", "M"})); //$NON-NLS-1$ //$NON-NLS-2$
+						pnlDatos.add(cbSexo, "cell 5 6"); //$NON-NLS-1$
 					}
 					{
-						lblPais = new JLabel("País:");
-						pnlDatos.add(lblPais, "cell 2 8 3 1,alignx right,aligny center");
+						lblPais = new JLabel(Messages.getString("Pacientes.lblPais.text")); //$NON-NLS-1$
+						pnlDatos.add(lblPais, "cell 2 8 3 1,alignx right,aligny center"); //$NON-NLS-1$
 					}
 					{
 						txtPais = new JTextField();
 						txtPais.setEditable(false);
-						pnlDatos.add(txtPais, "cell 5 8,growx,aligny center");
+						pnlDatos.add(txtPais, "cell 5 8,growx,aligny center"); //$NON-NLS-1$
 						txtPais.setColumns(10);
 					}
 					{
-						lblTelfono = new JLabel("Teléfono:");
-						pnlDatos.add(lblTelfono, "cell 2 10 3 1,alignx right,aligny center");
+						lblTelfono = new JLabel(Messages.getString("Pacientes.lblTelfono.text")); //$NON-NLS-1$
+						pnlDatos.add(lblTelfono, "cell 2 10 3 1,alignx right,aligny center"); //$NON-NLS-1$
 					}
 					{
 						MaskFormatter formatoTelefono;
 						try {
-							formatoTelefono = new MaskFormatter("### ### ###");
+							formatoTelefono = new MaskFormatter("### ### ###"); //$NON-NLS-1$
 							formatoTelefono.setPlaceholderCharacter('X');
 							txtTelefono = new JFormattedTextField(formatoTelefono);
 							txtTelefono.setEditable(false);
 						} catch (ParseException e) {
 							e.printStackTrace();
 						}
-						pnlDatos.add(txtTelefono, "cell 5 10,growx,aligny center");
+						pnlDatos.add(txtTelefono, "cell 5 10,growx,aligny center"); //$NON-NLS-1$
 						txtTelefono.setColumns(10);
 					}
 					{
-						label = new JLabel("");
-						pnlDatos.add(label, "cell 0 0,alignx center,aligny center");
+						label = new JLabel(""); //$NON-NLS-1$
+						pnlDatos.add(label, "cell 0 0,alignx center,aligny center"); //$NON-NLS-1$
 					}
 					{
-						lblAntecedentesFamiliares = new JLabel("Antecedentes familiares:");
-						pnlDatos.add(lblAntecedentesFamiliares, "cell 1 12");
+						lblAntecedentesFamiliares = new JLabel(Messages.getString("Pacientes.lblAntecedentesFamiliares.text")); //$NON-NLS-1$
+						pnlDatos.add(lblAntecedentesFamiliares, "cell 1 12"); //$NON-NLS-1$
 					}
 					{
-						lblEnfermedades = new JLabel("Enfermedades:");
-						pnlDatos.add(lblEnfermedades, "cell 7 12");
+						lblEnfermedades = new JLabel(Messages.getString("Pacientes.lblEnfermedades.text")); //$NON-NLS-1$
+						pnlDatos.add(lblEnfermedades, "cell 7 12"); //$NON-NLS-1$
 					}
 					{
 						scrollPane_1 = new JScrollPane();
-						pnlDatos.add(scrollPane_1, "cell 1 13 5 1,grow");
+						pnlDatos.add(scrollPane_1, "cell 1 13 5 1,grow"); //$NON-NLS-1$
 						{
 							txtAntecedentes = new JTextArea();
 							txtAntecedentes.setEditable(false);
@@ -383,7 +383,7 @@ public class Pacientes extends JPanel {
 					}
 					{
 						scrollPane_3 = new JScrollPane();
-						pnlDatos.add(scrollPane_3, "cell 7 13 2 1,grow");
+						pnlDatos.add(scrollPane_3, "cell 7 13 2 1,grow"); //$NON-NLS-1$
 						{
 							txtEnfermedades = new JTextArea();
 							txtEnfermedades.setEditable(false);
@@ -393,16 +393,16 @@ public class Pacientes extends JPanel {
 						}
 					}
 					{
-						lblVacunaciones = new JLabel("Vacunaciones:");
-						pnlDatos.add(lblVacunaciones, "cell 1 15");
+						lblVacunaciones = new JLabel(Messages.getString("Pacientes.lblVacunaciones.text")); //$NON-NLS-1$
+						pnlDatos.add(lblVacunaciones, "cell 1 15"); //$NON-NLS-1$
 					}
 					{
-						lblTratamiento = new JLabel("Tratamiento habitual:");
-						pnlDatos.add(lblTratamiento, "cell 7 15");
+						lblTratamiento = new JLabel(Messages.getString("Pacientes.lblTratamiento.text")); //$NON-NLS-1$
+						pnlDatos.add(lblTratamiento, "cell 7 15"); //$NON-NLS-1$
 					}
 					{
 						scrollPane_4 = new JScrollPane();
-						pnlDatos.add(scrollPane_4, "cell 1 16 5 1,grow");
+						pnlDatos.add(scrollPane_4, "cell 1 16 5 1,grow"); //$NON-NLS-1$
 						{
 							txtVacunaciones = new JTextArea();
 							txtVacunaciones.setEditable(false);
@@ -413,7 +413,7 @@ public class Pacientes extends JPanel {
 					}
 					{
 						scrollPane_5 = new JScrollPane();
-						pnlDatos.add(scrollPane_5, "cell 7 16 2 1,grow");
+						pnlDatos.add(scrollPane_5, "cell 7 16 2 1,grow"); //$NON-NLS-1$
 						{
 							txtTratamiento = new JTextArea();
 							txtTratamiento.setEditable(false);
@@ -423,12 +423,12 @@ public class Pacientes extends JPanel {
 						}
 					}
 					{
-						lblOperaciones = new JLabel("Operaciones:");
-						pnlDatos.add(lblOperaciones, "cell 1 18");
+						lblOperaciones = new JLabel(Messages.getString("Pacientes.lblOperaciones.text")); //$NON-NLS-1$
+						pnlDatos.add(lblOperaciones, "cell 1 18"); //$NON-NLS-1$
 					}
 					{
 						scrollPane_6 = new JScrollPane();
-						pnlDatos.add(scrollPane_6, "cell 1 19 8 1,grow");
+						pnlDatos.add(scrollPane_6, "cell 1 19 8 1,grow"); //$NON-NLS-1$
 						{
 							txtOperaciones = new JTextArea();
 							txtOperaciones.setEditable(false);
@@ -440,70 +440,70 @@ public class Pacientes extends JPanel {
 				}
 				{
 					panel_3 = new JPanel();
-					tabbedPane.addTab("Informes", null, panel_3, null);
-					panel_3.setLayout(new MigLayout("", "[63.00][298.00][245.00][28.00][47.00][10.00][483.00][9.00]", "[][48.00][6.00][][19.00][][][13.00][][198.00][32.00][][24][17.00][156][][][198.00]"));
+					tabbedPane.addTab(Messages.getString("Pacientes.52"), null, panel_3, null); //$NON-NLS-1$
+					panel_3.setLayout(new MigLayout("", "[63.00][298.00][245.00][28.00][47.00][10.00][483.00][9.00]", "[][48.00][6.00][][19.00][][][13.00][][198.00][32.00][][24][17.00][156][][][198.00]")); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 					{
 						panel_4 = new JPanel();
-						panel_3.add(panel_4, "cell 5 1 3 1,grow");
+						panel_3.add(panel_4, "cell 5 1 3 1,grow"); //$NON-NLS-1$
 						panel_4.setLayout(new GridLayout(0, 5, 0, 0));
 						{
-							btnTexto = new JButton("");
-							btnTexto.setToolTipText("Pulse para añadir un texto");
+							btnTexto = new JButton(""); //$NON-NLS-1$
+							btnTexto.setToolTipText(Messages.getString("Pacientes.btnTexto.toolTipText")); //$NON-NLS-1$
 							btnTexto.addActionListener(new BtnTextoActionListener());
-							btnTexto.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/texto-2.png")));
+							btnTexto.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/texto-2.png"))); //$NON-NLS-1$
 							btnTexto.setContentAreaFilled(false);
 							btnTexto.setOpaque(true);
 							panel_4.add(btnTexto);
 						}
 						{
-							btnRectangulo = new JButton("");
-							btnRectangulo.setToolTipText("Pulse para dibujar un rectángulo");
+							btnRectangulo = new JButton(""); //$NON-NLS-1$
+							btnRectangulo.setToolTipText(Messages.getString("Pacientes.btnRectangulo.toolTipText")); //$NON-NLS-1$
 							btnRectangulo.addActionListener(new BtnRectanguloActionListener());
-							btnRectangulo.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/rectangulo.png")));
+							btnRectangulo.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/rectangulo.png"))); //$NON-NLS-1$
 							btnRectangulo.setContentAreaFilled(false);
 							btnRectangulo.setOpaque(true);
 							panel_4.add(btnRectangulo);
 						}
 						{
-							btnLapiz = new JButton("");
-							btnLapiz.setToolTipText("Pulse para dibujar una forma libre");
-							btnLapiz.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/lapiz-2.png")));
+							btnLapiz = new JButton(""); //$NON-NLS-1$
+							btnLapiz.setToolTipText(Messages.getString("Pacientes.btnLapiz.toolTipText")); //$NON-NLS-1$
+							btnLapiz.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/lapiz-2.png"))); //$NON-NLS-1$
 							btnLapiz.addActionListener(new BtnLapizActionListener());
 							btnLapiz.setContentAreaFilled(false);
 							btnLapiz.setOpaque(true);
 							panel_4.add(btnLapiz);
 						}
 						{
-							btnColor = new JButton("Color");
-							btnColor.setFont(new Font("Tahoma", Font.PLAIN, 20));
-							btnColor.setToolTipText("Pulse para seleccionar el color");
+							btnColor = new JButton(Messages.getString("Pacientes.btnColor.text")); //$NON-NLS-1$
+							btnColor.setFont(new Font("Tahoma", Font.PLAIN, 20)); //$NON-NLS-1$
+							btnColor.setToolTipText(Messages.getString("Pacientes.btnColor.toolTipText")); //$NON-NLS-1$
 							btnColor.setForeground(colorGraficos);
 							btnColor.addActionListener(new BtnColorActionListener());
 							panel_4.add(btnColor);
 						}
 						{
 							cbGrosor = new JComboBox();
-							cbGrosor.setFont(new Font("Tahoma", Font.PLAIN, 18));
-							cbGrosor.setToolTipText("Pulse para seleccionar el tamaño del elemento");
+							cbGrosor.setFont(new Font("Tahoma", Font.PLAIN, 18)); //$NON-NLS-1$
+							cbGrosor.setToolTipText(Messages.getString("Pacientes.cbGrosor.toolTipText")); //$NON-NLS-1$
 							cbGrosor.setVisible(false);
 							cbGrosor.addActionListener(new CbGrosorActionListener());
-							cbGrosor.setModel(new DefaultComboBoxModel(new String[] {"Pequeño", "Mediano", "Grande"}));
+							cbGrosor.setModel(new DefaultComboBoxModel(new String[] {Messages.getString("Pacientes.65"), Messages.getString("Pacientes.66"), Messages.getString("Pacientes.67")})); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 							panel_4.add(cbGrosor);
 						}
 					}
 					{
-						lblFecha = new JLabel("Fecha");
-						panel_3.add(lblFecha, "cell 1 2");
+						lblFecha = new JLabel(Messages.getString("Pacientes.lblFecha.text")); //$NON-NLS-1$
+						panel_3.add(lblFecha, "cell 1 2"); //$NON-NLS-1$
 					}
 					{
 						txtFechaI = new JTextField();
 						txtFechaI.setEditable(false);
-						panel_3.add(txtFechaI, "cell 1 3,growx");
+						panel_3.add(txtFechaI, "cell 1 3,growx"); //$NON-NLS-1$
 						txtFechaI.setColumns(10);
 					}
 					{
 						scrollPane_10 = new JScrollPane();
-						panel_3.add(scrollPane_10, "cell 5 3 3 10,grow");
+						panel_3.add(scrollPane_10, "cell 5 3 3 10,grow"); //$NON-NLS-1$
 						{
 							imagen1 = new MiAreaDibujo();
 							imagen1.addMouseMotionListener(new Imagen1MouseMotionListener());
@@ -512,29 +512,29 @@ public class Pacientes extends JPanel {
 						}
 					}
 					{
-						lblMedico = new JLabel("Medico");
-						panel_3.add(lblMedico, "cell 1 5");
+						lblMedico = new JLabel(Messages.getString("Pacientes.lblMedico.text")); //$NON-NLS-1$
+						panel_3.add(lblMedico, "cell 1 5"); //$NON-NLS-1$
 					}
 					{
 						txtMedicoI = new JTextField();
 						txtMedicoI.setEditable(false);
-						panel_3.add(txtMedicoI, "cell 1 6,growx");
+						panel_3.add(txtMedicoI, "cell 1 6,growx"); //$NON-NLS-1$
 						txtMedicoI.setColumns(10);
 					}
 					{
-						lblMotivo = new JLabel("Motivo");
-						panel_3.add(lblMotivo, "cell 1 8");
+						lblMotivo = new JLabel(Messages.getString("Pacientes.lblMotivo.text")); //$NON-NLS-1$
+						panel_3.add(lblMotivo, "cell 1 8"); //$NON-NLS-1$
 					}
 					{
-						btnDeshacer1 = new JButton("");
-						btnDeshacer1.setToolTipText("Pulse para borrar el último elemento añadido");
+						btnDeshacer1 = new JButton(""); //$NON-NLS-1$
+						btnDeshacer1.setToolTipText(Messages.getString("Pacientes.btnDeshacer1.toolTipText")); //$NON-NLS-1$
 						btnDeshacer1.addActionListener(new BtnDeshacer1ActionListener());
-						btnDeshacer1.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/deshacer.png")));
-						panel_3.add(btnDeshacer1, "cell 4 7 1 2,grow");
+						btnDeshacer1.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/deshacer.png"))); //$NON-NLS-1$
+						panel_3.add(btnDeshacer1, "cell 4 7 1 2,grow"); //$NON-NLS-1$
 					}
 					{
 						scrollPane_7 = new JScrollPane();
-						panel_3.add(scrollPane_7, "cell 1 9 2 1,grow");
+						panel_3.add(scrollPane_7, "cell 1 9 2 1,grow"); //$NON-NLS-1$
 						{
 							txtMotivo = new JTextArea();
 							txtMotivo.setEditable(false);
@@ -544,19 +544,19 @@ public class Pacientes extends JPanel {
 						}
 					}
 					{
-						btnClear1 = new JButton("");
-						btnClear1.setToolTipText("Pulse para borrar todos los elementos añadidos");
+						btnClear1 = new JButton(""); //$NON-NLS-1$
+						btnClear1.setToolTipText(Messages.getString("Pacientes.btnClear1.toolTipText")); //$NON-NLS-1$
 						btnClear1.addActionListener(new BtnClear1ActionListener());
-						btnClear1.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/eliminar-2.png")));
-						panel_3.add(btnClear1, "cell 4 9,growx,aligny top");
+						btnClear1.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/eliminar-2.png"))); //$NON-NLS-1$
+						panel_3.add(btnClear1, "cell 4 9,growx,aligny top"); //$NON-NLS-1$
 					}
 					{
-						lblDiagnostico = new JLabel("Diagnóstico");
-						panel_3.add(lblDiagnostico, "cell 1 11");
+						lblDiagnostico = new JLabel(Messages.getString("Pacientes.lblDiagnostico.text")); //$NON-NLS-1$
+						panel_3.add(lblDiagnostico, "cell 1 11"); //$NON-NLS-1$
 					}
 					{
 						scrollPane_8 = new JScrollPane();
-						panel_3.add(scrollPane_8, "cell 1 12 2 3,grow");
+						panel_3.add(scrollPane_8, "cell 1 12 2 3,grow"); //$NON-NLS-1$
 						{
 							txtDiagnostico = new JTextArea();
 							txtDiagnostico.setEditable(false);
@@ -567,7 +567,7 @@ public class Pacientes extends JPanel {
 					}
 					{
 						scrollPane_11 = new JScrollPane();
-						panel_3.add(scrollPane_11, "cell 5 14 3 4,grow");
+						panel_3.add(scrollPane_11, "cell 5 14 3 4,grow"); //$NON-NLS-1$
 						{
 							imagen2 = new MiAreaDibujo();
 							imagen2.addMouseMotionListener(new Imagen2MouseMotionListener());
@@ -576,19 +576,19 @@ public class Pacientes extends JPanel {
 						}
 					}
 					{
-						btnDeshacer2 = new JButton("");
-						btnDeshacer2.setToolTipText("Pulse para borrar el último elemento añadido");
+						btnDeshacer2 = new JButton(""); //$NON-NLS-1$
+						btnDeshacer2.setToolTipText(Messages.getString("Pacientes.btnDeshacer2.toolTipText")); //$NON-NLS-1$
 						btnDeshacer2.addActionListener(new BtnDeshacer2ActionListener());
-						btnDeshacer2.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/deshacer.png")));
-						panel_3.add(btnDeshacer2, "cell 4 15 1 2,grow");
+						btnDeshacer2.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/deshacer.png"))); //$NON-NLS-1$
+						panel_3.add(btnDeshacer2, "cell 4 15 1 2,grow"); //$NON-NLS-1$
 					}
 					{
-						lblTratamiento_1 = new JLabel("Tratamiento");
-						panel_3.add(lblTratamiento_1, "cell 1 16");
+						lblTratamiento_1 = new JLabel(Messages.getString("Pacientes.lblTratamiento_1.text")); //$NON-NLS-1$
+						panel_3.add(lblTratamiento_1, "cell 1 16"); //$NON-NLS-1$
 					}
 					{
 						scrollPane_9 = new JScrollPane();
-						panel_3.add(scrollPane_9, "cell 1 17 2 1,grow");
+						panel_3.add(scrollPane_9, "cell 1 17 2 1,grow"); //$NON-NLS-1$
 						{
 							txtTratamientoI = new JTextArea();
 							txtTratamientoI.setEditable(false);
@@ -598,11 +598,11 @@ public class Pacientes extends JPanel {
 						}
 					}
 					{
-						btnClear2 = new JButton("");
-						btnClear2.setToolTipText("Pulse para borrar todos los elementos añadidos");
+						btnClear2 = new JButton(""); //$NON-NLS-1$
+						btnClear2.setToolTipText(Messages.getString("Pacientes.btnClear2.toolTipText")); //$NON-NLS-1$
 						btnClear2.addActionListener(new BtnClear2ActionListener());
-						btnClear2.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/eliminar-2.png")));
-						panel_3.add(btnClear2, "cell 4 17,growx,aligny top");
+						btnClear2.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/eliminar-2.png"))); //$NON-NLS-1$
+						panel_3.add(btnClear2, "cell 4 17,growx,aligny top"); //$NON-NLS-1$
 					}
 				}
 			}
@@ -612,8 +612,8 @@ public class Pacientes extends JPanel {
 	}
 	
 	public void cambiarFuente(int n){
-		Font fuente1 = new Font("Tahoma", Font.PLAIN, n);
-		Font fuente2 = new Font("Monospaced", Font.PLAIN, n);
+		Font fuente1 = new Font("Tahoma", Font.PLAIN, n); //$NON-NLS-1$
+		Font fuente2 = new Font("Monospaced", Font.PLAIN, n); //$NON-NLS-1$
 		lblNombre.setFont(fuente1);
 		lblFechaNacimiento.setFont(fuente1);
 		lblSexo.setFont(fuente1);
@@ -683,7 +683,7 @@ public class Pacientes extends JPanel {
 		txtNombre.setText((String)table.getModel().getValueAt(table.getSelectedRow(), 0));
 		ArrayList<String> lista = datos.getInfoPaciente(s);
 		ftxtFecha.setText(lista.get(0));
-		if(lista.get(1).equals("F"))
+		if(lista.get(1).equals("F")) //$NON-NLS-1$
 			cbSexo.setSelectedIndex(0);
 		else
 			cbSexo.setSelectedIndex(1);
@@ -717,14 +717,14 @@ public class Pacientes extends JPanel {
 		txtMotivo.setText(lista.get(2));
 		txtDiagnostico.setText(lista.get(3));
 		txtTratamientoI.setText(lista.get(4));
-		if(!lista.get(5).equals("null"))
+		if(!lista.get(5).equals("null")) //$NON-NLS-1$
 			imagen1.setIcon(new ImageIcon(Pacientes.class.getResource(lista.get(5))));
-		if(!lista.get(6).equals("no"))
+		if(!lista.get(6).equals("no")) //$NON-NLS-1$
 			imagen2.setIcon(new ImageIcon(Pacientes.class.getResource(lista.get(6))));
 	}
 	
 	public void marcarPaciente() throws SQLException, ParseException{
-		txtBusqueda.setText("");
+		txtBusqueda.setText(""); //$NON-NLS-1$
 		table.setRowSelectionInterval(0, 0);
 		paciente = (String)table.getModel().getValueAt(table.getSelectedRow(),0);
 		textoBusqueda = (String)table.getModel().getValueAt(table.getSelectedRow(),0);
@@ -739,7 +739,7 @@ public class Pacientes extends JPanel {
 		int dia, mes, year;
 		String fecha = ftxtFecha.getText();
 		StringTokenizer st;
-		st = new StringTokenizer(fecha, "/");
+		st = new StringTokenizer(fecha, "/"); //$NON-NLS-1$
 		dia = Integer.parseInt(st.nextToken());
 		mes = Integer.parseInt(st.nextToken());
 		year = Integer.parseInt(st.nextToken());
@@ -769,39 +769,39 @@ public class Pacientes extends JPanel {
 	}
 	
 	public void transformarSize(String s){
-		if(s.equals("Pequeño") || s.equals("Small")){
+		if(s.equals("Pequeño") || s.equals("Small")){ //$NON-NLS-1$ //$NON-NLS-2$
 			size = 1;
 		}
-		else if(s.equals("Mediano") || s.equals("Medium")){
+		else if(s.equals("Mediano") || s.equals("Medium")){ //$NON-NLS-1$ //$NON-NLS-2$
 			size = 2;
 		}
-		else if(s.equals("Grande") || s.equals("Big")){
+		else if(s.equals("Grande") || s.equals("Big")){ //$NON-NLS-1$ //$NON-NLS-2$
 			size = 3;
 		}
 		
 	}
 	
 	public void vaciarCampos(){
-		txtNombre.setText("");
-		ftxtFecha.setText("");
+		txtNombre.setText(""); //$NON-NLS-1$
+		ftxtFecha.setText(""); //$NON-NLS-1$
 		cbSexo.setSelectedIndex(0);;
-		txtPais.setText("");
-		txtTelefono.setText("");
-		txtAlergias.setText("");
-		txtAntecedentes.setText("");
-		txtEnfermedades.setText("");
-		txtVacunaciones.setText("");
-		txtTratamiento.setText("");
-		txtOperaciones.setText("");
-		lblFoto.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/p0.png")));
+		txtPais.setText(""); //$NON-NLS-1$
+		txtTelefono.setText(""); //$NON-NLS-1$
+		txtAlergias.setText(""); //$NON-NLS-1$
+		txtAntecedentes.setText(""); //$NON-NLS-1$
+		txtEnfermedades.setText(""); //$NON-NLS-1$
+		txtVacunaciones.setText(""); //$NON-NLS-1$
+		txtTratamiento.setText(""); //$NON-NLS-1$
+		txtOperaciones.setText(""); //$NON-NLS-1$
+		lblFoto.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/p0.png"))); //$NON-NLS-1$
 	}
 	
 	public void vaciarInforme(){
-		txtFechaI.setText("");
-		txtMedicoI.setText("");
-		txtMotivo.setText("");
-		txtDiagnostico.setText("");
-		txtTratamientoI.setText("");
+		txtFechaI.setText(""); //$NON-NLS-1$
+		txtMedicoI.setText(""); //$NON-NLS-1$
+		txtMotivo.setText(""); //$NON-NLS-1$
+		txtDiagnostico.setText(""); //$NON-NLS-1$
+		txtTratamientoI.setText(""); //$NON-NLS-1$
 		imagen1.setIcon(null);
 		imagen2.setIcon(null);
 		imagen1.removeObjetosGraficos();
@@ -818,7 +818,7 @@ public class Pacientes extends JPanel {
 		txtTelefono.setEditable(true);
 		vaciarCampos();
 		btnGuardar.setVisible(true);
-		lblFoto.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/p0.png")));
+		lblFoto.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/p0.png"))); //$NON-NLS-1$
 		txtAlergias.setVisible(false);
 		txtAntecedentes.setVisible(false);
 		txtEnfermedades.setVisible(false);
@@ -869,9 +869,9 @@ public class Pacientes extends JPanel {
 				txtTexto.requestFocus();
 				txtTexto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg) {
-					if(!txtTexto.getText().equals(""))
+					if(!txtTexto.getText().equals("")) //$NON-NLS-1$
 						m.addObjetoGrafico(new TextoGrafico(x, y+15, txtTexto.getText(), colorGraficos, size*9));
-						txtTexto.setText("");
+						txtTexto.setText(""); //$NON-NLS-1$
 						txtTexto.setVisible(false);
 						m.repaint();
 					}
@@ -975,9 +975,9 @@ public class Pacientes extends JPanel {
 	private class BtnGuardarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if(editando && !aniadiendo){
-				if(comprobarFecha() && !txtNombre.getText().equals("") && comprobarTelefono() && !txtPais.getText().equals("")){
+				if(comprobarFecha() && !txtNombre.getText().equals("") && comprobarTelefono() && !txtPais.getText().equals("")){ //$NON-NLS-1$ //$NON-NLS-2$
 					try {
-						int dialogo = JOptionPane.showConfirmDialog (null, "¿Seguro que desea modificar al paciente seleccionado?","Confirmación", JOptionPane.YES_NO_OPTION);
+						int dialogo = JOptionPane.showConfirmDialog (null, Messages.getString("Pacientes.126"),Messages.getString("Pacientes.127"), JOptionPane.YES_NO_OPTION); //$NON-NLS-1$ //$NON-NLS-2$
 				        if(dialogo == JOptionPane.YES_OPTION){
 							if(datos.editarPaciente(paciente, txtNombre.getText(), ftxtFecha.getText(), (String)cbSexo.getSelectedItem(), txtPais.getText(), txtTelefono.getText())){
 								String s = txtNombre.getText();
@@ -996,10 +996,10 @@ public class Pacientes extends JPanel {
 				}
 			}
 			else if(!editando && aniadiendo){
-				if(comprobarFecha() && !txtNombre.getText().equals("") && comprobarTelefono() && !txtPais.getText().equals("")){
+				if(comprobarFecha() && !txtNombre.getText().equals("") && comprobarTelefono() && !txtPais.getText().equals("")){ //$NON-NLS-1$ //$NON-NLS-2$
 					if(datos.aniadirPaciente(txtNombre.getText(), ftxtFecha.getText(), (String)cbSexo.getSelectedItem(), txtPais.getText(), txtTelefono.getText())){
 						try {
-							actualizarListaPacientes("");
+							actualizarListaPacientes(""); //$NON-NLS-1$
 						} catch (SQLException e1) {
 							e1.printStackTrace();
 						}
@@ -1033,7 +1033,7 @@ public class Pacientes extends JPanel {
 	private class BtnBorrarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			try {				
-				int dialogo = JOptionPane.showConfirmDialog (null, "¿Seguro que desea borrar al paciente seleccionado?","Confirmación", JOptionPane.YES_NO_OPTION);
+				int dialogo = JOptionPane.showConfirmDialog (null, Messages.getString("Pacientes.131"),Messages.getString("Pacientes.132"), JOptionPane.YES_NO_OPTION); //$NON-NLS-1$ //$NON-NLS-2$
 		        if(dialogo == JOptionPane.YES_OPTION){
 		        	splitPane.setRightComponent(pnlVacio);
 					editando = false;
@@ -1041,7 +1041,7 @@ public class Pacientes extends JPanel {
 					btnBorrar.setEnabled(false);
 					btnEditar.setEnabled(false);
 					datos.borrarPaciente((String)table.getModel().getValueAt(table.getSelectedRow(), 0));
-					actualizarListaPacientes("");
+					actualizarListaPacientes(""); //$NON-NLS-1$
 		        }
 			} catch (NumberFormatException | SQLException e1) {
 				e1.printStackTrace();
@@ -1054,7 +1054,7 @@ public class Pacientes extends JPanel {
 		public void stateChanged(ChangeEvent e) {
 			int selectedIndex = tabbedPane.getSelectedIndex();
 			if(selectedIndex==0){
-				lblBusqueda.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/busqueda-2.png")));
+				lblBusqueda.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/busqueda-2.png"))); //$NON-NLS-1$
 				txtBusqueda.setText(textoBusqueda);
 				try {
 					actualizarListaPacientes(textoBusqueda);
@@ -1073,8 +1073,8 @@ public class Pacientes extends JPanel {
 			}
 			else{
 				btnBorrar.setEnabled(false);
-				lblBusqueda.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/buscarDocumento-2.png")));
-				txtBusqueda.setText("");
+				lblBusqueda.setIcon(new ImageIcon(Pacientes.class.getResource("/presentacion/resources/buscarDocumento-2.png"))); //$NON-NLS-1$
+				txtBusqueda.setText(""); //$NON-NLS-1$
 				panel_2.setVisible(false);
 				ModeloTablaInformes modeloTablaInformes = new ModeloTablaInformes();
 				table.setModel(modeloTablaInformes);
@@ -1159,7 +1159,7 @@ public class Pacientes extends JPanel {
 	}
 	private class BtnColorActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {			
-			colorGraficos = JColorChooser.showDialog(null, "Choose Background Color",null);
+			colorGraficos = JColorChooser.showDialog(null, "Choose Background Color",null); //$NON-NLS-1$
 			btnColor.setForeground(colorGraficos);
 		}
 	}
