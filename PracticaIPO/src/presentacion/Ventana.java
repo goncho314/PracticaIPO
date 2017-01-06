@@ -65,9 +65,6 @@ public class Ventana extends JFrame {
 	private JSeparator separator;
 	private JMenuItem mntmCerrarSesin;
 	private JMenuItem mntmSalir;
-	private JMenu mnIdioma;
-	private JRadioButtonMenuItem rdbtnmntmEspaol;
-	private JRadioButtonMenuItem rdbtnmntmIngls;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JMenuItem mntmAcerca;
 	private JMenu mnTamano;
@@ -167,25 +164,6 @@ public class Ventana extends JFrame {
 				mnEdicion = new JMenu(Messages.getString("Ventana.mnEdicion.text")); //$NON-NLS-1$
 				mnEdicion.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 				menuBar.add(mnEdicion);
-				{
-					mnIdioma = new JMenu(Messages.getString("Ventana.mnIdioma.text")); //$NON-NLS-1$
-					mnIdioma.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
-					mnEdicion.add(mnIdioma);
-					{
-						rdbtnmntmEspaol = new JRadioButtonMenuItem(Messages.getString("Ventana.rdbtnmntmEspaol.text")); //$NON-NLS-1$
-						rdbtnmntmEspaol.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
-						buttonGroup.add(rdbtnmntmEspaol);
-						rdbtnmntmEspaol.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/bandera_espana-2.png"))); //$NON-NLS-1$
-						mnIdioma.add(rdbtnmntmEspaol);
-					}
-					{
-						rdbtnmntmIngls = new JRadioButtonMenuItem(Messages.getString("Ventana.rdbtnmntmIngls.text")); //$NON-NLS-1$
-						rdbtnmntmIngls.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
-						buttonGroup.add(rdbtnmntmIngls);
-						rdbtnmntmIngls.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/bandera_inglaterra-2.png"))); //$NON-NLS-1$
-						mnIdioma.add(rdbtnmntmIngls);
-					}
-				}
 				{
 					mnTamano = new JMenu(Messages.getString("Ventana.mnTamano.text")); //$NON-NLS-1$
 					mnTamano.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
@@ -364,8 +342,8 @@ public class Ventana extends JFrame {
 	}
 	private class BtnSalirActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			int dialogo = JOptionPane.showConfirmDialog (null, Messages.getString("Ventana.45"),Messages.getString("Ventana.46"), JOptionPane.YES_NO_OPTION); //$NON-NLS-1$ //$NON-NLS-2$
-	        System.out.println(dialogo);
+			String[] botones = {Messages.getString("Ventana.mensajeSi"), Messages.getString("Ventana.mensajeNo")};
+			int dialogo = JOptionPane.showOptionDialog(null, Messages.getString("Ventana.45"),Messages.getString("Ventana.46"), JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, botones, null);
 	        if(dialogo == JOptionPane.YES_OPTION){
 				datos.salirAplicacion();
 				Login log = new Login();
@@ -426,7 +404,8 @@ public class Ventana extends JFrame {
 	private class FrameWindowListener extends WindowAdapter {
 		@Override
 		public void windowClosing(WindowEvent e) {
-			int dialogo = JOptionPane.showConfirmDialog (null, Messages.getString("Ventana.54"),Messages.getString("Ventana.55"), JOptionPane.YES_NO_OPTION); //$NON-NLS-1$ //$NON-NLS-2$
+			String[] botones = {Messages.getString("Ventana.mensajeSi"), Messages.getString("Ventana.mensajeNo")};
+			int dialogo = JOptionPane.showOptionDialog(null, Messages.getString("Ventana.54"),Messages.getString("Ventana.46"), JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, botones, null);
 	        if(dialogo == JOptionPane.YES_OPTION){
 	        	datos.salirAplicacion();
 	        	frame.dispose();
@@ -458,8 +437,8 @@ public class Ventana extends JFrame {
 	}
 	private class MntmCerrarSesinActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			int dialogo = JOptionPane.showConfirmDialog (null, Messages.getString("Ventana.59"),Messages.getString("Ventana.60"), JOptionPane.YES_NO_OPTION); //$NON-NLS-1$ //$NON-NLS-2$
-	        System.out.println(dialogo);
+			String[] botones = {Messages.getString("Ventana.mensajeSi"), Messages.getString("Ventana.mensajeNo")};
+			int dialogo = JOptionPane.showOptionDialog(null, Messages.getString("Ventana.45"),Messages.getString("Ventana.46"), JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, botones, null);
 	        if(dialogo == JOptionPane.YES_OPTION){
 				datos.salirAplicacion();
 				Login log = new Login();
@@ -470,7 +449,8 @@ public class Ventana extends JFrame {
 	}
 	private class MntmSalirActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			int dialogo = JOptionPane.showConfirmDialog (null, Messages.getString("Ventana.61"),Messages.getString("Ventana.62"), JOptionPane.YES_NO_OPTION); //$NON-NLS-1$ //$NON-NLS-2$
+			String[] botones = {Messages.getString("Ventana.mensajeSi"), Messages.getString("Ventana.mensajeNo")};
+			int dialogo = JOptionPane.showOptionDialog(null, Messages.getString("Ventana.61"),Messages.getString("Ventana.46"), JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, botones, null);
 	        if(dialogo == JOptionPane.YES_OPTION){
 	        	datos.salirAplicacion();
 	        	frame.dispose();
@@ -481,7 +461,8 @@ public class Ventana extends JFrame {
 	}
 	private class MntmSobreElAutorActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			JOptionPane.showMessageDialog(frame,Messages.getString("Ventana.63"), null, JOptionPane.PLAIN_MESSAGE); //$NON-NLS-1$
+			Object[] botones = {Messages.getString("Ventana.mensajeAceptar")};
+			JOptionPane.showOptionDialog (frame, Messages.getString("Ventana.63"), Messages.getString("Ventana.TituloAutor"), JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, botones, 0);
 		}
 	}
 	private class RdbtnmntmPequenaActionListener implements ActionListener {

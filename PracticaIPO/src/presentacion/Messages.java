@@ -1,6 +1,7 @@
 package presentacion;
 
 import java.beans.Beans;
+import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
@@ -19,7 +20,7 @@ public class Messages {
 	//
 	////////////////////////////////////////////////////////////////////////////
 	private static final String BUNDLE_NAME = "presentacion.messages"; //$NON-NLS-1$
-	private static final ResourceBundle RESOURCE_BUNDLE = loadBundle();
+	private static ResourceBundle RESOURCE_BUNDLE = loadBundle();
 	private static ResourceBundle loadBundle() {
 		return ResourceBundle.getBundle(BUNDLE_NAME);
 	}
@@ -35,5 +36,16 @@ public class Messages {
 		} catch (MissingResourceException e) {
 			return "!" + key + "!";
 		}
+	}
+	
+	public static Locale getLocale(String appIdioma){
+		Locale locale=new Locale("es");
+		if (appIdioma.equals("ingles"))
+			locale = new Locale("en");
+		return locale;
+	}
+		
+	public static void setIdioma(String idioma){
+		RESOURCE_BUNDLE= ResourceBundle.getBundle(BUNDLE_NAME, getLocale(idioma));
 	}
 }

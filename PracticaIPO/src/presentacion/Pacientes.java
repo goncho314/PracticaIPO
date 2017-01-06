@@ -21,6 +21,7 @@ import java.awt.SystemColor;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -35,6 +36,9 @@ import javax.swing.JColorChooser;
 
 import net.miginfocom.swing.MigLayout;
 import javax.swing.text.MaskFormatter;
+
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
+
 import javax.swing.JTextArea;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
@@ -147,6 +151,7 @@ public class Pacientes extends JPanel {
 	private JButton btnColor;
 	
 	private Color colorGraficos = Color.RED;
+	private String loc = Messages.getString("Correo.0"); //$NON-NLS-1$
 
 	/**
 	 * Create the panel.
@@ -256,8 +261,7 @@ public class Pacientes extends JPanel {
 				tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 				tabbedPane.setFont(new Font("Tahoma", Font.PLAIN, 20)); //$NON-NLS-1$
 				tabbedPane.addChangeListener(new TabbedPaneChangeListener());
-				splitPane.setRightComponent(tabbedPane);
-				//splitPane.setRightComponent(pnlVacio);
+				splitPane.setRightComponent(pnlVacio);
 				{
 					pnlDatos = new JPanel();
 					tabbedPane.addTab(Messages.getString("Pacientes.14"), null, pnlDatos, null); //$NON-NLS-1$
@@ -736,31 +740,33 @@ public class Pacientes extends JPanel {
 	
 	public boolean comprobarFecha(){
 		boolean b = false;
-		int dia, mes, year;
-		String fecha = ftxtFecha.getText();
-		StringTokenizer st;
-		st = new StringTokenizer(fecha, "/"); //$NON-NLS-1$
-		dia = Integer.parseInt(st.nextToken());
-		mes = Integer.parseInt(st.nextToken());
-		year = Integer.parseInt(st.nextToken());
-		if(dia<1 || dia>31 || mes<1 || mes>12)
-			b = false;
-		else{
-			if(mes==2)
-				if(year%4==0)
-					if(dia<30)
-						b=true;								
-				else
-					if(dia<29)
+		if(ftxtFecha.getText().charAt(0)!='X' && txtTelefono.getText().charAt(0)!='X'){
+			int dia, mes, year;
+			String fecha = ftxtFecha.getText();
+			StringTokenizer st;
+			st = new StringTokenizer(fecha, "/"); //$NON-NLS-1$
+			dia = Integer.parseInt(st.nextToken());
+			mes = Integer.parseInt(st.nextToken());
+			year = Integer.parseInt(st.nextToken());
+			if(dia<1 || dia>31 || mes<1 || mes>12)
+				b = false;
+			else{
+				if(mes==2)
+					if(year%4==0)
+						if(dia<30)
+							b=true;								
+					else
+						if(dia<29)
+							b=true;
+				if(mes==4 || mes==6 || mes==9 || mes== 11){
+					if(dia<31)
 						b=true;
-			if(mes==4 || mes==6 || mes==9 || mes== 11){
-				if(dia<31)
-					b=true;
+				}
+				else
+					b = true;			
 			}
-			else
-				b = true;			
+			btnGuardar.setVisible(!b);
 		}
-		btnGuardar.setVisible(b);
 		return b;
 	}
 	
@@ -973,11 +979,12 @@ public class Pacientes extends JPanel {
 	}
 	
 	private class BtnGuardarActionListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e) {			
 			if(editando && !aniadiendo){
 				if(comprobarFecha() && !txtNombre.getText().equals("") && comprobarTelefono() && !txtPais.getText().equals("")){ //$NON-NLS-1$ //$NON-NLS-2$
 					try {
-						int dialogo = JOptionPane.showConfirmDialog (null, Messages.getString("Pacientes.126"),Messages.getString("Pacientes.127"), JOptionPane.YES_NO_OPTION); //$NON-NLS-1$ //$NON-NLS-2$
+						Object[] botones = {Messages.getString("Ventana.mensajeSi"), Messages.getString("Ventana.mensajeNo")};
+						int dialogo = JOptionPane.showOptionDialog (null, Messages.getString("Pacientes.126"), Messages.getString("Pacientes.127"), JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, botones, 0);
 				        if(dialogo == JOptionPane.YES_OPTION){
 							if(datos.editarPaciente(paciente, txtNombre.getText(), ftxtFecha.getText(), (String)cbSexo.getSelectedItem(), txtPais.getText(), txtTelefono.getText())){
 								String s = txtNombre.getText();
@@ -985,6 +992,7 @@ public class Pacientes extends JPanel {
 								table.getSelectionModel().setSelectionInterval(0, 0);
 								rellenarInfo(s);
 								actualizarListaPacientes(textoBusqueda);
+								noEditando();
 							}
 				        }
 					} catch (SQLException e1) {
@@ -992,26 +1000,39 @@ public class Pacientes extends JPanel {
 					} catch (ParseException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
-					}						
+					}
+				}
+				else{
+					ImageIcon icon;
+					Object[] botones = {Messages.getString("Ventana.mensajeAceptar")};
+					icon = new ImageIcon(Correo.class.getResource("/presentacion/resources/error-2.png")); //$NON-NLS-1$
+					JOptionPane.showOptionDialog (null, Messages.getString("Pacientes.noGuarda"), Messages.getString("Pacientes.noGuardaTitulo"), JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, icon, botones, 0); //$NON-NLS-1$ //$NON-NLS-2$
 				}
 			}
-			else if(!editando && aniadiendo){
+			else{
 				if(comprobarFecha() && !txtNombre.getText().equals("") && comprobarTelefono() && !txtPais.getText().equals("")){ //$NON-NLS-1$ //$NON-NLS-2$
 					if(datos.aniadirPaciente(txtNombre.getText(), ftxtFecha.getText(), (String)cbSexo.getSelectedItem(), txtPais.getText(), txtTelefono.getText())){
 						try {
 							actualizarListaPacientes(""); //$NON-NLS-1$
+							noEditando();	
 						} catch (SQLException e1) {
 							e1.printStackTrace();
 						}
 					}
-				}		
+				}	
+				else{
+					ImageIcon icon;
+					Object[] botones = {Messages.getString("Ventana.mensajeAceptar")};
+					icon = new ImageIcon(Correo.class.getResource("/presentacion/resources/error-2.png")); //$NON-NLS-1$
+					JOptionPane.showOptionDialog (null, Messages.getString("Pacientes.noGuarda"), Messages.getString("Pacientes.noGuardaTitulo"), JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, icon, botones, 0); //$NON-NLS-1$ //$NON-NLS-2$
+				}
 			}
-			noEditando();
 		}
 	}
 
 	private class BtnAniadirActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			splitPane.setRightComponent(tabbedPane);
 			table.clearSelection();
 			aniadirPaciente();
 			aniadiendo=true;
@@ -1032,19 +1053,29 @@ public class Pacientes extends JPanel {
 	}
 	private class BtnBorrarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			try {				
-				int dialogo = JOptionPane.showConfirmDialog (null, Messages.getString("Pacientes.131"),Messages.getString("Pacientes.132"), JOptionPane.YES_NO_OPTION); //$NON-NLS-1$ //$NON-NLS-2$
+			try {
+				Object[] botones = {Messages.getString("Ventana.mensajeSi"), Messages.getString("Ventana.mensajeNo")};
+				int dialogo = JOptionPane.showOptionDialog (null, Messages.getString("Pacientes.131"), Messages.getString("Pacientes.132"), JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, null, botones, 0);
 		        if(dialogo == JOptionPane.YES_OPTION){
-		        	splitPane.setRightComponent(pnlVacio);
-					editando = false;
-					aniadiendo = false;
-					btnBorrar.setEnabled(false);
-					btnEditar.setEnabled(false);
-					datos.borrarPaciente((String)table.getModel().getValueAt(table.getSelectedRow(), 0));
-					actualizarListaPacientes(""); //$NON-NLS-1$
-		        }
-			} catch (NumberFormatException | SQLException e1) {
+					if(datos.borrarPaciente((String)table.getModel().getValueAt(table.getSelectedRow(), 0))){
+			        	splitPane.setRightComponent(pnlVacio);
+						editando = false;
+						aniadiendo = false;
+						btnBorrar.setEnabled(false);
+						btnEditar.setEnabled(false);
+						actualizarListaPacientes(""); //$NON-NLS-1$
+					}
+					else{
+						ImageIcon icon;
+						Object[] campos = {Messages.getString("Ventana.mensajeAceptar")};
+						icon = new ImageIcon(Correo.class.getResource("/presentacion/resources/error-2.png")); //$NON-NLS-1$
+						JOptionPane.showOptionDialog (null, Messages.getString("Pacientes.noBorra"), Messages.getString("Pacientes.noGuardaTitulo"), JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, icon, campos, 0); //$NON-NLS-1$ //$NON-NLS-2$
+					}
+		       }
+			} catch (SQLException e1) {
 				e1.printStackTrace();
+			} catch (NumberFormatException e2) {
+				e2.printStackTrace();
 			}
 			table.clearSelection();
 			vaciarCampos();
@@ -1158,8 +1189,8 @@ public class Pacientes extends JPanel {
 		}
 	}
 	private class BtnColorActionListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {			
-			colorGraficos = JColorChooser.showDialog(null, "Choose Background Color",null); //$NON-NLS-1$
+		public void actionPerformed(ActionEvent e) {
+			colorGraficos = JColorChooser.showDialog(null, Messages.getString("Pacientes.0"),null); //$NON-NLS-1$
 			btnColor.setForeground(colorGraficos);
 		}
 	}

@@ -216,6 +216,8 @@ public class Login extends JFrame {
 				gbc_rdbtnIngls.gridy = 10;
 				panel.add(rdbtnIngls, gbc_rdbtnIngls);
 			}
+			Messages.setIdioma("esp");
+			dominio.Messages.setIdioma("esp");
 		}		
 	}
 	private class LblEspanaMouseListener extends MouseAdapter {
@@ -224,6 +226,8 @@ public class Login extends JFrame {
 			rdbtnEspaol.setSelected(true);
 			lblEspana.setEnabled(true);
 			lblInglaterra.setEnabled(false);
+			Messages.setIdioma("esp");
+			dominio.Messages.setIdioma("esp");
 		}
 	}
 	private class LblInglaterraMouseListener extends MouseAdapter {
@@ -232,6 +236,8 @@ public class Login extends JFrame {
 			rdbtnIngls.setSelected(true);
 			lblInglaterra.setEnabled(true);
 			lblEspana.setEnabled(false);
+			Messages.setIdioma("ingles");
+			dominio.Messages.setIdioma("ingles");
 		}
 	}
 	private class BtnEntrarActionListener implements ActionListener {

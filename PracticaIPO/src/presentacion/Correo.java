@@ -19,6 +19,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Locale;
 import java.awt.event.ActionEvent;
 
 public class Correo extends JPanel {
@@ -31,6 +32,7 @@ public class Correo extends JPanel {
 	private JTextArea txtaMensaje;
 	private JLabel lblAdjuntos;
 	private int adjuntos = 0;
+	private String loc = Messages.getString("Correo.0"); //$NON-NLS-1$
 
 	/**
 	 * Create the panel.
@@ -43,7 +45,7 @@ public class Correo extends JPanel {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		{
-			label = new JLabel("");
+			label = new JLabel(""); //$NON-NLS-1$
 			GridBagConstraints gbc_label = new GridBagConstraints();
 			gbc_label.insets = new Insets(0, 0, 5, 5);
 			gbc_label.gridx = 0;
@@ -52,7 +54,7 @@ public class Correo extends JPanel {
 		}
 		{
 			lblAsunto = new JLabel(Messages.getString("Correo.lblAsunto.text")); //$NON-NLS-1$
-			lblAsunto.setFont(new Font("Tahoma", Font.PLAIN, 18));
+			lblAsunto.setFont(new Font("Tahoma", Font.PLAIN, 18)); //$NON-NLS-1$
 			GridBagConstraints gbc_lblAsunto = new GridBagConstraints();
 			gbc_lblAsunto.insets = new Insets(0, 0, 5, 5);
 			gbc_lblAsunto.anchor = GridBagConstraints.EAST;
@@ -62,7 +64,7 @@ public class Correo extends JPanel {
 		}
 		{
 			txtAsunto = new JTextField();
-			txtAsunto.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			txtAsunto.setFont(new Font("Tahoma", Font.PLAIN, 16)); //$NON-NLS-1$
 			GridBagConstraints gbc_txtAsunto = new GridBagConstraints();
 			gbc_txtAsunto.insets = new Insets(0, 0, 5, 5);
 			gbc_txtAsunto.fill = GridBagConstraints.BOTH;
@@ -74,7 +76,7 @@ public class Correo extends JPanel {
 		{
 			lblMensaje = new JLabel(Messages.getString("Correo.lblMensaje.text")); //$NON-NLS-1$
 			lblMensaje.setVerticalAlignment(SwingConstants.TOP);
-			lblMensaje.setFont(new Font("Tahoma", Font.PLAIN, 18));
+			lblMensaje.setFont(new Font("Tahoma", Font.PLAIN, 18)); //$NON-NLS-1$
 			GridBagConstraints gbc_lblMensaje = new GridBagConstraints();
 			gbc_lblMensaje.insets = new Insets(0, 0, 5, 5);
 			gbc_lblMensaje.anchor = GridBagConstraints.NORTHEAST;
@@ -84,7 +86,7 @@ public class Correo extends JPanel {
 		}
 		{
 			txtaMensaje = new JTextArea();
-			txtaMensaje.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			txtaMensaje.setFont(new Font("Tahoma", Font.PLAIN, 16)); //$NON-NLS-1$
 			txtaMensaje.setLineWrap(true);
 			txtaMensaje.setWrapStyleWord(true);
 			GridBagConstraints gbc_txtaMensaje = new GridBagConstraints();
@@ -99,8 +101,8 @@ public class Correo extends JPanel {
 			btnEnviar.setToolTipText(Messages.getString("Correo.btnEnviar.toolTipText")); //$NON-NLS-1$
 			btnEnviar.addActionListener(new BtnEnviarActionListener());
 			btnEnviar.setHorizontalAlignment(SwingConstants.LEADING);
-			btnEnviar.setIcon(new ImageIcon(Correo.class.getResource("/presentacion/resources/enviar-2.png")));
-			btnEnviar.setFont(new Font("Tahoma", Font.PLAIN, 18));
+			btnEnviar.setIcon(new ImageIcon(Correo.class.getResource("/presentacion/resources/enviar-2.png"))); //$NON-NLS-1$
+			btnEnviar.setFont(new Font("Tahoma", Font.PLAIN, 18)); //$NON-NLS-1$
 			GridBagConstraints gbc_btnEnviar = new GridBagConstraints();
 			gbc_btnEnviar.insets = new Insets(0, 0, 5, 0);
 			gbc_btnEnviar.gridx = 4;
@@ -111,8 +113,8 @@ public class Correo extends JPanel {
 			btnAdjuntar = new JButton(Messages.getString("Correo.btnAdjuntar.text")); //$NON-NLS-1$
 			btnAdjuntar.setToolTipText(Messages.getString("Correo.btnAdjuntar.toolTipText")); //$NON-NLS-1$
 			btnAdjuntar.addActionListener(new BtnAdjuntarActionListener());
-			btnAdjuntar.setFont(new Font("Tahoma", Font.PLAIN, 18));
-			btnAdjuntar.setIcon(new ImageIcon(Correo.class.getResource("/presentacion/resources/adjuntar-2.png")));
+			btnAdjuntar.setFont(new Font("Tahoma", Font.PLAIN, 18)); //$NON-NLS-1$
+			btnAdjuntar.setIcon(new ImageIcon(Correo.class.getResource("/presentacion/resources/adjuntar-2.png"))); //$NON-NLS-1$
 			GridBagConstraints gbc_btnAdjuntar = new GridBagConstraints();
 			gbc_btnAdjuntar.anchor = GridBagConstraints.WEST;
 			gbc_btnAdjuntar.fill = GridBagConstraints.VERTICAL;
@@ -122,9 +124,9 @@ public class Correo extends JPanel {
 			add(btnAdjuntar, gbc_btnAdjuntar);
 		}
 		{
-			lblAdjuntos = new JLabel("");
+			lblAdjuntos = new JLabel(""); //$NON-NLS-1$
 			lblAdjuntos.setVerticalTextPosition(SwingConstants.TOP);
-			lblAdjuntos.setFont(new Font("Tahoma", Font.PLAIN, 18));
+			lblAdjuntos.setFont(new Font("Tahoma", Font.PLAIN, 18)); //$NON-NLS-1$
 			GridBagConstraints gbc_lblAdjuntos = new GridBagConstraints();
 			gbc_lblAdjuntos.anchor = GridBagConstraints.NORTHWEST;
 			gbc_lblAdjuntos.insets = new Insets(0, 0, 0, 5);
@@ -136,39 +138,41 @@ public class Correo extends JPanel {
 	}
 	
 	public String archivosAdjuntos(){
-		String s = "";
+		String s = ""; //$NON-NLS-1$
 		if(adjuntos==1)
-			s = " archivo adjunto.";
+			s = Messages.getString("Correo.12"); //$NON-NLS-1$
 		else
-			s = " archivos adjuntos.";
+			s = Messages.getString("Correo.13"); //$NON-NLS-1$
 		return adjuntos+s;
 	}
 
 	private class BtnAdjuntarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			JFileChooser fcAbrir = new JFileChooser();
+			fcAbrir.setLocale(Messages.getLocale(loc));
+			fcAbrir.updateUI();
 			int valorDevuelto = fcAbrir.showOpenDialog(getParent());
 			if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
 				ImageIcon icon;
-				icon = new ImageIcon(Correo.class.getResource("/presentacion/resources/tick-2.png"));
-				JOptionPane.showMessageDialog(null, fcAbrir.getSelectedFile().getName()+" cargado correctamente.", "Adjuntar archivo", JOptionPane.PLAIN_MESSAGE, icon);
+				Object[] botones = {Messages.getString("Ventana.mensajeAceptar")};
+				icon = new ImageIcon(Correo.class.getResource("/presentacion/resources/tick-2.png")); //$NON-NLS-1$
+				JOptionPane.showOptionDialog (null, fcAbrir.getSelectedFile().getName()+Messages.getString("Correo.15"), Messages.getString("Correo.16"), JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, icon, botones, 0); //$NON-NLS-1$ //$NON-NLS-2$
 				adjuntos++;
 				lblAdjuntos.setText(archivosAdjuntos());
 			}
-			else
-				System.out.println("El usuario ha cancelado el proceso de lectura.");
 		}
 	}
 	private class BtnEnviarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			ImageIcon icon;
-			if(txtAsunto.getText().equals("") || txtaMensaje.getText().equals("")){
-				icon = new ImageIcon(Correo.class.getResource("/presentacion/resources/error-2.png"));
-				JOptionPane.showMessageDialog(null, "No se pudo enviar. Debe rellenar todos los campos.", "Mensaje", JOptionPane.PLAIN_MESSAGE, icon);
+			Object[] botones = {Messages.getString("Ventana.mensajeAceptar")}; //$NON-NLS-1$
+			if(txtAsunto.getText().equals("") || txtaMensaje.getText().equals("")){ //$NON-NLS-1$ //$NON-NLS-2$
+				icon = new ImageIcon(Correo.class.getResource("/presentacion/resources/error-2.png")); //$NON-NLS-1$
+				JOptionPane.showOptionDialog (null, Messages.getString("Correo.21"), Messages.getString("Correo.22"), JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, icon, botones, 0); //$NON-NLS-1$ //$NON-NLS-2$
 			}
 			else{
-				icon = new ImageIcon(Correo.class.getResource("/presentacion/resources/tick-2.png"));
-				JOptionPane.showMessageDialog(null, "Mensaje enviado.", "Mensaje", JOptionPane.PLAIN_MESSAGE, icon);
+				icon = new ImageIcon(Correo.class.getResource("/presentacion/resources/tick-2.png")); //$NON-NLS-1$
+				JOptionPane.showOptionDialog (null, Messages.getString("Correo.24"), Messages.getString("Correo.25"), JOptionPane.PLAIN_MESSAGE, JOptionPane.PLAIN_MESSAGE, icon, botones, 0); //$NON-NLS-1$ //$NON-NLS-2$
 			}
 		}
 	}
