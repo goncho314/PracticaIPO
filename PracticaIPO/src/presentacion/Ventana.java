@@ -32,6 +32,7 @@ import javax.swing.JMenu;
 import javax.swing.JSeparator;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.ButtonGroup;
+import java.awt.event.KeyEvent;
 
 public class Ventana extends JFrame {
 
@@ -117,25 +118,25 @@ public class Ventana extends JFrame {
 			menuBar.setFont(new Font("Segoe UI", Font.PLAIN, 19)); //$NON-NLS-1$
 			frame.setJMenuBar(menuBar);
 			{
-				mnArchivo = new JMenu(Messages.getString("Ventana.mnArchivo.text")); //$NON-NLS-1$
+				mnArchivo = new JMenu(Messages.getString("Ventana.mnArchivo.text"));
 				mnArchivo.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 				menuBar.add(mnArchivo);
 				{
-					mntmAgenda = new JMenuItem(Messages.getString("Ventana.mntmAgenda.text")); //$NON-NLS-1$
+					mntmAgenda = new JMenuItem(Messages.getString("Ventana.mntmAgenda.text"));
 					mntmAgenda.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 					mntmAgenda.addActionListener(new MntmAgendaActionListener());
 					mntmAgenda.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/calendar-icon3.png"))); //$NON-NLS-1$
 					mnArchivo.add(mntmAgenda);
 				}
 				{
-					mntmEspecialistas = new JMenuItem(Messages.getString("Ventana.mntmEspecialistas.text")); //$NON-NLS-1$
+					mntmEspecialistas = new JMenuItem(Messages.getString("Ventana.mntmEspecialistas.text"));
 					mntmEspecialistas.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 					mntmEspecialistas.addActionListener(new MntmEspecialistasActionListener());
 					mntmEspecialistas.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/doctor_icon3.png"))); //$NON-NLS-1$
 					mnArchivo.add(mntmEspecialistas);
 				}
 				{
-					mntmPacientes = new JMenuItem(Messages.getString("Ventana.mntmPacientes.text")); //$NON-NLS-1$
+					mntmPacientes = new JMenuItem(Messages.getString("Ventana.mntmPacientes.text"));
 					mntmPacientes.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 					mntmPacientes.addActionListener(new MntmPacientesActionListener());
 					mntmPacientes.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/patient-icon3.png"))); //$NON-NLS-1$
@@ -146,14 +147,14 @@ public class Ventana extends JFrame {
 					mnArchivo.add(separator);
 				}
 				{
-					mntmCerrarSesin = new JMenuItem(Messages.getString("Ventana.mntmCerrarSesin.text")); //$NON-NLS-1$
+					mntmCerrarSesin = new JMenuItem(Messages.getString("Ventana.mntmCerrarSesin.text"));
 					mntmCerrarSesin.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 					mntmCerrarSesin.addActionListener(new MntmCerrarSesinActionListener());
 					mntmCerrarSesin.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/cerrar-sesion-3.png"))); //$NON-NLS-1$
 					mnArchivo.add(mntmCerrarSesin);
 				}
 				{
-					mntmSalir = new JMenuItem(Messages.getString("Ventana.mntmSalir.text")); //$NON-NLS-1$
+					mntmSalir = new JMenuItem(Messages.getString("Ventana.mntmSalir.text"));
 					mntmSalir.setFont(new Font("Segoe UI", Font.PLAIN, 18)); //$NON-NLS-1$
 					mntmSalir.addActionListener(new MntmSalirActionListener());
 					mntmSalir.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/salir.png"))); //$NON-NLS-1$
@@ -228,6 +229,7 @@ public class Ventana extends JFrame {
 					panel_2.setLayout(new GridLayout(3, 0, 0, 0));
 					{
 						btnAgenda = new JButton(Messages.getString("Ventana.btnAgenda.text")); //$NON-NLS-1$
+						btnAgenda.setMnemonic(KeyEvent.VK_A);
 						btnAgenda.setToolTipText(Messages.getString("Ventana.btnAgenda.toolTipText")); //$NON-NLS-1$
 						panel_2.add(btnAgenda);
 						btnAgenda.setContentAreaFilled(false);
@@ -238,6 +240,7 @@ public class Ventana extends JFrame {
 					}
 					{
 						btnEspecialistas = new JButton(Messages.getString("Ventana.btnEspecialistas.text")); //$NON-NLS-1$
+						btnEspecialistas.setMnemonic(KeyEvent.VK_E);
 						btnEspecialistas.setToolTipText(Messages.getString("Ventana.btnEspecialistas.toolTipText")); //$NON-NLS-1$
 						panel_2.add(btnEspecialistas);
 						btnEspecialistas.setContentAreaFilled(false);
@@ -249,6 +252,7 @@ public class Ventana extends JFrame {
 					}
 					{
 						btnPacientes = new JButton(Messages.getString("Ventana.btnPacientes.text")); //$NON-NLS-1$
+						btnPacientes.setMnemonic(KeyEvent.VK_P);
 						btnPacientes.setToolTipText(Messages.getString("Ventana.btnPacientes.toolTipText")); //$NON-NLS-1$
 						panel_2.add(btnPacientes);
 						btnPacientes.setContentAreaFilled(false);
@@ -304,6 +308,7 @@ public class Ventana extends JFrame {
 			panel_4.setLayout(new GridLayout(0, 6, 0, 0));
 			{
 				btnCerrarSesion = new JButton(Messages.getString("Ventana.btnCerrarSesion.text")); //$NON-NLS-1$
+				btnCerrarSesion.setMnemonic(KeyEvent.VK_C);
 				btnCerrarSesion.setToolTipText(Messages.getString("Ventana.btnCerrarSesion.toolTipText")); //$NON-NLS-1$
 				btnCerrarSesion.addActionListener(new BtnSalirActionListener());
 				btnCerrarSesion.setIcon(new ImageIcon(Ventana.class.getResource("/presentacion/resources/cerrar-sesion-2.png"))); //$NON-NLS-1$
